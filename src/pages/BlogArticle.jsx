@@ -219,7 +219,7 @@ export default function BlogArticle() {
                       Unsere Ärztinnen beraten Sie diskret und individuell.
                     </p>
                     <Link
-                      to="/assessment"
+                      to="/"
                       className="inline-block font-sans font-medium text-xs text-forest border border-forest px-4 py-2 rounded-[2px] hover:bg-forest hover:text-cream transition-colors"
                     >
                       Kostenlose Bewertung starten

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useLang } from '../context/LanguageContext';
 import { useFadeIn } from '../hooks/useFadeIn';
 
@@ -90,7 +91,7 @@ export default function Employers() {
                   <p className="mt-1 font-serif font-bold text-forest text-2xl">{affected}</p>
                   <p className="text-xs text-charcoal-light">Mitarbeiterinnen</p>
                 </div>
-                <div className="bg-blush-light p-5 rounded-[2px]">
+                <div className="bg-rose-pale p-5 rounded-[2px]">
                   <p className="text-xs text-charcoal-light uppercase tracking-wider">Jährlicher Produktivitätsverlust</p>
                   <p className="mt-1 font-serif font-bold text-forest text-2xl">CHF {annualCost.toLocaleString('de-CH')}</p>
                   <p className="text-xs text-charcoal-light">geschätzt</p>

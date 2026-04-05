@@ -1,64 +1,154 @@
-import { Link } from 'react-router-dom';
-import { useLang } from '../context/LanguageContext';
+import { Link } from 'react-router-dom'
+import { useLang } from '../context/LanguageContext'
 
 export default function Footer() {
-  const { t } = useLang();
+  const { t } = useLang()
+
+  const navLinks = [
+    { label: 'So funktioniert es', href: '#how-it-works' },
+    { label: 'Symptome', href: '#symptoms' },
+    { label: 'Behandlungen', href: '#treatments' },
+    { label: 'Preise', href: '#pricing' },
+  ]
+
+  const weitereLinks = [
+    { label: 'Arbeitgeber', to: '/employers' },
+    { label: 'Ratgeber', to: '/blog' },
+    { label: 'Kontakt', href: '#kontakt' },
+  ]
+
+  const legalLinks = [
+    { label: 'Datenschutz', to: '/datenschutz' },
+    { label: 'Impressum', to: '/impressum' },
+    { label: 'AGB', to: '/agb' },
+    { label: 'Cookie-Einstellungen', href: '#cookies' },
+  ]
+
+  const badges = ['Swissmedic', 'FMH', 'nDSG', 'HIN']
 
   return (
-    <footer className="bg-forest text-cream/80">
-      <div className="max-w-7xl mx-auto px-5 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
-          {/* Brand */}
-          <div className="lg:col-span-2">
-            <Link to="/" className="font-serif text-2xl font-bold text-cream no-underline">
-              Equilibra
+    <footer className="bg-charcoal">
+      <div className="max-w-7xl mx-auto px-6 py-16 lg:py-20">
+        {/* Main grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+          {/* Brand column */}
+          <div className="lg:col-span-1">
+            <Link to="/" className="inline-block mb-4">
+              <span className="font-serif text-2xl">
+                <span className="text-cream">Equi</span>
+                <span className="text-sage font-bold">libra</span>
+              </span>
             </Link>
-            <p className="mt-3 text-sm leading-relaxed text-cream/60 font-light max-w-md">
-              {t.footer?.tagline || 'Hormones in balance. Life in full.'}
+            <p className="text-cream/60 text-sm leading-relaxed max-w-xs">
+              {t.footer?.tagline}
             </p>
-            <div className="mt-4 flex items-center gap-4 text-xs text-cream/40">
-              <span>Swiss-regulated</span>
-              <span className="w-1 h-1 rounded-full bg-sage" />
-              <span>nDSG compliant</span>
-              <span className="w-1 h-1 rounded-full bg-sage" />
-              <span>HIN e-prescription</span>
-            </div>
           </div>
 
-          {/* Nav links */}
+          {/* Navigation column */}
           <div>
-            <h4 className="text-xs font-medium tracking-widest uppercase text-cream/40 mb-4 font-sans">Navigation</h4>
-            <nav className="flex flex-col gap-2.5">
-              <Link to="/how-it-works" className="text-sm text-cream/70 no-underline hover:text-cream transition-colors duration-150">{t.nav.howItWorks}</Link>
-              <Link to="/symptoms" className="text-sm text-cream/70 no-underline hover:text-cream transition-colors duration-150">{t.nav.symptoms}</Link>
-              <Link to="/treatments" className="text-sm text-cream/70 no-underline hover:text-cream transition-colors duration-150">{t.nav.treatments}</Link>
-              <Link to="/pricing" className="text-sm text-cream/70 no-underline hover:text-cream transition-colors duration-150">{t.nav.pricing}</Link>
-              <Link to="/employers" className="text-sm text-cream/70 no-underline hover:text-cream transition-colors duration-150">{t.nav.employers}</Link>
-              <Link to="/blog" className="text-sm text-cream/70 no-underline hover:text-cream transition-colors duration-150">{t.nav.blog}</Link>
-            </nav>
+            <h4 className="uppercase tracking-widest text-xs font-medium text-cream/40 mb-5">
+              Navigation
+            </h4>
+            <ul className="space-y-3">
+              {navLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-cream/60 hover:text-cream transition text-sm"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Legal */}
+          {/* Weitere column */}
           <div>
-            <h4 className="text-xs font-medium tracking-widest uppercase text-cream/40 mb-4 font-sans">Legal</h4>
-            <div className="flex flex-col gap-2.5">
-              <span className="text-sm text-cream/70">Impressum</span>
-              <span className="text-sm text-cream/70">Datenschutz</span>
-              <span className="text-sm text-cream/70">AGB</span>
-            </div>
+            <h4 className="uppercase tracking-widest text-xs font-medium text-cream/40 mb-5">
+              Weitere
+            </h4>
+            <ul className="space-y-3">
+              {weitereLinks.map((link) => (
+                <li key={link.label}>
+                  {link.to ? (
+                    <Link
+                      to={link.to}
+                      className="text-cream/60 hover:text-cream transition text-sm"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-cream/60 hover:text-cream transition text-sm"
+                    >
+                      {link.label}
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Rechtliches column */}
+          <div>
+            <h4 className="uppercase tracking-widest text-xs font-medium text-cream/40 mb-5">
+              Rechtliches
+            </h4>
+            <ul className="space-y-3">
+              {legalLinks.map((link) => (
+                <li key={link.label}>
+                  {link.to ? (
+                    <Link
+                      to={link.to}
+                      className="text-cream/60 hover:text-cream transition text-sm"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className="text-cream/60 hover:text-cream transition text-sm"
+                    >
+                      {link.label}
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="mt-12 pt-8 border-t border-cream/10">
-          <p className="text-xs leading-relaxed text-cream/40 max-w-4xl">
-            {t.footer?.legal || 'Equilibra AG, Zürich, Schweiz. Medizinische Leistungen werden von Partnerärztinnen mit FMH-Zulassung und kantonaler Berufsausübungsbewilligung erbracht. Equilibra AG ist kein Heilmittelhersteller und kein Leistungserbringer im Sinne des KVG. Diese Website stellt keine medizinische Beratung dar.'}
-          </p>
-          <p className="mt-3 text-xs text-cream/30">
-            &copy; {new Date().getFullYear()} Equilibra AG. All rights reserved.
+        <div className="border-t border-cream/10 mt-14 pt-8">
+          {/* Badges row */}
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
+            {badges.map((badge, i) => (
+              <div key={badge} className="flex items-center gap-3">
+                <span className="border border-cream/20 rounded-full px-3 py-1 text-xs text-cream/50 font-medium tracking-wide">
+                  {badge}
+                </span>
+                {i < badges.length - 1 && (
+                  <span className="text-cream/20 hidden sm:inline">&middot;</span>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Legal text */}
+          {t.footer?.legal && (
+            <p className="text-cream/40 text-xs text-center leading-relaxed max-w-2xl mx-auto mb-6">
+              {t.footer.legal}
+            </p>
+          )}
+
+          {/* Copyright */}
+          <p className="text-cream/40 text-xs text-center">
+            {t.footer?.copyright || `\u00A9 ${new Date().getFullYear()} Equilibra. Alle Rechte vorbehalten.`}
           </p>
         </div>
       </div>
     </footer>
-  );
+  )
 }

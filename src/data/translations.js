@@ -11,11 +11,30 @@ export const translations = {
     },
 
     hero: {
+      tag: "Die Realität in der Schweiz",
       headline: "Wechseljahre meistern – mit medizinischer Expertise auf Ihrer Seite",
       subHeadline:
         "Equilibra bietet Ihnen diskrete, ärztlich begleitete Hormontherapie für die Perimenopause und Menopause. Vollständig reguliert. Vollständig auf Sie zugeschnitten.",
       cta: "Kostenlose Bewertung starten",
       secondaryCta: "Mehr erfahren",
+      quote: "Jede Frau verdient eine Behandlung, die auf sie zugeschnitten ist — nicht ein Rezept von der Stange.",
+      quoteAuthor: "Dr. med. Katharina Müller, Leitende Ärztin",
+    },
+
+    problem: {
+      tag: "Das Problem",
+      title: "Millionen Frauen. Kaum Versorgung.",
+      stats: [
+        { value: "<10", unit: "%", label: "der betroffenen Frauen erhalten eine adäquate Behandlung" },
+        { value: "8", unit: "Jahre", label: "durchschnittliche Dauer der Symptome" },
+        { value: "1.2", unit: "Mio.", label: "Frauen in der Schweiz sind betroffen" },
+      ],
+      paragraphs: [
+        "Die Wechseljahre betreffen jede Frau, doch das Schweizer Gesundheitssystem ist darauf kaum vorbereitet. Wartezeiten von vier bis acht Wochen auf einen Termin bei der Gynäkologin sind die Norm. Viele Ärztinnen haben nur wenige Minuten pro Konsultation, und das Thema Menopause wird in der medizinischen Ausbildung stiefmütterlich behandelt.",
+        "Die Folge: Frauen leiden unnötig. Sie verlieren Schlaf, Konzentration und Lebensfreude. Sie reduzieren ihre Arbeitszeit oder geben ihre Karriere auf. Sie zweifeln an sich selbst, obwohl es wirksame, evidenzbasierte Behandlungen gibt.",
+        "Equilibra wurde gegründet, um diese Versorgungslücke zu schliessen. Wir verbinden Sie mit Spezialistinnen, die sich ausschliesslich der Menopause widmen — ohne Wartezeiten, ohne Zeitdruck, ohne Tabus.",
+      ],
+      quote: "Es darf nicht sein, dass Frauen in einem der reichsten Länder der Welt jahrelang mit behandelbaren Symptomen allein gelassen werden.",
     },
 
     trustBar: [
@@ -517,11 +536,30 @@ export const translations = {
     },
 
     hero: {
+      tag: "La réalité en Suisse",
       headline: "Vivez la ménopause autrement – avec un accompagnement médical personnalisé",
       subHeadline:
         "Equilibra vous propose un traitement hormonal de substitution suivi par des médecins, discret et entièrement adapté à votre situation. Réglementé. Certifié. Conçu pour vous.",
       cta: "Démarrer mon bilan gratuit",
       secondaryCta: "En savoir plus",
+      quote: "Chaque femme mérite un traitement qui lui est adapté — pas une ordonnance standard.",
+      quoteAuthor: "Dr. med. Katharina Müller, Médecin-cheffe",
+    },
+
+    problem: {
+      tag: "Le problème",
+      title: "Des millions de femmes. Peu de soins.",
+      stats: [
+        { value: "<10", unit: "%", label: "des femmes concernées reçoivent un traitement adéquat" },
+        { value: "8", unit: "ans", label: "durée moyenne des symptômes" },
+        { value: "1.2", unit: "mio.", label: "de femmes en Suisse sont concernées" },
+      ],
+      paragraphs: [
+        "La ménopause concerne chaque femme, mais le système de santé suisse y est peu préparé. Des délais d'attente de quatre à huit semaines pour un rendez-vous en gynécologie sont la norme. De nombreux médecins ne disposent que de quelques minutes par consultation, et la ménopause reste un sujet négligé dans la formation médicale.",
+        "Les conséquences : des femmes souffrent inutilement. Elles perdent le sommeil, la concentration et la joie de vivre. Elles réduisent leur temps de travail ou abandonnent leur carrière. Elles doutent d'elles-mêmes, alors que des traitements efficaces et fondés sur des preuves existent.",
+        "Equilibra a été fondée pour combler cette lacune. Nous vous mettons en relation avec des spécialistes exclusivement dédiées à la ménopause — sans délais, sans pression, sans tabous.",
+      ],
+      quote: "Il est inacceptable que les femmes, dans l'un des pays les plus riches du monde, souffrent pendant des années de symptômes traitables.",
     },
 
     trustBar: [
@@ -1030,11 +1068,30 @@ export const translations = {
     },
 
     hero: {
+      tag: "The reality in Switzerland",
       headline: "Navigate menopause with expert medical support",
       subHeadline:
         "Equilibra provides discreet, physician-supervised hormone therapy for perimenopause and menopause. Fully regulated. Fully personalised to you.",
       cta: "Start your free assessment",
       secondaryCta: "Learn more",
+      quote: "Every woman deserves a treatment tailored to her — not a one-size-fits-all prescription.",
+      quoteAuthor: "Dr. med. Katharina Müller, Chief Physician",
+    },
+
+    problem: {
+      tag: "The problem",
+      title: "Millions of women. Barely any care.",
+      stats: [
+        { value: "<10", unit: "%", label: "of affected women receive adequate treatment" },
+        { value: "8", unit: "years", label: "average duration of symptoms" },
+        { value: "1.2", unit: "m", label: "women in Switzerland are affected" },
+      ],
+      paragraphs: [
+        "Menopause affects every woman, yet the Swiss healthcare system is barely prepared for it. Wait times of four to eight weeks for a gynaecology appointment are the norm. Many doctors have only a few minutes per consultation, and menopause remains underserved in medical training.",
+        "The result: women suffer needlessly. They lose sleep, concentration and quality of life. They reduce their working hours or abandon their careers. They doubt themselves, even though effective, evidence-based treatments exist.",
+        "Equilibra was founded to close this gap. We connect you with specialists exclusively dedicated to menopause — without wait times, without time pressure, without taboos.",
+      ],
+      quote: "It must not be the case that women in one of the wealthiest countries in the world suffer for years with treatable symptoms.",
     },
 
     trustBar: [
