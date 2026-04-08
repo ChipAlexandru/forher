@@ -16,6 +16,7 @@ import Employers from './pages/Employers';
 import Blog from './pages/Blog';
 import BlogArticle from './pages/BlogArticle';
 import Landing from './pages/Landing';
+import LandingV3 from './pages/LandingV3';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -71,6 +72,16 @@ export default function App() {
       <>
         <ScrollToTop />
         <Landing />
+      </>
+    );
+  }
+
+  // V3: Quiz-led landing page (own header/footer)
+  if (pathname === '/3') {
+    return (
+      <>
+        <ScrollToTop />
+        <LandingV3 />
       </>
     );
   }
