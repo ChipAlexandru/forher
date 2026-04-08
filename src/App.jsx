@@ -7,6 +7,7 @@ import Employers from './pages/Employers';
 import Blog from './pages/Blog';
 import BlogArticle from './pages/BlogArticle';
 import Landing from './pages/Landing';
+import HomeV0 from './pages/HomeV0';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -20,11 +21,20 @@ export default function App() {
   const { pathname } = useLocation();
 
   // Standalone version pages (no shared header/footer)
-  if (pathname === '/1' || pathname === '/2') {
+  if (pathname === '/0' || pathname === '/1' || pathname === '/2') {
     return (
       <>
         <ScrollToTop />
         <Routes>
+          <Route path="/0" element={
+            <div className="min-h-screen flex flex-col">
+              <Header onQuizOpen={() => setQuizOpen(true)} />
+              <main className="flex-1">
+                <HomeV0 />
+              </main>
+              <Footer />
+            </div>
+          } />
           <Route path="/1" element={
             <div className="min-h-screen flex flex-col">
               <Header onQuizOpen={() => setQuizOpen(true)} />
