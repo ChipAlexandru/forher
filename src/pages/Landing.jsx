@@ -234,7 +234,7 @@ const symptomIcons = {
 /* ──────────────────── COMPONENT ──────────────────── */
 export default function Landing() {
   const containerRef = useFadeIn();
-  const [lang, setLang] = useState('de');
+  const [lang, setLang] = useState('en');
   const [openFaq, setOpenFaq] = useState(null);
   const t = content[lang];
 

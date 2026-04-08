@@ -4,7 +4,7 @@ import { translations } from '../data/translations';
 const LanguageContext = createContext();
 
 export function LanguageProvider({ children }) {
-  const [lang, setLang] = useState('de');
+  const [lang, setLang] = useState('en');
 
   const LANGS = ['de', 'fr', 'en'];
 
