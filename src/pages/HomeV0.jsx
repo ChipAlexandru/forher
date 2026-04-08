@@ -56,7 +56,7 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 items-start">
                 <Link
-                  to="/assessment"
+                  to="/0/assessment"
                   className="inline-block bg-forest text-cream font-sans font-medium text-base px-8 py-4 rounded-[2px] hover:bg-opacity-90 transition-colors"
                 >
                   {t.hero.cta}
@@ -207,7 +207,7 @@ export default function Home() {
               {t.whyNow.description}
             </p>
             <Link
-              to="/assessment"
+              to="/0/assessment"
               className="inline-block font-sans font-medium text-base text-forest border-b border-forest pb-0.5 hover:text-sage hover:border-sage transition-colors"
             >
               {t.whyNow.ctaText}
@@ -229,7 +229,7 @@ export default function Home() {
               </p>
             </div>
             <Link
-              to="/employers"
+              to="/0/employers"
               className="shrink-0 inline-block font-sans font-medium text-sm text-forest border border-forest px-6 py-3 rounded-[2px] hover:bg-forest hover:text-cream transition-colors"
             >
               {t.common.learnMore}
