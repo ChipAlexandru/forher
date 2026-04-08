@@ -140,6 +140,12 @@ function getProfile(answers, lang) {
 const content = {
   de: {
     lang: 'Deutsch',
+    hero: {
+      headline: 'Wechseljahre. Endlich Fachpersonen, die zuhören.',
+      subhead: 'Video-Konsultation mit auf Menopause spezialisierten Fachärztinnen und Fachärzten für Gynäkologie. Diagnose, persönlicher Behandlungsplan und Rezept — in einer ausführlichen Sitzung. Weil Ihre Symptome real sind, Ihre Fragen Antworten verdienen und 10 Minuten nie genug waren.',
+      cta: 'Termin buchen — CHF 300',
+      note: '45–60 Minuten. Video. Keine Wartezeit.',
+    },
     stats: {
       title: 'Ihre Gesundheit verdient mehr als 10 Minuten.',
       items: [
@@ -210,6 +216,12 @@ const content = {
   },
   en: {
     lang: 'English',
+    hero: {
+      headline: 'Menopause. Finally, a specialist who listens.',
+      subhead: 'Video consultation with a gynaecologist specialised in menopause. Diagnosis, personalised treatment plan and prescription — in one unhurried session. Because your symptoms are real, your questions deserve answers, and 10 minutes was never enough.',
+      cta: 'Book your consultation — CHF 300',
+      note: '45–60 minutes. Video. No waiting list.',
+    },
     stats: {
       title: 'Your health deserves more than 10 minutes.',
       items: [
@@ -716,6 +728,46 @@ export default function LandingV3() {
       </section>
 
       {/* ════════════════════════════════════════════
+          HERO
+          ════════════════════════════════════════════ */}
+      <section className="fade-in-section bg-cream">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-32">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div>
+              <hr className="rule mb-8" />
+              <h2 className="font-serif font-bold text-forest text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.1] tracking-tight mb-6">
+                {t.hero.headline}
+              </h2>
+              <p className="font-sans text-stone text-lg leading-relaxed mb-10 max-w-lg">
+                {t.hero.subhead}
+              </p>
+              <a
+                href="#pricing"
+                className="inline-block bg-forest text-cream font-sans font-medium text-sm uppercase tracking-wider px-8 py-4 rounded-[2px] hover:bg-forest-mid transition-colors"
+              >
+                {t.hero.cta}
+              </a>
+              <p className="font-sans text-stone text-sm mt-4">{t.hero.note}</p>
+            </div>
+
+            {/* Right — placeholder image area */}
+            <div className="relative bg-forest rounded-lg min-h-[420px] flex items-center justify-center overflow-hidden">
+              <div className="w-56 h-56 rounded-full bg-forest-mid/60 flex items-center justify-center">
+                <span className="font-sans text-cream/40 text-sm text-center px-6">Foto</span>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 bg-forest-mid/80 backdrop-blur-sm px-8 py-5 rounded-b-lg">
+                <p className="font-body italic text-cream/80 text-sm leading-relaxed">
+                  {lang === 'de'
+                    ? 'Ihre Gesundheit verdient mehr als 10 Minuten.'
+                    : 'Your health deserves more than 10 minutes.'}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════
           STATS
           ════════════════════════════════════════════ */}
       <section className="fade-in-section bg-cream-dark border-y border-border">
@@ -810,31 +862,6 @@ export default function LandingV3() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════
-          WHAT WE TREAT
-          ════════════════════════════════════════════ */}
-      <section className="fade-in-section bg-cream-dark border-y border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
-          <div className="text-center mb-14">
-            <span className="tag">{lang === 'de' ? 'Symptome' : 'Symptoms'}</span>
-            <h2 className="font-serif font-bold text-forest text-3xl md:text-4xl lg:text-5xl mt-5 mb-4">
-              {t.symptoms.title}
-            </h2>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {t.symptoms.items.map((item, i) => (
-              <div key={i} className="bg-white border border-border rounded-[2px] p-5 flex flex-col items-center text-center hover:border-sage-light hover:shadow-sm transition-all">
-                <div className="text-rose mb-3">{symptomIcons[i]}</div>
-                <p className="font-sans font-medium text-forest text-sm">{item}</p>
-              </div>
-            ))}
-          </div>
-          <p className="font-sans text-stone text-sm text-center mt-10 max-w-2xl mx-auto leading-relaxed">
-            {t.symptoms.note}
-          </p>
         </div>
       </section>
 
