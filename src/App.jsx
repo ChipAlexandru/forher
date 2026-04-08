@@ -19,11 +19,23 @@ export default function App() {
 
   const { pathname } = useLocation();
 
-  if (pathname === '/landing') {
+  // Standalone version pages (no shared header/footer)
+  if (pathname === '/1' || pathname === '/2') {
     return (
       <>
         <ScrollToTop />
-        <Landing />
+        <Routes>
+          <Route path="/1" element={
+            <div className="min-h-screen flex flex-col">
+              <Header onQuizOpen={() => setQuizOpen(true)} />
+              <main className="flex-1">
+                <Home quizOpen={quizOpen} setQuizOpen={setQuizOpen} />
+              </main>
+              <Footer />
+            </div>
+          } />
+          <Route path="/2" element={<Landing />} />
+        </Routes>
       </>
     );
   }
@@ -34,7 +46,7 @@ export default function App() {
       <Header onQuizOpen={() => setQuizOpen(true)} />
       <main className="flex-1">
         <Routes>
-          <Route path="/" element={<Home quizOpen={quizOpen} setQuizOpen={setQuizOpen} />} />
+          <Route path="/" element={<Landing />} />
           <Route path="/employers" element={<Employers />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogArticle />} />
