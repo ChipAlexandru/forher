@@ -59,7 +59,7 @@ export default function Header({ onQuizOpen }) {
           {/* Logo */}
           <Link to="/" className="flex items-center font-serif text-2xl tracking-tight no-underline">
             <span className="text-forest">Equi</span>
-            <span className="font-bold text-sage">libra</span>
+            <span className="font-bold text-sage">vie</span>
           </Link>
 
           {/* Desktop Nav */}

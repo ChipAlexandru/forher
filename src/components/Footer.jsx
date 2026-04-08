@@ -36,7 +36,7 @@ export default function Footer() {
             <Link to="/" className="inline-block mb-4">
               <span className="font-serif text-2xl">
                 <span className="text-cream">Equi</span>
-                <span className="text-sage font-bold">libra</span>
+                <span className="text-sage font-bold">vie</span>
               </span>
             </Link>
             <p className="text-cream/60 text-sm leading-relaxed max-w-xs">
@@ -145,7 +145,7 @@ export default function Footer() {
 
           {/* Copyright */}
           <p className="text-cream/40 text-xs text-center">
-            {t.footer?.copyright || `\u00A9 ${new Date().getFullYear()} Equilibra. Alle Rechte vorbehalten.`}
+            {t.footer?.copyright || `\u00A9 ${new Date().getFullYear()} Equivie. Alle Rechte vorbehalten.`}
           </p>
         </div>
       </div>

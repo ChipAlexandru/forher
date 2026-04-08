@@ -86,13 +86,13 @@ export default function Pricing() {
               <div className="grid grid-cols-3 bg-forest text-cream text-sm font-medium">
                 <div className="p-4 border-r border-cream/10"></div>
                 <div className="p-4 border-r border-cream/10 text-center">Traditionell</div>
-                <div className="p-4 text-center">Equilibra</div>
+                <div className="p-4 text-center">Equivie</div>
               </div>
               {t.pricing.comparison.map((row, i) => (
                 <div key={i} className={`grid grid-cols-3 text-sm ${i % 2 === 0 ? 'bg-white' : 'bg-cream'}`}>
                   <div className="p-4 border-r border-sage/10 font-medium text-charcoal">{row.aspect}</div>
                   <div className="p-4 border-r border-sage/10 text-center text-charcoal-light">{row.traditional}</div>
-                  <div className="p-4 text-center text-forest font-medium">{row.equilibra}</div>
+                  <div className="p-4 text-center text-forest font-medium">{row.equivie}</div>
                 </div>
               ))}
             </div>

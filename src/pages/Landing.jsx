@@ -67,7 +67,7 @@ const content = {
       { q: 'Wird die Konsultation von der Krankenkasse übernommen?', a: 'Die Konsultationsgebühr von CHF 300 ist eine Selbstzahlerleistung. Die verschriebenen Medikamente (HRT, Progesteron etc.) werden jedoch von der Grundversicherung übernommen, sofern sie auf der Spezialitätenliste stehen. Einige Zusatzversicherungen decken auch Präventions- und Komplementärkonsultationen ab — erkundigen Sie sich bei Ihrer Versicherung.' },
       { q: 'Werde ich Hormone verschrieben bekommen?', a: 'Das hängt ganz von Ihren Symptomen, Ihrer Krankengeschichte und Ihren Präferenzen ab. Ihre Fachperson bespricht alle evidenzbasierten Optionen mit Ihnen — hormonell, nicht-hormonell und lebensstilbasiert — und gemeinsam entscheiden Sie, was für Ihre Situation richtig ist. Es gibt keinen Einheitsansatz. Genau dafür gibt es die Spezialkonsultation.' },
       { q: 'Meine Estradot-Pflaster werden nicht mehr von der Versicherung gedeckt. Können Sie helfen?', a: 'Ja. Sandoz hat Estradot im September 2025 aufgrund eines Preisstreits von der Spezialitätenliste genommen. Mehrere alternative HRT-Produkte bleiben vollständig gedeckt, darunter transdermale Östradiol-Gele (Oestrogel, Estreva), orale Formulierungen und vaginale Präparate. Ihre Fachperson hilft Ihnen, die beste gedeckte Alternative für Ihre Situation zu finden.' },
-      { q: 'Was unterscheidet Equilibra von meiner regulären Gynäkologin oder meinem Gynäkologen?', a: 'Die meisten Gynäkologinnen und Gynäkologen in der Schweiz haben keine spezialisierte Menopause-Ausbildung erhalten — sie ist nicht Teil des FMH-Kerncurriculums. Unsere Fachpersonen haben eine zusätzliche Menopause-spezifische Zertifizierung abgeschlossen und sind auf dem neuesten Stand der Evidenz zur Hormontherapie. 45–60 Minuten pro Konsultation (statt der üblichen 15–20 Minuten), vorab-Review Ihrer gesamten Krankengeschichte und ein schriftlicher Behandlungsplan. Das ist spezialisierte Menopause-Versorgung, kein allgemeiner Wellness-Check.' },
+      { q: 'Was unterscheidet Equivie von meiner regulären Gynäkologin oder meinem Gynäkologen?', a: 'Die meisten Gynäkologinnen und Gynäkologen in der Schweiz haben keine spezialisierte Menopause-Ausbildung erhalten — sie ist nicht Teil des FMH-Kerncurriculums. Unsere Fachpersonen haben eine zusätzliche Menopause-spezifische Zertifizierung abgeschlossen und sind auf dem neuesten Stand der Evidenz zur Hormontherapie. 45–60 Minuten pro Konsultation (statt der üblichen 15–20 Minuten), vorab-Review Ihrer gesamten Krankengeschichte und ein schriftlicher Behandlungsplan. Das ist spezialisierte Menopause-Versorgung, kein allgemeiner Wellness-Check.' },
       { q: 'Was passiert nach der Konsultation?', a: 'Sie erhalten Ihren Behandlungsplan und Ihr Rezept innerhalb von 24 Stunden. Das Rezept wird elektronisch an Ihre gewählte Apotheke gesendet. Sie können 7 Tage lang Rückfragen per E-Mail stellen. Wenn Sie fortlaufende Betreuung benötigen, bieten wir ein Abonnement-Betreuungsprogramm an (demnächst verfügbar).' },
       { q: 'Welche Beschwerden werden behandelt?', a: 'Hitzewallungen, Nachtschweiss, Schlafstörungen, Stimmungsschwankungen, Angst, Gehirnnebel, Gelenkschmerzen, vaginale Trockenheit, Libidoverlust, Gewichtsveränderungen, Herzrasen und Erschöpfung. Wenn Ihre Symptome mit der Perimenopause oder Menopause zusammenhängen, können wir helfen.' },
       { q: 'Wie funktioniert die Video-Konsultation?', a: 'Nach der Buchung erhalten Sie einen Link für einen sicheren Videoanruf (verschlüsselt, auf Schweizer Servern gehostet). Sie verbinden sich von Ihrem Smartphone, Tablet oder Computer. Keine Software-Installation nötig. Ihre Fachperson ist in Zürich ansässig und im Kanton Zürich zugelassen.' },
@@ -75,7 +75,7 @@ const content = {
     footerCta: 'Bereit? Ihre Wechseljahre verdienen mehr als Abwarten.',
     footer: {
       tagline: 'Telemedizin aus Zürich',
-      contact: 'kontakt@equilibra.ch',
+      contact: 'kontakt@equivie.ch',
       medical: 'Ärztliche Leitung: Dr. med. [Name], FMH Gynäkologie & Geburtshilfe',
     },
   },
@@ -151,7 +151,7 @@ const content = {
     footerCta: 'Ready? Your menopause deserves more than waiting it out.',
     footer: {
       tagline: 'Telehealth from Zürich',
-      contact: 'contact@equilibra.ch',
+      contact: 'contact@equivie.ch',
       medical: 'Medical Director: Dr. med. [Name], FMH Board Certified Gynaecology & Obstetrics',
     },
   },
@@ -249,7 +249,7 @@ export default function Landing() {
       <header className="sticky top-0 z-50 bg-cream/95 backdrop-blur-sm border-b border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-16">
           <a href="#" className="font-serif text-xl tracking-tight">
-            <span className="text-forest">Equi</span><span className="text-sage font-bold">libra</span>
+            <span className="text-forest">Equi</span><span className="text-sage font-bold">vie</span>
           </a>
           <div className="flex items-center gap-6">
             <div className="flex gap-1">
@@ -580,7 +580,7 @@ export default function Landing() {
             {/* Brand */}
             <div>
               <p className="font-serif text-xl tracking-tight mb-2">
-                <span className="text-cream">Equi</span><span className="text-sage font-bold">libra</span>
+                <span className="text-cream">Equi</span><span className="text-sage font-bold">vie</span>
               </p>
               <p className="font-sans text-cream/40 text-sm">{t.footer.tagline}</p>
             </div>
@@ -600,7 +600,7 @@ export default function Landing() {
 
           <div className="border-t border-cream/10 mt-10 pt-6">
             <p className="font-sans text-cream/30 text-xs text-center">
-              &copy; {new Date().getFullYear()} Equilibra. All rights reserved.
+              &copy; {new Date().getFullYear()} Equivie. All rights reserved.
             </p>
           </div>
         </div>

@@ -16,8 +16,8 @@ export default function Employers() {
   const avgDailyCost = 480;
   const affected = Math.round(employees * pctFemale * pctInRange);
   const annualCost = affected * prodLossDays * avgDailyCost;
-  const equilibraCost = affected * 13 * 12;
-  const roi = ((annualCost - equilibraCost) / equilibraCost * 100).toFixed(0);
+  const equivieCost = affected * 13 * 12;
+  const roi = ((annualCost - equivieCost) / equivieCost * 100).toFixed(0);
 
   const companies = [
     { name: 'SBB', sector: 'Transport' },
@@ -39,7 +39,7 @@ export default function Employers() {
       <section className="py-20 lg:py-28 bg-forest text-cream">
         <div className="max-w-7xl mx-auto px-5 lg:px-8">
           <div className="fade-in-section max-w-3xl">
-            <p className="text-xs font-medium tracking-widest uppercase text-sage-light mb-4 font-sans">Equilibra for Teams</p>
+            <p className="text-xs font-medium tracking-widest uppercase text-sage-light mb-4 font-sans">Equivie for Teams</p>
             <h1 className="font-serif font-bold text-cream text-4xl md:text-5xl lg:text-6xl leading-tight">{t.employers.heroTitle}</h1>
             <p className="mt-6 text-lg text-cream/70 leading-relaxed">{t.employers.heroSubtitle}</p>
           </div>
@@ -97,7 +97,7 @@ export default function Employers() {
                   <p className="text-xs text-charcoal-light">geschätzt</p>
                 </div>
                 <div className="bg-sage/10 p-5 rounded-[2px]">
-                  <p className="text-xs text-charcoal-light uppercase tracking-wider">ROI mit Equilibra</p>
+                  <p className="text-xs text-charcoal-light uppercase tracking-wider">ROI mit Equivie</p>
                   <p className="mt-1 font-serif font-bold text-sage text-2xl">{roi}%</p>
                   <p className="text-xs text-charcoal-light">Rendite auf Investition</p>
                 </div>
@@ -159,7 +159,7 @@ export default function Employers() {
                 </div>
               ))}
             </div>
-            <p className="mt-6 text-xs text-charcoal-light italic">Dargestellt als Beispiele für Unternehmen mit dem Label «Friendly Work Space» — nicht als Equilibra-Kunden.</p>
+            <p className="mt-6 text-xs text-charcoal-light italic">Dargestellt als Beispiele für Unternehmen mit dem Label «Friendly Work Space» — nicht als Equivie-Kunden.</p>
           </div>
         </div>
       </section>

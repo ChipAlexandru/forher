@@ -24,7 +24,7 @@ const faqData = [
   },
   {
     question: 'Kann ich meine bestehende Gynäkologin behalten?',
-    answer: 'Ja, absolut. Equilibra versteht sich als Ergänzung zu Ihrer bestehenden gynäkologischen Betreuung, nicht als Ersatz. Wir legen grossen Wert auf eine nahtlose Zusammenarbeit mit Ihrer behandelnden Ärztin: Mit Ihrem Einverständnis stellen wir nach jeder Konsultation einen strukturierten Arztbericht zu. Körperliche Untersuchungen, Abstrichentnahmen oder bildgebende Verfahren verbleiben selbstverständlich in der Verantwortung Ihrer Gynäkologin vor Ort. Viele unserer Patientinnen nutzen Equilibra ergänzend für rasche Anpassungen der Therapie und für Fragen zwischen den regulären Praxisterminen.',
+    answer: 'Ja, absolut. Equivie versteht sich als Ergänzung zu Ihrer bestehenden gynäkologischen Betreuung, nicht als Ersatz. Wir legen grossen Wert auf eine nahtlose Zusammenarbeit mit Ihrer behandelnden Ärztin: Mit Ihrem Einverständnis stellen wir nach jeder Konsultation einen strukturierten Arztbericht zu. Körperliche Untersuchungen, Abstrichentnahmen oder bildgebende Verfahren verbleiben selbstverständlich in der Verantwortung Ihrer Gynäkologin vor Ort. Viele unserer Patientinnen nutzen Equivie ergänzend für rasche Anpassungen der Therapie und für Fragen zwischen den regulären Praxisterminen.',
   },
   {
     question: 'Was passiert, wenn ich eine körperliche Untersuchung brauche?',
@@ -44,7 +44,7 @@ const faqData = [
   },
   {
     question: 'Können Ärztinnen kantonsübergreifend verschreiben?',
-    answer: 'Ja. In der Schweiz gilt das Territorialprinzip auf Bundesebene: Eine Ärztin mit einer in einem Kanton anerkannten Berufsausübungsbewilligung darf grundsätzlich Patientinnen in der gesamten Schweiz telemedizinisch behandeln und Rezepte ausstellen. Alle Ärztinnen bei Equilibra verfügen über eine gültige Berufsausübungsbewilligung und sind im Medizinalberufsregister (MedReg) des Bundes eingetragen. Ihre Wohnadresse hat somit keinen Einfluss auf die Verfügbarkeit unserer Leistungen. Wir sind in allen 26 Kantonen sowie im Fürstentum Liechtenstein tätig.',
+    answer: 'Ja. In der Schweiz gilt das Territorialprinzip auf Bundesebene: Eine Ärztin mit einer in einem Kanton anerkannten Berufsausübungsbewilligung darf grundsätzlich Patientinnen in der gesamten Schweiz telemedizinisch behandeln und Rezepte ausstellen. Alle Ärztinnen bei Equivie verfügen über eine gültige Berufsausübungsbewilligung und sind im Medizinalberufsregister (MedReg) des Bundes eingetragen. Ihre Wohnadresse hat somit keinen Einfluss auf die Verfügbarkeit unserer Leistungen. Wir sind in allen 26 Kantonen sowie im Fürstentum Liechtenstein tätig.',
   },
 ];
 
@@ -95,7 +95,7 @@ export default function Home({ quizOpen, setQuizOpen }) {
   const problemParagraphs = (t.problem && t.problem.paragraphs) || [
     'Die Wechseljahre betreffen jede Frau, doch das Schweizer Gesundheitssystem ist darauf kaum vorbereitet. Wartezeiten von vier bis acht Wochen auf einen Termin bei der Gynäkologin sind die Norm. Viele Ärztinnen haben nur wenige Minuten pro Konsultation, und das Thema Menopause wird in der medizinischen Ausbildung stiefmütterlich behandelt.',
     'Die Folge: Frauen leiden unnötig. Sie verlieren Schlaf, Konzentration und Lebensfreude. Sie reduzieren ihre Arbeitszeit oder geben ihre Karriere auf. Sie zweifeln an sich selbst, obwohl es wirksame, evidenzbasierte Behandlungen gibt.',
-    'Equilibra wurde gegründet, um diese Versorgungslücke zu schliessen. Wir verbinden Sie mit Spezialistinnen, die sich ausschliesslich der Menopause widmen — ohne Wartezeiten, ohne Zeitdruck, ohne Tabus.',
+    'Equivie wurde gegründet, um diese Versorgungslücke zu schliessen. Wir verbinden Sie mit Spezialistinnen, die sich ausschliesslich der Menopause widmen — ohne Wartezeiten, ohne Zeitdruck, ohne Tabus.',
   ];
 
   const problemQuote = (t.problem && t.problem.quote) || 'Es darf nicht sein, dass Frauen in einem der reichsten Länder der Welt jahrelang mit behandelbaren Symptomen allein gelassen werden.';

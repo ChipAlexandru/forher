@@ -14,7 +14,7 @@ export const translations = {
       tag: "Die Realität in der Schweiz",
       headline: "Wechseljahre meistern – mit medizinischer Expertise auf Ihrer Seite",
       subHeadline:
-        "Equilibra bietet Ihnen diskrete, ärztlich begleitete Hormontherapie für die Perimenopause und Menopause. Vollständig reguliert. Vollständig auf Sie zugeschnitten.",
+        "Equivie bietet Ihnen diskrete, ärztlich begleitete Hormontherapie für die Perimenopause und Menopause. Vollständig reguliert. Vollständig auf Sie zugeschnitten.",
       cta: "Kostenlose Bewertung starten",
       secondaryCta: "Mehr erfahren",
       quote: "Jede Frau verdient eine Behandlung, die auf sie zugeschnitten ist — nicht ein Rezept von der Stange.",
@@ -32,7 +32,7 @@ export const translations = {
       paragraphs: [
         "Die Wechseljahre betreffen jede Frau, doch das Schweizer Gesundheitssystem ist darauf kaum vorbereitet. Wartezeiten von vier bis acht Wochen auf einen Termin bei der Gynäkologin sind die Norm. Viele Ärztinnen haben nur wenige Minuten pro Konsultation, und das Thema Menopause wird in der medizinischen Ausbildung stiefmütterlich behandelt.",
         "Die Folge: Frauen leiden unnötig. Sie verlieren Schlaf, Konzentration und Lebensfreude. Sie reduzieren ihre Arbeitszeit oder geben ihre Karriere auf. Sie zweifeln an sich selbst, obwohl es wirksame, evidenzbasierte Behandlungen gibt.",
-        "Equilibra wurde gegründet, um diese Versorgungslücke zu schliessen. Wir verbinden Sie mit Spezialistinnen, die sich ausschliesslich der Menopause widmen — ohne Wartezeiten, ohne Zeitdruck, ohne Tabus.",
+        "Equivie wurde gegründet, um diese Versorgungslücke zu schliessen. Wir verbinden Sie mit Spezialistinnen, die sich ausschliesslich der Menopause widmen — ohne Wartezeiten, ohne Zeitdruck, ohne Tabus.",
       ],
       quote: "Es darf nicht sein, dass Frauen in einem der reichsten Länder der Welt jahrelang mit behandelbaren Symptomen allein gelassen werden.",
     },
@@ -61,7 +61,7 @@ export const translations = {
     ],
 
     howItWorks: {
-      title: "So einfach funktioniert Equilibra",
+      title: "So einfach funktioniert Equivie",
       steps: [
         {
           title: "Bewertung ausfüllen",
@@ -111,7 +111,7 @@ export const translations = {
     symptoms: {
       title: "Erkennen Sie sich wieder?",
       subtitle:
-        "Die Wechseljahre können viele Gesichter haben. Wenn Sie eines oder mehrere dieser Symptome kennen, könnte Equilibra der richtige erste Schritt für Sie sein.",
+        "Die Wechseljahre können viele Gesichter haben. Wenn Sie eines oder mehrere dieser Symptome kennen, könnte Equivie der richtige erste Schritt für Sie sein.",
       periVsMeno: {
         title: "Perimenopause vs. Menopause",
         peri: {
@@ -201,7 +201,7 @@ export const translations = {
           name: "Christine B.",
           age: 47,
           location: "Bern",
-          text: "Ich war skeptisch gegenüber einer Online-Konsultation, aber Equilibra hat mich überzeugt. Alles war professionell, diskret und unkompliziert. Das Rezept kam schnell und die Lieferung war anonym.",
+          text: "Ich war skeptisch gegenüber einer Online-Konsultation, aber Equivie hat mich überzeugt. Alles war professionell, diskret und unkompliziert. Das Rezept kam schnell und die Lieferung war anonym.",
           rating: 5,
         },
         {
@@ -217,7 +217,7 @@ export const translations = {
     whyNow: {
       title: "Warum jetzt der richtige Zeitpunkt ist",
       description:
-        "Ab September 2025 fällt Estradot – eines der meistverordneten transdermalen Östrogenpflaster der Schweiz – aus der Pflichtleistungsliste der Krankenkassen (KVG). Das bedeutet: Für viele Frauen steigen die Kosten für ihre bewährte Hormontherapie erheblich. Equilibra hilft Ihnen, die für Sie beste und kostengünstigste Lösung zu finden – mit einer persönlichen ärztlichen Beratung und dem Überblick über alle verfügbaren Alternativen.",
+        "Ab September 2025 fällt Estradot – eines der meistverordneten transdermalen Östrogenpflaster der Schweiz – aus der Pflichtleistungsliste der Krankenkassen (KVG). Das bedeutet: Für viele Frauen steigen die Kosten für ihre bewährte Hormontherapie erheblich. Equivie hilft Ihnen, die für Sie beste und kostengünstigste Lösung zu finden – mit einer persönlichen ärztlichen Beratung und dem Überblick über alle verfügbaren Alternativen.",
       ctaText: "Jetzt Behandlungsoptionen prüfen",
     },
 
@@ -324,7 +324,7 @@ export const translations = {
             "Unbegrenzter Nachricht-Support",
             "Folgerezepte inklusive",
             "Priorisierte Terminbuchung",
-            "Zugang zur Equilibra-Community",
+            "Zugang zur Equivie-Community",
           ],
           recommended: true,
         },
@@ -348,27 +348,27 @@ export const translations = {
       kvgTitle: "Kassenleistungen & Kostenbeteiligung",
       kvgDescription:
         "Ärztliche Konsultationen können je nach Ihrer Krankenkasse und Franchise teilweise oder vollständig rückerstattungsfähig sein. Wir stellen Ihnen auf Wunsch alle erforderlichen Unterlagen für die Einreichung bei Ihrer Krankenkasse aus. Medikamente werden separat gemäss KVK-Liste verrechnet.",
-      comparisonTitle: "Equilibra vs. traditioneller Weg",
+      comparisonTitle: "Equivie vs. traditioneller Weg",
       comparison: [
         {
           aspect: "Wartezeit auf Termin",
           traditional: "4–8 Wochen",
-          equilibra: "Innerhalb von 48 Stunden",
+          equivie: "Innerhalb von 48 Stunden",
         },
         {
           aspect: "Fahrtzeit & Parkplatz",
           traditional: "Bis zu 60 Minuten",
-          equilibra: "Kein Aufwand",
+          equivie: "Kein Aufwand",
         },
         {
           aspect: "Konsultationskosten",
           traditional: "CHF 120–200",
-          equilibra: "Ab CHF 59",
+          equivie: "Ab CHF 59",
         },
         {
           aspect: "Verfügbarkeit",
           traditional: "Während Praxiszeiten",
-          equilibra: "7 Tage, flexible Zeiten",
+          equivie: "7 Tage, flexible Zeiten",
         },
       ],
     },
@@ -477,7 +477,7 @@ export const translations = {
     footer: {
       tagline: "Medizinische Begleitung für die Wechseljahre – diskret, kompetent, digital.",
       legal:
-        "Equilibra ist eine Telemedizinplattform, die unter Schweizer Recht operiert. Alle ärztlichen Dienstleistungen werden durch FMH-lizenzierte Ärztinnen erbracht.",
+        "Equivie ist eine Telemedizinplattform, die unter Schweizer Recht operiert. Alle ärztlichen Dienstleistungen werden durch FMH-lizenzierte Ärztinnen erbracht.",
       regulatory:
         "Reguliert durch das Schweizerische Heilmittelinstitut (Swissmedic) und das Bundesamt für Gesundheit (BAG). E-Rezepte werden über das HIN-Netz ausgestellt.",
       links: {
@@ -489,11 +489,11 @@ export const translations = {
       },
       contact: {
         title: "Kontakt",
-        email: "kontakt@equilibra.ch",
+        email: "kontakt@equivie.ch",
         phone: "0800 000 000 (kostenlos)",
         hours: "Mo–Fr, 08:00–18:00 Uhr",
       },
-      copyright: "© 2025 Equilibra AG. Alle Rechte vorbehalten.",
+      copyright: "© 2025 Equivie AG. Alle Rechte vorbehalten.",
     },
 
     common: {
@@ -539,7 +539,7 @@ export const translations = {
       tag: "La réalité en Suisse",
       headline: "Vivez la ménopause autrement – avec un accompagnement médical personnalisé",
       subHeadline:
-        "Equilibra vous propose un traitement hormonal de substitution suivi par des médecins, discret et entièrement adapté à votre situation. Réglementé. Certifié. Conçu pour vous.",
+        "Equivie vous propose un traitement hormonal de substitution suivi par des médecins, discret et entièrement adapté à votre situation. Réglementé. Certifié. Conçu pour vous.",
       cta: "Démarrer mon bilan gratuit",
       secondaryCta: "En savoir plus",
       quote: "Chaque femme mérite un traitement qui lui est adapté — pas une ordonnance standard.",
@@ -557,7 +557,7 @@ export const translations = {
       paragraphs: [
         "La ménopause concerne chaque femme, mais le système de santé suisse y est peu préparé. Des délais d'attente de quatre à huit semaines pour un rendez-vous en gynécologie sont la norme. De nombreux médecins ne disposent que de quelques minutes par consultation, et la ménopause reste un sujet négligé dans la formation médicale.",
         "Les conséquences : des femmes souffrent inutilement. Elles perdent le sommeil, la concentration et la joie de vivre. Elles réduisent leur temps de travail ou abandonnent leur carrière. Elles doutent d'elles-mêmes, alors que des traitements efficaces et fondés sur des preuves existent.",
-        "Equilibra a été fondée pour combler cette lacune. Nous vous mettons en relation avec des spécialistes exclusivement dédiées à la ménopause — sans délais, sans pression, sans tabous.",
+        "Equivie a été fondée pour combler cette lacune. Nous vous mettons en relation avec des spécialistes exclusivement dédiées à la ménopause — sans délais, sans pression, sans tabous.",
       ],
       quote: "Il est inacceptable que les femmes, dans l'un des pays les plus riches du monde, souffrent pendant des années de symptômes traitables.",
     },
@@ -586,7 +586,7 @@ export const translations = {
     ],
 
     howItWorks: {
-      title: "Equilibra en trois étapes simples",
+      title: "Equivie en trois étapes simples",
       steps: [
         {
           title: "Remplissez le questionnaire",
@@ -636,7 +636,7 @@ export const translations = {
     symptoms: {
       title: "Vous reconnaissez-vous?",
       subtitle:
-        "La ménopause peut se manifester de multiples façons. Si vous ressentez un ou plusieurs de ces symptômes, Equilibra peut être le bon premier pas pour vous.",
+        "La ménopause peut se manifester de multiples façons. Si vous ressentez un ou plusieurs de ces symptômes, Equivie peut être le bon premier pas pour vous.",
       periVsMeno: {
         title: "Périménopause vs. ménopause",
         peri: {
@@ -726,7 +726,7 @@ export const translations = {
           name: "Christine B.",
           age: 47,
           location: "Berne",
-          text: "J'étais sceptique à l'idée d'une consultation en ligne, mais Equilibra m'a convaincue. Tout était professionnel, discret et simple. L'ordonnance est arrivée rapidement et la livraison était anonyme.",
+          text: "J'étais sceptique à l'idée d'une consultation en ligne, mais Equivie m'a convaincue. Tout était professionnel, discret et simple. L'ordonnance est arrivée rapidement et la livraison était anonyme.",
           rating: 5,
         },
         {
@@ -742,7 +742,7 @@ export const translations = {
     whyNow: {
       title: "Pourquoi maintenant est le bon moment",
       description:
-        "À partir de septembre 2025, Estradot – l'un des patchs œstrogéniques transdermiques les plus prescrits en Suisse – sera retiré de la liste des prestations obligatoires de l'assurance maladie (LAMal). Pour de nombreuses femmes, cela signifie une augmentation significative du coût de leur traitement hormonal habituel. Equilibra vous aide à trouver la solution la plus adaptée et la plus avantageuse, grâce à un conseil médical personnalisé et une vue d'ensemble de toutes les alternatives disponibles.",
+        "À partir de septembre 2025, Estradot – l'un des patchs œstrogéniques transdermiques les plus prescrits en Suisse – sera retiré de la liste des prestations obligatoires de l'assurance maladie (LAMal). Pour de nombreuses femmes, cela signifie une augmentation significative du coût de leur traitement hormonal habituel. Equivie vous aide à trouver la solution la plus adaptée et la plus avantageuse, grâce à un conseil médical personnalisé et une vue d'ensemble de toutes les alternatives disponibles.",
       ctaText: "Explorer les options de traitement",
     },
 
@@ -849,7 +849,7 @@ export const translations = {
             "Support par messagerie illimité",
             "Renouvellements d'ordonnance inclus",
             "Prise de rendez-vous prioritaire",
-            "Accès à la communauté Equilibra",
+            "Accès à la communauté Equivie",
           ],
           recommended: true,
         },
@@ -873,27 +873,27 @@ export const translations = {
       kvgTitle: "Remboursement LAMal & prise en charge",
       kvgDescription:
         "Les consultations médicales peuvent être partiellement ou totalement remboursables selon votre assurance maladie et votre franchise. Sur demande, nous vous fournissons tous les documents nécessaires pour le remboursement auprès de votre caisse-maladie. Les médicaments sont facturés séparément selon la liste LAMal.",
-      comparisonTitle: "Equilibra vs. parcours traditionnel",
+      comparisonTitle: "Equivie vs. parcours traditionnel",
       comparison: [
         {
           aspect: "Délai d'attente pour un rendez-vous",
           traditional: "4 à 8 semaines",
-          equilibra: "Sous 48 heures",
+          equivie: "Sous 48 heures",
         },
         {
           aspect: "Trajet & stationnement",
           traditional: "Jusqu'à 60 minutes",
-          equilibra: "Aucun déplacement",
+          equivie: "Aucun déplacement",
         },
         {
           aspect: "Coût de la consultation",
           traditional: "CHF 120–200",
-          equilibra: "Dès CHF 59",
+          equivie: "Dès CHF 59",
         },
         {
           aspect: "Disponibilité",
           traditional: "Heures d'ouverture du cabinet",
-          equilibra: "7 jours sur 7, horaires flexibles",
+          equivie: "7 jours sur 7, horaires flexibles",
         },
       ],
     },
@@ -1009,7 +1009,7 @@ export const translations = {
       tagline:
         "Accompagnement médical pour la ménopause – discret, compétent, numérique.",
       legal:
-        "Equilibra est une plateforme de télémédecine opérant sous le droit suisse. Tous les services médicaux sont fournis par des médecins agréées FMH.",
+        "Equivie est une plateforme de télémédecine opérant sous le droit suisse. Tous les services médicaux sont fournis par des médecins agréées FMH.",
       regulatory:
         "Réglementé par l'Institut suisse des produits thérapeutiques (Swissmedic) et l'Office fédéral de la santé publique (OFSP). Les ordonnances électroniques sont émises via le réseau HIN.",
       links: {
@@ -1021,11 +1021,11 @@ export const translations = {
       },
       contact: {
         title: "Contact",
-        email: "contact@equilibra.ch",
+        email: "contact@equivie.ch",
         phone: "0800 000 000 (gratuit)",
         hours: "Lun–Ven, 08h00–18h00",
       },
-      copyright: "© 2025 Equilibra AG. Tous droits réservés.",
+      copyright: "© 2025 Equivie AG. Tous droits réservés.",
     },
 
     common: {
@@ -1071,7 +1071,7 @@ export const translations = {
       tag: "The reality in Switzerland",
       headline: "Navigate menopause with expert medical support",
       subHeadline:
-        "Equilibra provides discreet, physician-supervised hormone therapy for perimenopause and menopause. Fully regulated. Fully personalised to you.",
+        "Equivie provides discreet, physician-supervised hormone therapy for perimenopause and menopause. Fully regulated. Fully personalised to you.",
       cta: "Start your free assessment",
       secondaryCta: "Learn more",
       quote: "Every woman deserves a treatment tailored to her — not a one-size-fits-all prescription.",
@@ -1089,7 +1089,7 @@ export const translations = {
       paragraphs: [
         "Menopause affects every woman, yet the Swiss healthcare system is barely prepared for it. Wait times of four to eight weeks for a gynaecology appointment are the norm. Many doctors have only a few minutes per consultation, and menopause remains underserved in medical training.",
         "The result: women suffer needlessly. They lose sleep, concentration and quality of life. They reduce their working hours or abandon their careers. They doubt themselves, even though effective, evidence-based treatments exist.",
-        "Equilibra was founded to close this gap. We connect you with specialists exclusively dedicated to menopause — without wait times, without time pressure, without taboos.",
+        "Equivie was founded to close this gap. We connect you with specialists exclusively dedicated to menopause — without wait times, without time pressure, without taboos.",
       ],
       quote: "It must not be the case that women in one of the wealthiest countries in the world suffer for years with treatable symptoms.",
     },
@@ -1118,7 +1118,7 @@ export const translations = {
     ],
 
     howItWorks: {
-      title: "How Equilibra works",
+      title: "How Equivie works",
       steps: [
         {
           title: "Complete your assessment",
@@ -1168,7 +1168,7 @@ export const translations = {
     symptoms: {
       title: "Do any of these sound familiar?",
       subtitle:
-        "Menopause can present in many different ways. If you recognise one or more of these symptoms, Equilibra may be the right first step for you.",
+        "Menopause can present in many different ways. If you recognise one or more of these symptoms, Equivie may be the right first step for you.",
       periVsMeno: {
         title: "Perimenopause vs. menopause",
         peri: {
@@ -1258,7 +1258,7 @@ export const translations = {
           name: "Christine B.",
           age: 47,
           location: "Bern",
-          text: "I was sceptical about an online consultation, but Equilibra convinced me. Everything was professional, discreet, and straightforward. The prescription arrived quickly and the delivery was anonymous.",
+          text: "I was sceptical about an online consultation, but Equivie convinced me. Everything was professional, discreet, and straightforward. The prescription arrived quickly and the delivery was anonymous.",
           rating: 5,
         },
         {
@@ -1274,7 +1274,7 @@ export const translations = {
     whyNow: {
       title: "Why now is the right time",
       description:
-        "From September 2025, Estradot – one of the most widely prescribed transdermal oestrogen patches in Switzerland – will be removed from the compulsory benefits list of Swiss health insurers (KVG). For many women this means significantly higher out-of-pocket costs for their established hormone therapy. Equilibra helps you find the best and most cost-effective solution for your situation, with personalised medical advice and a full overview of all available alternatives.",
+        "From September 2025, Estradot – one of the most widely prescribed transdermal oestrogen patches in Switzerland – will be removed from the compulsory benefits list of Swiss health insurers (KVG). For many women this means significantly higher out-of-pocket costs for their established hormone therapy. Equivie helps you find the best and most cost-effective solution for your situation, with personalised medical advice and a full overview of all available alternatives.",
       ctaText: "Review treatment options now",
     },
 
@@ -1381,7 +1381,7 @@ export const translations = {
             "Unlimited message support",
             "Repeat prescriptions included",
             "Priority appointment booking",
-            "Access to the Equilibra community",
+            "Access to the Equivie community",
           ],
           recommended: true,
         },
@@ -1405,27 +1405,27 @@ export const translations = {
       kvgTitle: "KVG health insurance & reimbursement",
       kvgDescription:
         "Physician consultations may be partially or fully reimbursable depending on your health insurer and deductible. On request, we provide all necessary documentation for submission to your health insurer. Medications are billed separately in accordance with the KVG formulary list.",
-      comparisonTitle: "Equilibra vs. the traditional route",
+      comparisonTitle: "Equivie vs. the traditional route",
       comparison: [
         {
           aspect: "Wait time for an appointment",
           traditional: "4–8 weeks",
-          equilibra: "Within 48 hours",
+          equivie: "Within 48 hours",
         },
         {
           aspect: "Travel time & parking",
           traditional: "Up to 60 minutes",
-          equilibra: "No travel required",
+          equivie: "No travel required",
         },
         {
           aspect: "Consultation cost",
           traditional: "CHF 120–200",
-          equilibra: "From CHF 59",
+          equivie: "From CHF 59",
         },
         {
           aspect: "Availability",
           traditional: "Practice opening hours",
-          equilibra: "7 days a week, flexible hours",
+          equivie: "7 days a week, flexible hours",
         },
       ],
     },
@@ -1534,7 +1534,7 @@ export const translations = {
     footer: {
       tagline: "Medical support for menopause – discreet, expert, digital.",
       legal:
-        "Equilibra is a telemedicine platform operating under Swiss law. All medical services are provided by FMH-licensed physicians.",
+        "Equivie is a telemedicine platform operating under Swiss law. All medical services are provided by FMH-licensed physicians.",
       regulatory:
         "Regulated by the Swiss Agency of Therapeutic Products (Swissmedic) and the Federal Office of Public Health (FOPH). E-prescriptions are issued via the HIN network.",
       links: {
@@ -1546,11 +1546,11 @@ export const translations = {
       },
       contact: {
         title: "Contact",
-        email: "contact@equilibra.ch",
+        email: "contact@equivie.ch",
         phone: "0800 000 000 (free of charge)",
         hours: "Mon–Fri, 08:00–18:00",
       },
-      copyright: "© 2025 Equilibra AG. All rights reserved.",
+      copyright: "© 2025 Equivie AG. All rights reserved.",
     },
 
     common: {
