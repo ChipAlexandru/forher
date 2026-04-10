@@ -86,14 +86,23 @@ export default function App() {
     );
   }
 
-  // Default: V2 landing as homepage, plus shared routes
+  // Default homepage: V2 standalone (has its own header/footer)
+  if (pathname === '/') {
+    return (
+      <>
+        <ScrollToTop />
+        <Landing />
+      </>
+    );
+  }
+
+  // Shared header/footer routes
   return (
     <div className="min-h-screen flex flex-col">
       <ScrollToTop />
       <Header onQuizOpen={() => setQuizOpen(true)} />
       <main className="flex-1">
         <Routes>
-          <Route path="/" element={<Landing />} />
           <Route path="/employers" element={<Employers />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogArticle />} />

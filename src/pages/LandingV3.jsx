@@ -1,140 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useFadeIn } from '../hooks/useFadeIn';
-
-/* ──────────────────── QUIZ DATA ──────────────────── */
-const quizSteps = [
-  {
-    id: "sleep", domain: "Sleep & energy", icon: "\u{1F319}",
-    question: { en: "How has your sleep been lately?", de: "Wie schlafen Sie in letzter Zeit?" },
-    context: { en: "Sleep disruption is one of the earliest and most common experiences during hormonal transitions. It\u2019s not in your head.", de: "Schlafst\u00F6rungen geh\u00F6ren zu den fr\u00FChesten und h\u00E4ufigsten Erfahrungen w\u00E4hrend hormoneller Ver\u00E4nderungen. Es liegt nicht an Ihnen." },
-    options: [
-      { label: { en: "I sleep well most nights", de: "Ich schlafe die meisten N\u00E4chte gut" }, value: 0 },
-      { label: { en: "I wake up once or twice but fall back asleep", de: "Ich wache ein- bis zweimal auf, schlafe aber wieder ein" }, value: 1 },
-      { label: { en: "I regularly wake at 3\u20134 AM and can\u2019t get back to sleep", de: "Ich wache regelm\u00E4ssig um 3\u20134 Uhr auf und kann nicht mehr einschlafen" }, value: 2 },
-      { label: { en: "I dread bedtime \u2014 sleep feels broken most nights", de: "Ich f\u00FCrchte mich vor dem Schlafengehen \u2014 der Schlaf f\u00FChlt sich die meisten N\u00E4chte gest\u00F6rt an" }, value: 3 },
-    ],
-    empathy: {
-      0: null,
-      1: { en: "Waking during the night is one of the first signs many women notice. It often starts before other symptoms appear.", de: "N\u00E4chtliches Aufwachen ist eines der ersten Anzeichen, das viele Frauen bemerken. Es beginnt oft, bevor andere Symptome auftreten." },
-      2: { en: "That 3 AM wake-up is so common during perimenopause that clinicians call it a hallmark pattern. You\u2019re not alone in this.", de: "Dieses Aufwachen um 3 Uhr ist in der Perimenopause so h\u00E4ufig, dass \u00C4rzte es als typisches Muster bezeichnen. Sie sind damit nicht allein." },
-      3: { en: "Chronic sleep disruption takes a real toll \u2014 on your energy, your mood, everything. This is one of the most impactful symptoms, and it\u2019s treatable.", de: "Chronische Schlafst\u00F6rungen fordern ihren Tribut \u2014 bei der Energie, der Stimmung, allem. Dies ist eines der belastendsten Symptome, und es ist behandelbar." },
-    },
-  },
-  {
-    id: "energy", domain: "Daily energy", icon: "\u26A1",
-    question: { en: "How would you describe your energy through the day?", de: "Wie w\u00FCrden Sie Ihre Energie im Tagesverlauf beschreiben?" },
-    context: { en: "Fatigue during menopause isn\u2019t laziness \u2014 it\u2019s your body adapting to shifting hormone levels that affect every system.", de: "M\u00FCdigkeit in den Wechseljahren ist keine Faulheit \u2014 Ihr K\u00F6rper passt sich an ver\u00E4nderte Hormonspiegel an, die jedes System betreffen." },
-    options: [
-      { label: { en: "I have steady energy throughout the day", de: "Ich habe den ganzen Tag \u00FCber gleichm\u00E4ssig Energie" }, value: 0 },
-      { label: { en: "I notice afternoon dips but manage", de: "Ich bemerke Nachmittagstiefs, komme aber zurecht" }, value: 1 },
-      { label: { en: "I\u2019m running on empty by mid-afternoon most days", de: "Am fr\u00FChen Nachmittag bin ich die meisten Tage v\u00F6llig ersch\u00F6pft" }, value: 2 },
-      { label: { en: "I feel exhausted from the moment I wake up", de: "Ich f\u00FChle mich ersch\u00F6pft, sobald ich aufwache" }, value: 3 },
-    ],
-    empathy: {
-      0: null,
-      1: { en: "Afternoon energy dips become more noticeable as estrogen fluctuates. Small adjustments can make a real difference here.", de: "Nachmittags-Energietiefs werden deutlicher, wenn der \u00D6strogenspiegel schwankt. Kleine Anpassungen k\u00F6nnen hier einen echten Unterschied machen." },
-      2: { en: "That mid-afternoon wall is your body signaling that something has shifted. Many women describe exactly this \u2014 and it responds well to the right support.", de: "Diese Nachmittagsmauer ist ein Signal Ihres K\u00F6rpers, dass sich etwas ver\u00E4ndert hat. Viele Frauen beschreiben genau das \u2014 und es spricht gut auf die richtige Unterst\u00FCtzung an." },
-      3: { en: "Waking up already exhausted is incredibly frustrating. This level of fatigue deserves proper attention \u2014 not just \u2018get more rest\u2019 advice.", de: "Bereits ersch\u00F6pft aufzuwachen ist unglaublich frustrierend. Dieses Mass an M\u00FCdigkeit verdient angemessene Aufmerksamkeit \u2014 nicht nur den Rat \u2018ruhen Sie sich mehr aus\u2019." },
-    },
-  },
-  {
-    id: "mood", domain: "Mood & emotions", icon: "\u{1F4AD}",
-    question: { en: "Have your emotions felt different recently?", de: "Haben sich Ihre Emotionen in letzter Zeit anders angef\u00FChlt?" },
-    context: { en: "Mood changes during menopause are neurological, not psychological weakness. Estrogen directly affects serotonin and other mood-regulating systems.", de: "Stimmungsver\u00E4nderungen in den Wechseljahren sind neurologisch, keine psychische Schw\u00E4che. \u00D6strogen beeinflusst direkt Serotonin und andere stimmungsregulierende Systeme." },
-    options: [
-      { label: { en: "I feel emotionally stable overall", de: "Ich f\u00FChle mich emotional insgesamt stabil" }, value: 0 },
-      { label: { en: "I\u2019m more irritable or tearful than usual", de: "Ich bin reizbarer oder weinerlicher als sonst" }, value: 1 },
-      { label: { en: "I have mood swings that feel out of character for me", de: "Ich habe Stimmungsschwankungen, die nicht zu mir passen" }, value: 2 },
-      { label: { en: "I feel anxious, flat, or unlike myself much of the time", de: "Ich f\u00FChle mich oft \u00E4ngstlich, flach oder mir selbst fremd" }, value: 3 },
-    ],
-    empathy: {
-      0: null,
-      1: { en: "That increased irritability is so common \u2014 and so often dismissed. It\u2019s a real physiological shift, not overreacting.", de: "Diese erh\u00F6hte Reizbarkeit ist so h\u00E4ufig \u2014 und wird so oft abgetan. Es ist eine echte physiologische Ver\u00E4nderung, keine \u00DCberreaktion." },
-      2: { en: "When you feel out of character, it\u2019s unsettling. These mood shifts have a clear hormonal basis, and understanding that can be a relief in itself.", de: "Wenn man sich nicht wiedererkennt, ist das verunsichernd. Diese Stimmungsschwankungen haben eine klare hormonelle Ursache, und das zu verstehen kann schon eine Erleichterung sein." },
-      3: { en: "Feeling unlike yourself is one of the hardest parts. Many women say this is the symptom that finally made them seek help \u2014 and they wish they\u2019d done it sooner.", de: "Sich selbst fremd zu f\u00FChlen ist einer der schwierigsten Aspekte. Viele Frauen sagen, dies war das Symptom, das sie schliesslich Hilfe suchen liess \u2014 und sie w\u00FCnschten, sie h\u00E4tten es fr\u00FCher getan." },
-    },
-  },
-  {
-    id: "vasomotor", domain: "Hot flashes & sweating", icon: "\u{1F321}\uFE0F",
-    question: { en: "Do you experience hot flashes or night sweats?", de: "Erleben Sie Hitzewallungen oder Nachtschweiss?" },
-    context: { en: "Hot flashes affect up to 80% of women during menopause. They\u2019re caused by your brain\u2019s temperature regulation recalibrating as estrogen shifts.", de: "Hitzewallungen betreffen bis zu 80% der Frauen in den Wechseljahren. Sie werden durch die Neukalibrierung der Temperaturregulation im Gehirn verursacht." },
-    options: [
-      { label: { en: "Rarely or never", de: "Selten oder nie" }, value: 0 },
-      { label: { en: "Occasionally \u2014 maybe a few times a week", de: "Gelegentlich \u2014 vielleicht ein paar Mal pro Woche" }, value: 1 },
-      { label: { en: "Daily, and they disrupt what I\u2019m doing", de: "T\u00E4glich, und sie st\u00F6ren mich bei dem, was ich gerade tue" }, value: 2 },
-      { label: { en: "Frequently, including at night \u2014 they affect my sleep and confidence", de: "H\u00E4ufig, auch nachts \u2014 sie beeintr\u00E4chtigen meinen Schlaf und mein Selbstvertrauen" }, value: 3 },
-    ],
-    empathy: {
-      0: null,
-      1: { en: "Even occasional hot flashes can catch you off guard. They often increase in frequency over time, so it\u2019s worth paying attention now.", de: "Auch gelegentliche Hitzewallungen k\u00F6nnen einen \u00FCberraschen. Sie nehmen oft mit der Zeit zu, daher lohnt es sich, jetzt aufmerksam zu sein." },
-      2: { en: "When hot flashes start interrupting your day \u2014 meetings, meals, sleep \u2014 that\u2019s your body asking for support. This doesn\u2019t have to be your normal.", de: "Wenn Hitzewallungen Ihren Tag unterbrechen \u2014 Meetings, Mahlzeiten, Schlaf \u2014 bittet Ihr K\u00F6rper um Unterst\u00FCtzung. Das muss nicht Ihr Normal sein." },
-      3: { en: "Hot flashes that affect your sleep and how you feel in public are among the most treatable menopause symptoms. There are real options here.", de: "Hitzewallungen, die Ihren Schlaf und Ihr Auftreten beeintr\u00E4chtigen, geh\u00F6ren zu den am besten behandelbaren Menopause-Symptomen. Es gibt echte Optionen." },
-    },
-  },
-  {
-    id: "body", domain: "Physical changes", icon: "\u{1F9B4}",
-    question: { en: "Have you noticed physical changes in your body?", de: "Haben Sie k\u00F6rperliche Ver\u00E4nderungen bemerkt?" },
-    context: { en: "Joint stiffness, weight shifts, and muscle changes are driven by the same hormonal transitions. They\u2019re connected \u2014 not separate problems.", de: "Gelenksteifigkeit, Gewichtsver\u00E4nderungen und Muskelver\u00E4nderungen werden durch dieselben hormonellen Ver\u00E4nderungen verursacht. Sie h\u00E4ngen zusammen \u2014 es sind keine separaten Probleme." },
-    options: [
-      { label: { en: "Not really \u2014 my body feels about the same", de: "Nicht wirklich \u2014 mein K\u00F6rper f\u00FChlt sich etwa gleich an" }, value: 0 },
-      { label: { en: "Some joint stiffness or weight changes I didn\u2019t expect", de: "Etwas Gelenksteifigkeit oder Gewichtsver\u00E4nderungen, die ich nicht erwartet hatte" }, value: 1 },
-      { label: { en: "My body feels noticeably different \u2014 aches, dryness, or changes I can\u2019t explain", de: "Mein K\u00F6rper f\u00FChlt sich deutlich anders an \u2014 Schmerzen, Trockenheit oder Ver\u00E4nderungen, die ich mir nicht erkl\u00E4ren kann" }, value: 2 },
-      { label: { en: "Multiple changes that affect how I move, feel, or see myself", de: "Mehrere Ver\u00E4nderungen, die beeinflussen, wie ich mich bewege, f\u00FChle oder wahrnehme" }, value: 3 },
-    ],
-    empathy: {
-      0: null,
-      1: { en: "Those unexpected changes \u2014 the stiff knees in the morning, weight that doesn\u2019t respond like it used to \u2014 they\u2019re connected to hormonal shifts, not aging alone.", de: "Diese unerwarteten Ver\u00E4nderungen \u2014 die steifen Knie am Morgen, das Gewicht, das nicht mehr so reagiert \u2014 h\u00E4ngen mit hormonellen Ver\u00E4nderungen zusammen, nicht nur mit dem Alter." },
-      2: { en: "When your body starts feeling unfamiliar, it can be isolating. These changes have a common root, and understanding that is the first step.", de: "Wenn sich der eigene K\u00F6rper fremd anf\u00FChlt, kann das isolierend sein. Diese Ver\u00E4nderungen haben eine gemeinsame Ursache, und das zu verstehen ist der erste Schritt." },
-      3: { en: "Experiencing multiple physical changes at once is overwhelming. You shouldn\u2019t have to sort through this alone \u2014 a specialist can connect the dots.", de: "Mehrere k\u00F6rperliche Ver\u00E4nderungen gleichzeitig zu erleben ist \u00FCberw\u00E4ltigend. Sie sollten das nicht alleine durchstehen m\u00FCssen \u2014 eine Fachperson kann die Zusammenh\u00E4nge erkennen." },
-    },
-  },
-  {
-    id: "care", domain: "Your experience with care", icon: "\u{1FA7A}",
-    question: { en: "Have you talked to a doctor about what you\u2019re experiencing?", de: "Haben Sie mit einer \u00C4rztin oder einem Arzt \u00FCber Ihre Beschwerden gesprochen?" },
-    context: { en: "Only 1 in 5 physicians receive formal menopause training. Many women are told \u2018it\u2019s just stress\u2019 or \u2018it\u2019s part of aging.\u2019 You deserve better than that.", de: "Nur 1 von 5 \u00C4rztinnen und \u00C4rzten erh\u00E4lt eine formale Menopause-Ausbildung. Viele Frauen h\u00F6ren \u2018das ist nur Stress\u2019 oder \u2018das geh\u00F6rt zum \u00C4lterwerden.\u2019 Sie verdienen Besseres." },
-    options: [
-      { label: { en: "Yes, and I felt heard and supported", de: "Ja, und ich f\u00FChlte mich geh\u00F6rt und unterst\u00FCtzt" }, value: 0 },
-      { label: { en: "Yes, but I didn\u2019t feel they fully understood", de: "Ja, aber ich hatte nicht das Gef\u00FChl, dass sie es wirklich verstanden haben" }, value: 1 },
-      { label: { en: "I brought it up but was brushed off or told it\u2019s normal", de: "Ich habe es angesprochen, wurde aber abgewimmelt oder es hiess, das sei normal" }, value: 2 },
-      { label: { en: "No \u2014 I haven\u2019t known who to turn to or what to say", de: "Nein \u2014 ich wusste nicht, an wen ich mich wenden oder was ich sagen soll" }, value: 3 },
-    ],
-    empathy: {
-      0: { en: "That\u2019s wonderful. Having a doctor who listens makes all the difference. We\u2019re here to complement that care with specialist menopause expertise.", de: "Das ist wunderbar. Eine \u00C4rztin oder ein Arzt, der zuh\u00F6rt, macht den ganzen Unterschied. Wir erg\u00E4nzen diese Betreuung mit spezialisierter Menopause-Expertise." },
-      1: { en: "Feeling partially heard is frustrating. Menopause care requires specific training that most general practitioners haven\u2019t had \u2014 it\u2019s not their fault, but you deserve a specialist.", de: "Sich nur teilweise geh\u00F6rt zu f\u00FChlen ist frustrierend. Menopause-Versorgung erfordert eine spezielle Ausbildung, die die meisten \u00C4rztinnen und \u00C4rzte nicht haben \u2014 das ist nicht ihre Schuld, aber Sie verdienen eine Fachperson." },
-      2: { en: "Being told \u2018it\u2019s normal\u2019 when you\u2019re struggling is one of the most common experiences women report. Your symptoms are real. They\u2019re measurable. And they\u2019re treatable.", de: "Zu h\u00F6ren \u2018das ist normal\u2019, wenn man leidet, ist eine der h\u00E4ufigsten Erfahrungen, die Frauen berichten. Ihre Symptome sind real. Sie sind messbar. Und sie sind behandelbar." },
-      3: { en: "Not knowing where to turn is incredibly common \u2014 there\u2019s a real gap in menopause care. That\u2019s exactly why we exist. You\u2019ve taken the first step right now.", de: "Nicht zu wissen, an wen man sich wenden soll, ist unglaublich h\u00E4ufig \u2014 es gibt eine echte L\u00FCcke in der Menopause-Versorgung. Genau daf\u00FCr gibt es uns. Sie haben gerade den ersten Schritt getan." },
-    },
-  },
-];
-
-/* ──────────────────── SCORING ──────────────────── */
-function getProfile(answers, lang) {
-  const total = Object.values(answers).reduce((sum, v) => sum + v, 0);
-  const max = quizSteps.length * 3;
-  const pct = Math.round((total / max) * 100);
-  const sorted = Object.entries(answers).filter(([, v]) => v >= 2).sort(([, a], [, b]) => b - a);
-  const topConcerns = sorted.map(([id]) => quizSteps.find(s => s.id === id)).filter(Boolean);
-
-  let level, message, detail;
-  if (pct <= 20) {
-    level = lang === 'de' ? 'Minimale Auswirkung' : 'Minimal impact';
-    message = lang === 'de' ? 'Ihre Symptome scheinen derzeit beherrschbar.' : 'Your symptoms appear manageable right now.';
-    detail = lang === 'de' ? 'Auch in diesem Stadium kann ein Basisgespr\u00E4ch mit einer Menopause-Fachperson Ihnen helfen zu verstehen, worauf Sie achten sollten.' : 'Even at this stage, a baseline conversation with a menopause specialist can help you understand what to watch for and how to stay ahead of changes.';
-  } else if (pct <= 45) {
-    level = lang === 'de' ? 'M\u00E4ssige Auswirkung' : 'Moderate impact';
-    message = lang === 'de' ? 'Ihre Symptome beeinflussen Ihre Lebensqualit\u00E4t auf bedeutsame Weise.' : 'Your symptoms are affecting your quality of life in meaningful ways.';
-    detail = lang === 'de' ? 'Die meisten Frauen in diesem Stadium profitieren erheblich von einem Fachgespr\u00E4ch. Gezielte Massnahmen k\u00F6nnen einen echten Unterschied machen.' : 'Most women at this level benefit significantly from a specialist conversation. Small, targeted interventions can make a real difference before symptoms intensify.';
-  } else if (pct <= 70) {
-    level = lang === 'de' ? 'Erhebliche Auswirkung' : 'Significant impact';
-    message = lang === 'de' ? 'Mehrere Bereiche Ihres Lebens sind betroffen.' : 'Multiple areas of your life are being affected.';
-    detail = lang === 'de' ? 'Auf diesem Niveau gehen Ihre Symptome \u00FCber das hinaus, was Lebens\u00E4nderungen allein bew\u00E4ltigen k\u00F6nnen. Eine Menopause-Fachperson kann Ihnen helfen, Ihre Optionen zu verstehen.' : 'At this level, your symptoms are beyond what lifestyle changes alone can address. A menopause-trained physician can help you understand your options \u2014 including treatments most GPs don\'t discuss.';
-  } else {
-    level = lang === 'de' ? 'Starke Auswirkung' : 'Severe impact';
-    message = lang === 'de' ? 'Ihre Erfahrung deutet auf eine erhebliche Belastung im Alltag hin.' : 'Your experience suggests a substantial burden on daily life.';
-    detail = lang === 'de' ? 'Sie tragen viel mit sich. Frauen auf diesem Niveau sagen durchweg, dass sie w\u00FCnschten, sie h\u00E4tten fr\u00FCher Hilfe gesucht. Es gibt wirksame, evidenzbasierte Optionen.' : 'You\'ve been carrying a lot. Women at this level consistently say they wish they\'d sought specialist help sooner. There are effective, evidence-based options available to you.';
-  }
-  return { total, max, pct, level, message, detail, topConcerns };
-}
+import { quizSteps, getProfile } from '../data/quizData';
 
 /* ──────────────────── CONTENT DATA (V2 sections) ──────────────────── */
 const content = {
@@ -169,11 +35,6 @@ const content = {
       bio: 'Dr. [Name] geh\u00F6rt zu den wenigen Fachpersonen in der Schweiz mit einer spezialisierten Menopause-Zertifizierung. Mit [X] Jahren klinischer Erfahrung in Perimenopause, Menopause und Hormontherapie bringt Dr. [Name] die Expertise, die den meisten \u00C4rztinnen und \u00C4rzten in der Ausbildung schlicht nicht vermittelt wurde. 45\u201360 Minuten pro Konsultation, weil Menopause kein 10-Minuten-Gespr\u00E4ch ist. Vorab-Review Ihres gesamten Gesundheitsprofils, weil Ihre Geschichte nicht noch einmal erz\u00E4hlt werden sollte.',
       badges: ['FMH-zertifiziert', 'Menopause-Spezialisierung', 'Evidenzbasierte Medizin', 'Telemedizin aus Z\u00FCrich'],
     },
-    symptoms: {
-      title: 'Was wir behandeln',
-      items: ['Hitzewallungen', 'Schlafst\u00F6rungen', 'Stimmungsschwankungen', 'Vaginale Trockenheit', 'Gelenkschmerzen', 'Gewichtsver\u00E4nderungen', 'Gehirnnebel', 'Libidoverlust'],
-      note: 'Hormontherapie (HRT), nicht-hormonelle Alternativen und Lebensstil-Empfehlungen \u2014 evidenzbasiert und individuell auf Ihre Bed\u00FCrfnisse, Ihr Risikoprofil und Ihre Pr\u00E4ferenzen abgestimmt.',
-    },
     testimonials: {
       title: 'Was unsere Patientinnen sagen',
       items: [
@@ -207,7 +68,6 @@ const content = {
       { q: 'Welche Beschwerden werden behandelt?', a: 'Hitzewallungen, Nachtschweiss, Schlafst\u00F6rungen, Stimmungsschwankungen, Angst, Gehirnnebel, Gelenkschmerzen, vaginale Trockenheit, Libidoverlust, Gewichtsver\u00E4nderungen, Herzrasen und Ersch\u00F6pfung. Wenn Ihre Symptome mit der Perimenopause oder Menopause zusammenh\u00E4ngen, k\u00F6nnen wir helfen.' },
       { q: 'Wie funktioniert die Video-Konsultation?', a: 'Nach der Buchung erhalten Sie einen Link f\u00FCr einen sicheren Videoanruf (verschl\u00FCsselt, auf Schweizer Servern gehostet). Sie verbinden sich von Ihrem Smartphone, Tablet oder Computer. Keine Software-Installation n\u00F6tig. Ihre Fachperson ist in Z\u00FCrich ans\u00E4ssig und im Kanton Z\u00FCrich zugelassen.' },
     ],
-    footerCta: 'Bereit? Ihre Wechseljahre verdienen mehr als Abwarten.',
     footer: {
       tagline: 'Telemedizin aus Z\u00FCrich',
       contact: 'kontakt@equivie.ch',
@@ -245,11 +105,6 @@ const content = {
       bio: 'Dr. [Name] is one of fewer than [X] physicians in Switzerland with specialist menopause certification. With [X] years of clinical experience in perimenopause, menopause, and hormone therapy, Dr. [Name] brings the expertise that most doctors simply were not trained to provide. 45\u201360 minutes per consultation because menopause is not a 10-minute conversation. Full health profile review before your session because repeating your story to yet another doctor who doesn\u2019t listen is part of the problem we\u2019re solving.',
       badges: ['FMH Board Certified', 'Menopause Specialist', 'Evidence-Based Medicine', 'Telehealth from Z\u00FCrich'],
     },
-    symptoms: {
-      title: 'What we treat',
-      items: ['Hot flashes', 'Sleep disruption', 'Mood changes', 'Vaginal dryness', 'Joint pain', 'Weight changes', 'Brain fog', 'Low libido'],
-      note: 'Hormone therapy (HRT), non-hormonal alternatives, and lifestyle recommendations \u2014 evidence-based and personalised to your needs, your risk profile, and your preferences.',
-    },
     testimonials: {
       title: 'What our patients say',
       items: [
@@ -283,7 +138,6 @@ const content = {
       { q: 'What symptoms do you treat?', a: 'Hot flashes, night sweats, sleep disruption, mood changes, anxiety, brain fog, joint pain, vaginal dryness, low libido, weight changes, heart palpitations, and fatigue. If your symptoms are related to perimenopause or menopause, we can help.' },
       { q: 'How does the video consultation work?', a: 'After booking you receive a link for a secure video call (encrypted, Swiss-hosted). You connect from your phone, tablet, or computer. No software to install. Your doctor is based in Z\u00FCrich and licensed to practise in Kanton Z\u00FCrich.' },
     ],
-    footerCta: 'Ready? Your menopause deserves more than waiting it out.',
     footer: {
       tagline: 'Telehealth from Z\u00FCrich',
       contact: 'contact@equivie.ch',
@@ -318,59 +172,6 @@ function StepIcon({ type }) {
   );
 }
 
-const symptomIcons = {
-  0: (
-    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 2v4M4.93 4.93l2.83 2.83M2 12h4M4.93 19.07l2.83-2.83M12 18v4M16.24 16.24l2.83 2.83M18 12h4M16.24 7.76l2.83-2.83" />
-    </svg>
-  ),
-  1: (
-    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-    </svg>
-  ),
-  2: (
-    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10" />
-      <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-      <line x1="9" y1="9" x2="9.01" y2="9" />
-      <line x1="15" y1="9" x2="15.01" y2="9" />
-    </svg>
-  ),
-  3: (
-    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
-    </svg>
-  ),
-  4: (
-    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M18 8a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v1a4 4 0 0 0 2 3.46V16a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-3.54A4 4 0 0 0 18 9V8z" />
-    </svg>
-  ),
-  5: (
-    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M6 18L18 6M6 6l12 12" />
-      <circle cx="12" cy="12" r="9" />
-    </svg>
-  ),
-  6: (
-    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M9.5 2A5.5 5.5 0 0 0 5 9a5.5 5.5 0 0 0 4.5 5.4V22h5v-7.6A5.5 5.5 0 0 0 19 9a5.5 5.5 0 0 0-5.5-7H9.5z" />
-    </svg>
-  ),
-  7: (
-    <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-    </svg>
-  ),
-};
-
-/* ──────────────────── QUIZ TOPIC PILLS ──────────────────── */
-const topicPills = {
-  en: ['Sleep', 'Energy', 'Mood', 'Hot flashes', 'Body changes', 'Care'],
-  de: ['Schlaf', 'Energie', 'Stimmung', 'Hitzewallungen', 'K\u00F6rper', 'Betreuung'],
-};
-
 /* ──────────────────── COMPONENT ──────────────────── */
 export default function LandingV3() {
   const containerRef = useFadeIn();
@@ -378,12 +179,14 @@ export default function LandingV3() {
   const [openFaq, setOpenFaq] = useState(null);
 
   /* Quiz state */
-  const [quizScreen, setQuizScreen] = useState('intro');
+  const [quizOpen, setQuizOpen] = useState(false);
+  const [quizScreen, setQuizScreen] = useState('questions');
   const [stepIndex, setStepIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [selectedValue, setSelectedValue] = useState(null);
   const [showEmpathy, setShowEmpathy] = useState(false);
   const [email, setEmail] = useState('');
+  const quizRef = useRef(null);
 
   const t = content[lang];
   const toggleFaq = (i) => setOpenFaq(openFaq === i ? null : i);
@@ -463,271 +266,6 @@ export default function LandingV3() {
       </header>
 
       {/* ════════════════════════════════════════════
-          QUIZ HERO
-          ════════════════════════════════════════════ */}
-      <section className="bg-cream relative">
-        {/* Subtle rose gradient at the top */}
-        <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-rose-pale/60 to-transparent pointer-events-none" aria-hidden="true" />
-
-        <div className="relative max-w-3xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
-
-          {/* ── INTRO SCREEN ── */}
-          {quizScreen === 'intro' && (
-            <div className="fade-in-section text-center">
-              <hr className="rule mb-8 mx-auto" />
-              <h1 className="font-serif font-bold text-forest text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.1] tracking-tight mb-6">
-                {lang === 'de' ? 'Wie geht es Ihnen wirklich?' : 'How are you really doing?'}
-              </h1>
-              <p className="font-sans text-stone text-lg leading-relaxed mb-4 max-w-xl mx-auto">
-                {lang === 'de'
-                  ? 'Sechs kurze Fragen. Kein Login. Keine Bewertung. Nur ein ehrlicher Check-in zu Ihrem Wohlbefinden in den Wechseljahren \u2014 mit personalisierten Einblicken am Ende.'
-                  : 'Six short questions. No login. No judgement. Just an honest check-in on your menopause wellbeing \u2014 with personalised insights at the end.'}
-              </p>
-              <p className="font-sans text-stone/60 text-sm mb-10 max-w-md mx-auto">
-                {lang === 'de'
-                  ? 'Dauert etwa 2 Minuten. Ihre Antworten sind privat und werden nicht gespeichert.'
-                  : 'Takes about 2 minutes. Your answers are private and never stored.'}
-              </p>
-              <button
-                onClick={() => setQuizScreen('questions')}
-                className="inline-block bg-rose text-cream font-sans font-medium text-sm uppercase tracking-wider px-10 py-4 rounded-[2px] hover:bg-rose/90 transition-colors border-0 cursor-pointer"
-              >
-                {lang === 'de' ? 'Check-in starten' : 'Start my check-in'}
-              </button>
-
-              {/* Topic pills */}
-              <div className="flex flex-wrap justify-center gap-2 mt-10">
-                {topicPills[lang].map((pill, i) => (
-                  <span key={i} className="tag border-border text-stone/60 text-xs">
-                    {quizSteps[i]?.icon} {pill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* ── QUESTION SCREEN ── */}
-          {quizScreen === 'questions' && currentStep && (
-            <div>
-              {/* Progress bar */}
-              <div className="w-full h-1.5 bg-cream-dark rounded-full mb-10 overflow-hidden">
-                <div
-                  className="h-full bg-rose rounded-full transition-all duration-500 ease-out"
-                  style={{ width: `${showEmpathy ? progressWithCurrent : progress}%` }}
-                />
-              </div>
-
-              {/* Domain label */}
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-2xl" role="img" aria-label={currentStep.domain}>{currentStep.icon}</span>
-                <span className="font-sans text-rose text-sm font-medium uppercase tracking-wider">
-                  {currentStep.domain}
-                </span>
-              </div>
-
-              {/* Question */}
-              <h2 className="font-serif font-bold text-forest text-2xl md:text-3xl leading-snug mb-3">
-                {currentStep.question[lang]}
-              </h2>
-              <p className="font-sans text-stone/70 text-sm leading-relaxed mb-8 max-w-xl">
-                {currentStep.context[lang]}
-              </p>
-
-              {/* Options */}
-              <div className="space-y-3">
-                {currentStep.options.map((option, i) => {
-                  const isSelected = selectedValue === option.value;
-                  return (
-                    <button
-                      key={i}
-                      onClick={() => !showEmpathy && handleOptionSelect(option.value)}
-                      disabled={showEmpathy}
-                      className={`w-full text-left flex items-center gap-4 border rounded-[2px] p-5 transition-all cursor-pointer bg-white ${
-                        isSelected
-                          ? 'border-forest bg-forest/5 ring-1 ring-forest/20'
-                          : showEmpathy
-                            ? 'border-border opacity-50 cursor-default'
-                            : 'border-border hover:border-sage hover:shadow-sm'
-                      }`}
-                    >
-                      {/* Radio circle */}
-                      <span className={`shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${
-                        isSelected ? 'border-forest' : 'border-stone/30'
-                      }`}>
-                        {isSelected && (
-                          <span className="w-2.5 h-2.5 rounded-full bg-forest" />
-                        )}
-                      </span>
-                      <span className={`font-sans text-sm leading-relaxed ${isSelected ? 'text-forest font-medium' : 'text-stone'}`}>
-                        {option.label[lang]}
-                      </span>
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Empathy message */}
-              {showEmpathy && selectedValue !== null && currentStep.empathy[selectedValue] && (
-                <div className="mt-6 bg-sage/10 border border-sage/30 rounded-[2px] p-5 animate-fade-in">
-                  <p className="font-sans text-forest text-sm leading-relaxed">
-                    {currentStep.empathy[selectedValue][lang]}
-                  </p>
-                </div>
-              )}
-
-              {/* Step counter */}
-              <p className="font-sans text-stone/40 text-xs mt-8 text-center">
-                {stepIndex + 1} / {quizSteps.length}
-              </p>
-            </div>
-          )}
-
-          {/* ── RESULTS SCREEN ── */}
-          {quizScreen === 'results' && profile && (
-            <div>
-              {/* Header */}
-              <div className="text-center mb-10">
-                <hr className="rule mb-8 mx-auto" />
-                <h2 className="font-serif font-bold text-forest text-3xl md:text-4xl leading-tight mb-3">
-                  {lang === 'de' ? 'Ihre Ergebnisse' : 'Your results'}
-                </h2>
-                <p className="font-sans text-stone text-base">
-                  {lang === 'de'
-                    ? 'Basierend auf Ihren Antworten, hier ist eine Einsch\u00E4tzung.'
-                    : 'Based on your answers, here\u2019s a snapshot.'}
-                </p>
-              </div>
-
-              {/* Severity bar */}
-              <div className="mb-8">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-sans font-medium text-forest text-lg">{profile.level}</span>
-                  <span className="font-sans text-stone/60 text-sm">{profile.pct}%</span>
-                </div>
-                <div className="w-full h-3 bg-cream-dark rounded-full overflow-hidden">
-                  <div
-                    className={`h-full rounded-full transition-all duration-700 ease-out ${severityColor(profile.pct)}`}
-                    style={{ width: `${profile.pct}%` }}
-                  />
-                </div>
-                <p className="font-sans text-stone text-sm mt-3">{profile.message}</p>
-              </div>
-
-              {/* Top concerns */}
-              {profile.topConcerns.length > 0 && (
-                <div className="mb-8">
-                  <h3 className="font-sans font-medium text-forest text-sm uppercase tracking-wider mb-3">
-                    {lang === 'de' ? 'Ihre Hauptbereiche' : 'Your top areas of concern'}
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {profile.topConcerns.map((concern) => (
-                      <span key={concern.id} className="inline-flex items-center gap-1.5 tag border-rose/30 text-forest text-sm">
-                        <span>{concern.icon}</span> {concern.domain}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Validation message */}
-              <div className="bg-sage/10 border-l-4 border-sage rounded-r-[2px] p-6 mb-10">
-                <p className="font-sans text-forest text-sm leading-relaxed">
-                  {profile.detail}
-                </p>
-              </div>
-
-              {/* Booking CTA card */}
-              <div className="bg-forest rounded-[2px] p-8 md:p-10 text-center mb-8">
-                <h3 className="font-serif font-bold text-cream text-2xl md:text-3xl mb-3">
-                  {lang === 'de'
-                    ? 'Sprechen Sie mit einer Menopause-Fachperson'
-                    : 'Talk to a menopause specialist'}
-                </h3>
-                <p className="font-sans text-cream/70 text-sm leading-relaxed mb-6 max-w-md mx-auto">
-                  {lang === 'de'
-                    ? '45\u201360 Minuten Video-Konsultation mit einer auf Menopause spezialisierten Fach\u00E4rztin. Diagnose, Behandlungsplan und Rezept \u2014 in einer Sitzung.'
-                    : '45\u201360 minute video consultation with a gynaecologist specialised in menopause. Diagnosis, treatment plan, and prescription \u2014 in one session.'}
-                </p>
-                <a
-                  href="#pricing"
-                  className="inline-block bg-rose text-cream font-sans font-medium text-sm uppercase tracking-wider px-10 py-4 rounded-[2px] hover:bg-rose/90 transition-colors"
-                >
-                  {lang === 'de' ? 'Termin buchen \u2014 CHF 300' : 'Book your consultation \u2014 CHF 300'}
-                </a>
-                <p className="font-sans text-cream/50 text-xs mt-3">
-                  {lang === 'de' ? '45\u201360 Minuten. Video. Keine Wartezeit.' : '45\u201360 minutes. Video. No waiting list.'}
-                </p>
-              </div>
-
-              {/* Email capture */}
-              <div className="bg-cream-dark border border-border rounded-[2px] p-6 mb-8">
-                <p className="font-sans font-medium text-forest text-sm mb-1">
-                  {lang === 'de' ? 'Ergebnisse per E-Mail erhalten' : 'Get your results by email'}
-                </p>
-                <p className="font-sans text-stone/60 text-xs mb-4">
-                  {lang === 'de'
-                    ? 'Wir senden Ihnen eine Zusammenfassung mit n\u00E4chsten Schritten. Kein Spam, kein Newsletter.'
-                    : 'We\u2019ll send you a summary with next steps. No spam, no newsletter.'}
-                </p>
-                <form
-                  className="flex gap-2"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    /* placeholder submit */
-                  }}
-                >
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder={lang === 'de' ? 'Ihre E-Mail-Adresse' : 'Your email address'}
-                    className="flex-1 font-sans text-sm border border-border rounded-[2px] px-4 py-3 bg-white text-forest placeholder:text-stone/40 focus:outline-none focus:ring-1 focus:ring-sage focus:border-sage"
-                  />
-                  <button
-                    type="submit"
-                    className="bg-forest text-cream font-sans font-medium text-sm uppercase tracking-wider px-6 py-3 rounded-[2px] hover:bg-forest-mid transition-colors border-0 cursor-pointer shrink-0"
-                  >
-                    {lang === 'de' ? 'Senden' : 'Send'}
-                  </button>
-                </form>
-              </div>
-
-              {/* Trust footer */}
-              <div className="flex flex-wrap justify-center gap-4 text-center">
-                <span className="tag border-border text-stone/60 text-xs">
-                  {lang === 'de' ? 'FMH-zertifiziert' : 'FMH Board Certified'}
-                </span>
-                <span className="tag border-border text-stone/60 text-xs">
-                  {lang === 'de' ? 'Menopause-Spezialisierung' : 'Menopause Specialist'}
-                </span>
-                <span className="tag border-border text-stone/60 text-xs">
-                  {lang === 'de' ? 'Telemedizin aus Z\u00FCrich' : 'Telehealth from Z\u00FCrich'}
-                </span>
-              </div>
-
-              {/* Retake link */}
-              <div className="text-center mt-8">
-                <button
-                  onClick={() => {
-                    setQuizScreen('intro');
-                    setStepIndex(0);
-                    setAnswers({});
-                    setSelectedValue(null);
-                    setShowEmpathy(false);
-                    setEmail('');
-                  }}
-                  className="font-sans text-stone/50 text-xs underline bg-transparent border-0 cursor-pointer hover:text-stone transition-colors"
-                >
-                  {lang === 'de' ? 'Check-in wiederholen' : 'Retake check-in'}
-                </button>
-              </div>
-            </div>
-          )}
-
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════
           HERO
           ════════════════════════════════════════════ */}
       <section className="fade-in-section bg-cream">
@@ -765,6 +303,220 @@ export default function LandingV3() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* ════════════════════════════════════════════
+          QUIZ BAR (collapsible)
+          ════════════════════════════════════════════ */}
+      <section ref={quizRef} className="bg-rose-pale border-y border-rose/20">
+        {/* Collapsed bar */}
+        {!quizOpen && quizScreen !== 'results' && (
+          <div className="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <span className="text-xl">🩺</span>
+              <div>
+                <p className="font-serif font-bold text-forest text-lg leading-tight">
+                  {lang === 'de' ? 'Wie geht es Ihnen wirklich?' : 'How are you really doing?'}
+                </p>
+                <p className="font-sans text-stone/60 text-xs mt-0.5">
+                  {lang === 'de' ? '6 Fragen · 2 Minuten · Anonym' : '6 questions · 2 min · Anonymous'}
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={() => { setQuizOpen(true); setTimeout(() => quizRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100); }}
+              className="inline-block bg-rose text-cream font-sans font-medium text-xs uppercase tracking-wider px-6 py-3 rounded-[2px] hover:bg-rose/90 transition-colors border-0 cursor-pointer whitespace-nowrap"
+            >
+              {lang === 'de' ? 'Check-in starten' : 'Start my check-in'}
+            </button>
+          </div>
+        )}
+
+        {/* Expanded quiz */}
+        {(quizOpen || quizScreen === 'results') && (
+          <div className="max-w-3xl mx-auto px-6 lg:px-10 py-12 lg:py-16">
+
+            {/* Close button (only while answering) */}
+            {quizScreen === 'questions' && (
+              <div className="flex justify-end mb-4">
+                <button
+                  onClick={() => { setQuizOpen(false); setStepIndex(0); setAnswers({}); setSelectedValue(null); setShowEmpathy(false); }}
+                  className="font-sans text-stone/40 text-xs bg-transparent border-0 cursor-pointer hover:text-stone transition-colors"
+                  aria-label="Close quiz"
+                >
+                  ✕ {lang === 'de' ? 'Schliessen' : 'Close'}
+                </button>
+              </div>
+            )}
+
+            {/* ── QUESTION SCREEN ── */}
+            {quizScreen === 'questions' && currentStep && (
+              <div>
+                {/* Progress bar */}
+                <div className="w-full h-1.5 bg-white/60 rounded-full mb-8 overflow-hidden">
+                  <div
+                    className="h-full bg-rose rounded-full transition-all duration-500 ease-out"
+                    style={{ width: `${showEmpathy ? progressWithCurrent : progress}%` }}
+                  />
+                </div>
+
+                {/* Domain label */}
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="text-2xl" role="img" aria-label={currentStep.domain}>{currentStep.icon}</span>
+                  <span className="font-sans text-rose text-sm font-medium uppercase tracking-wider">
+                    {currentStep.domain}
+                  </span>
+                </div>
+
+                {/* Question */}
+                <h2 className="font-serif font-bold text-forest text-2xl md:text-3xl leading-snug mb-3">
+                  {currentStep.question[lang]}
+                </h2>
+                <p className="font-sans text-stone/70 text-sm leading-relaxed mb-8 max-w-xl">
+                  {currentStep.context[lang]}
+                </p>
+
+                {/* Options */}
+                <div className="space-y-3">
+                  {currentStep.options.map((option, i) => {
+                    const isSelected = selectedValue === option.value;
+                    return (
+                      <button
+                        key={i}
+                        onClick={() => !showEmpathy && handleOptionSelect(option.value)}
+                        disabled={showEmpathy}
+                        className={`w-full text-left flex items-center gap-4 border rounded-[2px] p-5 transition-all cursor-pointer bg-white ${
+                          isSelected
+                            ? 'border-forest bg-forest/5 ring-1 ring-forest/20'
+                            : showEmpathy
+                              ? 'border-border opacity-50 cursor-default'
+                              : 'border-border hover:border-sage hover:shadow-sm'
+                        }`}
+                      >
+                        <span className={`shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${
+                          isSelected ? 'border-forest' : 'border-stone/30'
+                        }`}>
+                          {isSelected && (
+                            <span className="w-2.5 h-2.5 rounded-full bg-forest" />
+                          )}
+                        </span>
+                        <span className={`font-sans text-sm leading-relaxed ${isSelected ? 'text-forest font-medium' : 'text-stone'}`}>
+                          {option.label[lang]}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Empathy message */}
+                {showEmpathy && selectedValue !== null && currentStep.empathy[selectedValue] && (
+                  <div className="mt-6 bg-sage/10 border border-sage/30 rounded-[2px] p-5">
+                    <p className="font-sans text-forest text-sm leading-relaxed">
+                      {currentStep.empathy[selectedValue][lang]}
+                    </p>
+                  </div>
+                )}
+
+                {/* Step counter */}
+                <p className="font-sans text-stone/40 text-xs mt-8 text-center">
+                  {stepIndex + 1} / {quizSteps.length}
+                </p>
+              </div>
+            )}
+
+            {/* ── RESULTS SCREEN ── */}
+            {quizScreen === 'results' && profile && (
+              <div>
+                <div className="text-center mb-10">
+                  <hr className="rule mb-8 mx-auto" />
+                  <h2 className="font-serif font-bold text-forest text-3xl md:text-4xl leading-tight mb-3">
+                    {lang === 'de' ? 'Ihre Ergebnisse' : 'Your results'}
+                  </h2>
+                  <p className="font-sans text-stone text-base">
+                    {lang === 'de'
+                      ? 'Basierend auf Ihren Antworten, hier ist eine Einschätzung.'
+                      : 'Based on your answers, here\u2019s a snapshot.'}
+                  </p>
+                </div>
+
+                {/* Severity bar */}
+                <div className="mb-8">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-sans font-medium text-forest text-lg">{profile.level}</span>
+                    <span className="font-sans text-stone/60 text-sm">{profile.pct}%</span>
+                  </div>
+                  <div className="w-full h-3 bg-white/60 rounded-full overflow-hidden">
+                    <div
+                      className={`h-full rounded-full transition-all duration-700 ease-out ${severityColor(profile.pct)}`}
+                      style={{ width: `${profile.pct}%` }}
+                    />
+                  </div>
+                  <p className="font-sans text-stone text-sm mt-3">{profile.message}</p>
+                </div>
+
+                {/* Top concerns */}
+                {profile.topConcerns.length > 0 && (
+                  <div className="mb-8">
+                    <h3 className="font-sans font-medium text-forest text-sm uppercase tracking-wider mb-3">
+                      {lang === 'de' ? 'Ihre Hauptbereiche' : 'Your top areas of concern'}
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {profile.topConcerns.map((concern) => (
+                        <span key={concern.id} className="inline-flex items-center gap-1.5 tag border-rose/30 text-forest text-sm">
+                          <span>{concern.icon}</span> {concern.domain}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Validation message */}
+                <div className="bg-sage/10 border-l-4 border-sage rounded-r-[2px] p-6 mb-10">
+                  <p className="font-sans text-forest text-sm leading-relaxed">
+                    {profile.detail}
+                  </p>
+                </div>
+
+                {/* Booking CTA */}
+                <div className="bg-forest rounded-[2px] p-8 md:p-10 text-center mb-8">
+                  <h3 className="font-serif font-bold text-cream text-2xl md:text-3xl mb-3">
+                    {lang === 'de'
+                      ? 'Sprechen Sie mit einer Menopause-Fachperson'
+                      : 'Talk to a menopause specialist'}
+                  </h3>
+                  <p className="font-sans text-cream/70 text-sm leading-relaxed mb-6 max-w-md mx-auto">
+                    {lang === 'de'
+                      ? '45–60 Minuten Video-Konsultation. Diagnose, Behandlungsplan und Rezept — in einer Sitzung.'
+                      : '45–60 min video consultation. Diagnosis, treatment plan, and prescription — in one session.'}
+                  </p>
+                  <a
+                    href="#pricing"
+                    className="inline-block bg-rose text-cream font-sans font-medium text-sm uppercase tracking-wider px-10 py-4 rounded-[2px] hover:bg-rose/90 transition-colors"
+                  >
+                    {lang === 'de' ? 'Termin buchen — CHF 300' : 'Book your consultation — CHF 300'}
+                  </a>
+                </div>
+
+                {/* Retake */}
+                <div className="text-center">
+                  <button
+                    onClick={() => {
+                      setQuizScreen('questions');
+                      setStepIndex(0);
+                      setAnswers({});
+                      setSelectedValue(null);
+                      setShowEmpathy(false);
+                      setEmail('');
+                    }}
+                    className="font-sans text-stone/50 text-xs underline bg-transparent border-0 cursor-pointer hover:text-stone transition-colors"
+                  >
+                    {lang === 'de' ? 'Check-in wiederholen' : 'Retake check-in'}
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </section>
 
       {/* ════════════════════════════════════════════
@@ -977,46 +729,50 @@ export default function LandingV3() {
       </section>
 
       {/* ════════════════════════════════════════════
-          FOOTER CTA
-          ════════════════════════════════════════════ */}
-      <section className="fade-in-section bg-forest relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(196,149,122,0.15)_0%,transparent_70%)]" aria-hidden="true" />
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28 text-center">
-          <h2 className="font-serif font-bold text-cream text-3xl md:text-4xl lg:text-5xl mb-10 leading-[1.1]">
-            {t.footerCta}
-          </h2>
-          <a
-            href="#pricing"
-            className="inline-block bg-rose text-cream font-sans font-medium text-sm uppercase tracking-wider px-10 py-4 rounded-[2px] hover:bg-rose/90 transition-colors"
-          >
-            {t.pricing.cta}
-          </a>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════
           FOOTER
           ════════════════════════════════════════════ */}
-      <footer className="bg-charcoal">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14">
-          <div className="grid md:grid-cols-3 gap-10 items-start">
-            <div>
-              <p className="font-serif text-xl tracking-tight mb-2">
+      <footer className="bg-forest text-cream/80">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+            {/* Brand */}
+            <div className="lg:col-span-2">
+              <p className="font-serif text-2xl font-bold text-cream">
                 <span className="text-cream">Equi</span><span className="text-sage font-bold">vie</span>
               </p>
-              <p className="font-sans text-cream/40 text-sm">{t.footer.tagline}</p>
+              <p className="mt-3 text-sm leading-relaxed text-cream/60 font-light max-w-md">
+                {t.footer.tagline}
+              </p>
+              <div className="mt-4 flex items-center gap-4 text-xs text-cream/40">
+                <span>Swiss-regulated</span>
+                <span className="w-1 h-1 rounded-full bg-sage" />
+                <span>nDSG compliant</span>
+                <span className="w-1 h-1 rounded-full bg-sage" />
+                <span>HIN e-prescription</span>
+              </div>
             </div>
+
+            {/* Contact */}
             <div>
-              <p className="font-sans text-cream/60 text-sm mb-1">{t.footer.contact}</p>
+              <h4 className="text-xs font-medium tracking-widest uppercase text-cream/40 mb-4 font-sans">
+                {lang === 'de' ? 'Kontakt' : 'Contact'}
+              </h4>
+              <p className="font-sans text-cream/70 text-sm">{t.footer.contact}</p>
               <p className="font-sans text-cream/40 text-xs leading-relaxed mt-3">{t.footer.medical}</p>
             </div>
-            <div className="flex flex-col gap-2 md:items-end">
-              <a href="#" className="font-sans text-cream/60 text-sm hover:text-cream transition-colors">Impressum</a>
-              <a href="#" className="font-sans text-cream/60 text-sm hover:text-cream transition-colors">Datenschutz</a>
+
+            {/* Legal */}
+            <div>
+              <h4 className="text-xs font-medium tracking-widest uppercase text-cream/40 mb-4 font-sans">Legal</h4>
+              <div className="flex flex-col gap-2.5">
+                <a href="#" className="text-sm text-cream/70 hover:text-cream transition-colors">Impressum</a>
+                <a href="#" className="text-sm text-cream/70 hover:text-cream transition-colors">Datenschutz</a>
+                <a href="#" className="text-sm text-cream/70 hover:text-cream transition-colors">AGB</a>
+              </div>
             </div>
           </div>
-          <div className="border-t border-cream/10 mt-10 pt-6">
-            <p className="font-sans text-cream/30 text-xs text-center">
+
+          <div className="mt-12 pt-8 border-t border-cream/10">
+            <p className="text-xs text-cream/30">
               &copy; {new Date().getFullYear()} Equivie. All rights reserved.
             </p>
           </div>

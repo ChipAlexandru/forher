@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useFadeIn } from '../hooks/useFadeIn';
+import { quizSteps, getProfile } from '../data/quizData';
 
 /* ──────────────────── CONTENT DATA ──────────────────── */
 const content = {
@@ -240,6 +241,46 @@ export default function Landing() {
 
   const toggleFaq = (i) => setOpenFaq(openFaq === i ? null : i);
 
+  /* Quiz state */
+  const [quizOpen, setQuizOpen] = useState(false);
+  const [quizScreen, setQuizScreen] = useState('questions');
+  const [stepIndex, setStepIndex] = useState(0);
+  const [answers, setAnswers] = useState({});
+  const [selectedValue, setSelectedValue] = useState(null);
+  const [showEmpathy, setShowEmpathy] = useState(false);
+  const quizRef = useRef(null);
+
+  const currentStep = quizSteps[stepIndex];
+  const progress = quizSteps.length > 0 ? ((stepIndex) / quizSteps.length) * 100 : 0;
+  const progressWithCurrent = quizSteps.length > 0 ? ((stepIndex + 1) / quizSteps.length) * 100 : 0;
+
+  function handleOptionSelect(value) {
+    setSelectedValue(value);
+    setShowEmpathy(true);
+    const newAnswers = { ...answers, [currentStep.id]: value };
+    setAnswers(newAnswers);
+    const empathyMsg = currentStep.empathy[value];
+    const delay = empathyMsg ? 3500 : 800;
+    setTimeout(() => {
+      if (stepIndex < quizSteps.length - 1) {
+        setStepIndex(stepIndex + 1);
+        setSelectedValue(null);
+        setShowEmpathy(false);
+      } else {
+        setQuizScreen('results');
+      }
+    }, delay);
+  }
+
+  const profile = quizScreen === 'results' ? getProfile(answers, lang) : null;
+
+  function severityColor(pct) {
+    if (pct <= 20) return 'bg-sage';
+    if (pct <= 45) return 'bg-rose/70';
+    if (pct <= 70) return 'bg-rose';
+    return 'bg-red-700';
+  }
+
   return (
     <div ref={containerRef} className="min-h-screen flex flex-col">
 
@@ -275,6 +316,133 @@ export default function Landing() {
           </div>
         </div>
       </header>
+
+      {/* ════════════════════════════════════════════
+          QUIZ BAR (collapsible)
+          ════════════════════════════════════════════ */}
+      <section ref={quizRef} className="bg-rose-pale border-y border-rose/20">
+        {!quizOpen && quizScreen !== 'results' && (
+          <div className="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <span className="text-xl">🩺</span>
+              <div>
+                <p className="font-serif font-bold text-forest text-lg leading-tight">
+                  {lang === 'de' ? 'Wie geht es Ihnen wirklich?' : 'How are you really doing?'}
+                </p>
+                <p className="font-sans text-stone/60 text-xs mt-0.5">
+                  {lang === 'de' ? '6 Fragen · 2 Minuten · Anonym' : '6 questions · 2 min · Anonymous'}
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={() => { setQuizOpen(true); setTimeout(() => quizRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100); }}
+              className="inline-block bg-rose text-cream font-sans font-medium text-xs uppercase tracking-wider px-6 py-3 rounded-[2px] hover:bg-rose/90 transition-colors border-0 cursor-pointer whitespace-nowrap"
+            >
+              {lang === 'de' ? 'Check-in starten' : 'Start my check-in'}
+            </button>
+          </div>
+        )}
+
+        {(quizOpen || quizScreen === 'results') && (
+          <div className="max-w-3xl mx-auto px-6 lg:px-10 py-12 lg:py-16">
+            {quizScreen === 'questions' && (
+              <div className="flex justify-end mb-4">
+                <button
+                  onClick={() => { setQuizOpen(false); setStepIndex(0); setAnswers({}); setSelectedValue(null); setShowEmpathy(false); }}
+                  className="font-sans text-stone/40 text-xs bg-transparent border-0 cursor-pointer hover:text-stone transition-colors"
+                  aria-label="Close quiz"
+                >
+                  ✕ {lang === 'de' ? 'Schliessen' : 'Close'}
+                </button>
+              </div>
+            )}
+
+            {quizScreen === 'questions' && currentStep && (
+              <div>
+                <div className="w-full h-1.5 bg-white/60 rounded-full mb-8 overflow-hidden">
+                  <div
+                    className="h-full bg-rose rounded-full transition-all duration-500 ease-out"
+                    style={{ width: `${showEmpathy ? progressWithCurrent : progress}%` }}
+                  />
+                </div>
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="text-2xl" role="img" aria-label={currentStep.domain}>{currentStep.icon}</span>
+                  <span className="font-sans text-rose text-sm font-medium uppercase tracking-wider">{currentStep.domain}</span>
+                </div>
+                <h2 className="font-serif font-bold text-forest text-2xl md:text-3xl leading-snug mb-3">{currentStep.question[lang]}</h2>
+                <p className="font-sans text-stone/70 text-sm leading-relaxed mb-8 max-w-xl">{currentStep.context[lang]}</p>
+                <div className="space-y-3">
+                  {currentStep.options.map((option, i) => {
+                    const isSelected = selectedValue === option.value;
+                    return (
+                      <button
+                        key={i}
+                        onClick={() => !showEmpathy && handleOptionSelect(option.value)}
+                        disabled={showEmpathy}
+                        className={`w-full text-left flex items-center gap-4 border rounded-[2px] p-5 transition-all cursor-pointer bg-white ${
+                          isSelected ? 'border-forest bg-forest/5 ring-1 ring-forest/20' : showEmpathy ? 'border-border opacity-50 cursor-default' : 'border-border hover:border-sage hover:shadow-sm'
+                        }`}
+                      >
+                        <span className={`shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${isSelected ? 'border-forest' : 'border-stone/30'}`}>
+                          {isSelected && <span className="w-2.5 h-2.5 rounded-full bg-forest" />}
+                        </span>
+                        <span className={`font-sans text-sm leading-relaxed ${isSelected ? 'text-forest font-medium' : 'text-stone'}`}>{option.label[lang]}</span>
+                      </button>
+                    );
+                  })}
+                </div>
+                {showEmpathy && selectedValue !== null && currentStep.empathy[selectedValue] && (
+                  <div className="mt-6 bg-sage/10 border border-sage/30 rounded-[2px] p-5">
+                    <p className="font-sans text-forest text-sm leading-relaxed">{currentStep.empathy[selectedValue][lang]}</p>
+                  </div>
+                )}
+                <p className="font-sans text-stone/40 text-xs mt-8 text-center">{stepIndex + 1} / {quizSteps.length}</p>
+              </div>
+            )}
+
+            {quizScreen === 'results' && profile && (
+              <div>
+                <div className="text-center mb-10">
+                  <hr className="rule mb-8 mx-auto" />
+                  <h2 className="font-serif font-bold text-forest text-3xl md:text-4xl leading-tight mb-3">{lang === 'de' ? 'Ihre Ergebnisse' : 'Your results'}</h2>
+                  <p className="font-sans text-stone text-base">{lang === 'de' ? 'Basierend auf Ihren Antworten, hier ist eine Einschätzung.' : 'Based on your answers, here\u2019s a snapshot.'}</p>
+                </div>
+                <div className="mb-8">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-sans font-medium text-forest text-lg">{profile.level}</span>
+                    <span className="font-sans text-stone/60 text-sm">{profile.pct}%</span>
+                  </div>
+                  <div className="w-full h-3 bg-white/60 rounded-full overflow-hidden">
+                    <div className={`h-full rounded-full transition-all duration-700 ease-out ${severityColor(profile.pct)}`} style={{ width: `${profile.pct}%` }} />
+                  </div>
+                  <p className="font-sans text-stone text-sm mt-3">{profile.message}</p>
+                </div>
+                {profile.topConcerns.length > 0 && (
+                  <div className="mb-8">
+                    <h3 className="font-sans font-medium text-forest text-sm uppercase tracking-wider mb-3">{lang === 'de' ? 'Ihre Hauptbereiche' : 'Your top areas of concern'}</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {profile.topConcerns.map((concern) => (
+                        <span key={concern.id} className="inline-flex items-center gap-1.5 tag border-rose/30 text-forest text-sm"><span>{concern.icon}</span> {concern.domain}</span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                <div className="bg-sage/10 border-l-4 border-sage rounded-r-[2px] p-6 mb-10">
+                  <p className="font-sans text-forest text-sm leading-relaxed">{profile.detail}</p>
+                </div>
+                <div className="bg-forest rounded-[2px] p-8 md:p-10 text-center mb-8">
+                  <h3 className="font-serif font-bold text-cream text-2xl md:text-3xl mb-3">{lang === 'de' ? 'Sprechen Sie mit einer Menopause-Fachperson' : 'Talk to a menopause specialist'}</h3>
+                  <p className="font-sans text-cream/70 text-sm leading-relaxed mb-6 max-w-md mx-auto">{lang === 'de' ? '45–60 Minuten Video-Konsultation. Diagnose, Behandlungsplan und Rezept — in einer Sitzung.' : '45–60 min video consultation. Diagnosis, treatment plan, and prescription — in one session.'}</p>
+                  <a href="#pricing" className="inline-block bg-rose text-cream font-sans font-medium text-sm uppercase tracking-wider px-10 py-4 rounded-[2px] hover:bg-rose/90 transition-colors">{lang === 'de' ? 'Termin buchen — CHF 300' : 'Book your consultation — CHF 300'}</a>
+                </div>
+                <div className="text-center">
+                  <button onClick={() => { setQuizScreen('questions'); setStepIndex(0); setAnswers({}); setSelectedValue(null); setShowEmpathy(false); }} className="font-sans text-stone/50 text-xs underline bg-transparent border-0 cursor-pointer hover:text-stone transition-colors">{lang === 'de' ? 'Check-in wiederholen' : 'Retake check-in'}</button>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+      </section>
 
       {/* ════════════════════════════════════════════
           1. HERO
@@ -554,54 +722,40 @@ export default function Landing() {
       </section>
 
       {/* ════════════════════════════════════════════
-          9. FOOTER CTA
-          ════════════════════════════════════════════ */}
-      <section className="fade-in-section bg-forest relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(196,149,122,0.15)_0%,transparent_70%)]" aria-hidden="true" />
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28 text-center">
-          <h2 className="font-serif font-bold text-cream text-3xl md:text-4xl lg:text-5xl mb-10 leading-[1.1]">
-            {t.footerCta}
-          </h2>
-          <a
-            href="#pricing"
-            className="inline-block bg-rose text-cream font-sans font-medium text-sm uppercase tracking-wider px-10 py-4 rounded-[2px] hover:bg-rose/90 transition-colors"
-          >
-            {t.pricing.cta}
-          </a>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════
           FOOTER
           ════════════════════════════════════════════ */}
-      <footer className="bg-charcoal">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14">
-          <div className="grid md:grid-cols-3 gap-10 items-start">
-            {/* Brand */}
-            <div>
-              <p className="font-serif text-xl tracking-tight mb-2">
+      <footer className="bg-forest text-cream/80">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+            <div className="lg:col-span-2">
+              <p className="font-serif text-2xl font-bold text-cream">
                 <span className="text-cream">Equi</span><span className="text-sage font-bold">vie</span>
               </p>
-              <p className="font-sans text-cream/40 text-sm">{t.footer.tagline}</p>
+              <p className="mt-3 text-sm leading-relaxed text-cream/60 font-light max-w-md">{t.footer.tagline}</p>
+              <div className="mt-4 flex items-center gap-4 text-xs text-cream/40">
+                <span>Swiss-regulated</span>
+                <span className="w-1 h-1 rounded-full bg-sage" />
+                <span>nDSG compliant</span>
+                <span className="w-1 h-1 rounded-full bg-sage" />
+                <span>HIN e-prescription</span>
+              </div>
             </div>
-
-            {/* Contact */}
             <div>
-              <p className="font-sans text-cream/60 text-sm mb-1">{t.footer.contact}</p>
+              <h4 className="text-xs font-medium tracking-widest uppercase text-cream/40 mb-4 font-sans">{lang === 'de' ? 'Kontakt' : 'Contact'}</h4>
+              <p className="font-sans text-cream/70 text-sm">{t.footer.contact}</p>
               <p className="font-sans text-cream/40 text-xs leading-relaxed mt-3">{t.footer.medical}</p>
             </div>
-
-            {/* Legal */}
-            <div className="flex flex-col gap-2 md:items-end">
-              <a href="#" className="font-sans text-cream/60 text-sm hover:text-cream transition-colors">Impressum</a>
-              <a href="#" className="font-sans text-cream/60 text-sm hover:text-cream transition-colors">Datenschutz</a>
+            <div>
+              <h4 className="text-xs font-medium tracking-widest uppercase text-cream/40 mb-4 font-sans">Legal</h4>
+              <div className="flex flex-col gap-2.5">
+                <a href="#" className="text-sm text-cream/70 hover:text-cream transition-colors">Impressum</a>
+                <a href="#" className="text-sm text-cream/70 hover:text-cream transition-colors">Datenschutz</a>
+                <a href="#" className="text-sm text-cream/70 hover:text-cream transition-colors">AGB</a>
+              </div>
             </div>
           </div>
-
-          <div className="border-t border-cream/10 mt-10 pt-6">
-            <p className="font-sans text-cream/30 text-xs text-center">
-              &copy; {new Date().getFullYear()} Equivie. All rights reserved.
-            </p>
+          <div className="mt-12 pt-8 border-t border-cream/10">
+            <p className="text-xs text-cream/30">&copy; {new Date().getFullYear()} Equivie. All rights reserved.</p>
           </div>
         </div>
       </footer>
