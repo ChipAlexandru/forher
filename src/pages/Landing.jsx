@@ -8,12 +8,12 @@ const content = {
     lang: 'Deutsch',
     hero: {
       headline: 'Wechseljahre. Endlich Fachpersonen, die zuhören.',
-      subhead: 'Video-Konsultation mit auf Menopause spezialisierten Fachärztinnen und Fachärzten für Gynäkologie. Diagnose, persönlicher Behandlungsplan und Rezept — in einer ausführlichen Sitzung. Weil Ihre Symptome real sind, Ihre Fragen Antworten verdienen und 10 Minuten nie genug waren.',
+      subhead: 'Video-Konsultation mit auf Menopause spezialisierten Fachärztinnen und Fachärzten für Gynäkologie. Diagnose, persönlicher Behandlungsplan und Rezept — in einer ausführlichen Sitzung. Weil Ihre Symptome real sind, Ihre Fragen Antworten verdienen und 20 Minuten nie genug waren.',
       cta: 'Termin buchen — CHF 300',
       note: '45–60 Minuten. Video. Keine Wartezeit.',
     },
     stats: {
-      title: 'Ihre Gesundheit verdient mehr als 10 Minuten.',
+      title: 'Ihre Gesundheit verdient mehr als 20 Minuten.',
       items: [
         { number: '78%', text: 'der Frauen in den Wechseljahren haben Beschwerden — Hitzewallungen, Schlafstörungen, Stimmungsschwankungen, Gelenkschmerzen.' },
         { number: '41%', text: 'der Frauen, die wegen Menopause ärztliche Hilfe suchten, fühlten sich nicht ernst genommen oder abgewiesen.' },
@@ -32,7 +32,7 @@ const content = {
     doctor: {
       name: 'Dr. med. [Name]',
       title: 'Facharzt/Fachärztin für Gynäkologie & Geburtshilfe (FMH) | Menopause-Spezialisierung',
-      bio: 'Dr. [Name] gehört zu den wenigen Fachpersonen in der Schweiz mit einer spezialisierten Menopause-Zertifizierung. Mit [X] Jahren klinischer Erfahrung in Perimenopause, Menopause und Hormontherapie bringt Dr. [Name] die Expertise, die den meisten Ärztinnen und Ärzten in der Ausbildung schlicht nicht vermittelt wurde. 45–60 Minuten pro Konsultation, weil Menopause kein 10-Minuten-Gespräch ist. Vorab-Review Ihres gesamten Gesundheitsprofils, weil Ihre Geschichte nicht noch einmal erzählt werden sollte.',
+      bio: 'Dr. [Name] gehört zu den wenigen Fachpersonen in der Schweiz mit einer spezialisierten Menopause-Zertifizierung. Mit [X] Jahren klinischer Erfahrung in Perimenopause, Menopause und Hormontherapie bringt Dr. [Name] die Expertise, die den meisten Ärztinnen und Ärzten in der Ausbildung schlicht nicht vermittelt wurde. 45–60 Minuten pro Konsultation, weil Menopause kein 20-Minuten-Gespräch ist. Vorab-Review Ihres gesamten Gesundheitsprofils, weil Ihre Geschichte nicht noch einmal erzählt werden sollte.',
       badges: ['FMH-zertifiziert', 'Menopause-Spezialisierung', 'Evidenzbasierte Medizin', 'Telemedizin aus Zürich'],
     },
     symptoms: {
@@ -84,12 +84,12 @@ const content = {
     lang: 'English',
     hero: {
       headline: 'Menopause. Finally, a specialist who listens.',
-      subhead: 'Video consultation with a gynaecologist specialised in menopause. Diagnosis, personalised treatment plan and prescription — in one unhurried session. Because your symptoms are real, your questions deserve answers, and 10 minutes was never enough.',
+      subhead: 'Video consultation with a gynaecologist specialised in menopause. Diagnosis, personalised treatment plan and prescription — in one unhurried session. Because your symptoms are real, your questions deserve answers, and 20 minutes was never enough.',
       cta: 'Book your consultation — CHF 300',
       note: '45–60 minutes. Video. No waiting list.',
     },
     stats: {
-      title: 'Your health deserves more than 10 minutes.',
+      title: 'Your health deserves more than 20 minutes.',
       items: [
         { number: '78%', text: 'of menopausal women experience symptoms — hot flashes, sleep disruption, mood changes, joint pain.' },
         { number: '41%', text: 'of women who consulted a doctor about menopause felt dismissed or not taken seriously.' },
@@ -108,7 +108,7 @@ const content = {
     doctor: {
       name: 'Dr. med. [Name]',
       title: 'Specialist in Gynaecology & Obstetrics (FMH Board Certified) | Menopause Specialist',
-      bio: 'Dr. [Name] is one of fewer than [X] physicians in Switzerland with specialist menopause certification. With [X] years of clinical experience in perimenopause, menopause, and hormone therapy, Dr. [Name] brings the expertise that most doctors simply were not trained to provide. 45–60 minutes per consultation because menopause is not a 10-minute conversation. Full health profile review before your session because repeating your story to yet another doctor who doesn\u2019t listen is part of the problem we\u2019re solving.',
+      bio: 'Dr. [Name] is one of fewer than [X] physicians in Switzerland with specialist menopause certification. With [X] years of clinical experience in perimenopause, menopause, and hormone therapy, Dr. [Name] brings the expertise that most doctors simply were not trained to provide. 45–60 minutes per consultation because menopause is not a 20-minute conversation. Full health profile review before your session because repeating your story to yet another doctor who doesn\u2019t listen is part of the problem we\u2019re solving.',
       badges: ['FMH Board Certified', 'Menopause Specialist', 'Evidence-Based Medicine', 'Telehealth from Zürich'],
     },
     symptoms: {
@@ -475,8 +475,8 @@ export default function Landing() {
               <div className="absolute bottom-0 left-0 right-0 bg-forest-mid/80 backdrop-blur-sm px-8 py-5 rounded-b-lg">
                 <p className="font-body italic text-cream/80 text-sm leading-relaxed">
                   {lang === 'de'
-                    ? 'Ihre Gesundheit verdient mehr als 10 Minuten.'
-                    : 'Your health deserves more than 10 minutes.'}
+                    ? 'Ihre Gesundheit verdient mehr als 20 Minuten.'
+                    : 'Your health deserves more than 20 minutes.'}
                 </p>
               </div>
             </div>
