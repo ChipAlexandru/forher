@@ -5,6 +5,7 @@ import { quizSteps, getProfile } from '../data/quizData';
 import HeaderMain from '../components/HeaderMain';
 import SEO from '../components/SEO';
 import WaitlistModal from '../components/WaitlistModal';
+import Footer from '../components/Footer';
 
 /* ──────────────────── CONTENT DATA ──────────────────── */
 const content = {
@@ -735,41 +736,7 @@ export default function Landing() {
       {/* ════════════════════════════════════════════
           FOOTER
           ════════════════════════════════════════════ */}
-      <footer className="bg-forest text-cream/80">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
-            <div className="lg:col-span-2">
-              <p className="font-serif text-2xl font-bold text-cream">
-                <span className="text-cream">Equi</span><span className="text-sage font-bold">vie</span><span className="text-cream font-sans font-medium uppercase text-[0.55em] tracking-widest ml-1.5">med</span>
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-cream/60 font-light max-w-md">{t.footer.tagline}</p>
-              <div className="mt-4 flex items-center gap-4 text-xs text-cream/40">
-                <span>Swiss-regulated</span>
-                <span className="w-1 h-1 rounded-full bg-sage" />
-                <span>nDSG compliant</span>
-                <span className="w-1 h-1 rounded-full bg-sage" />
-                <span>HIN e-prescription</span>
-              </div>
-            </div>
-            <div>
-              <h4 className="text-xs font-medium tracking-widest uppercase text-cream/40 mb-4 font-sans">{lang === 'de' ? 'Kontakt' : 'Contact'}</h4>
-              <p className="font-sans text-cream/70 text-sm">{t.footer.contact}</p>
-              <p className="font-sans text-cream/40 text-xs leading-relaxed mt-3">{t.footer.medical}</p>
-            </div>
-            <div>
-              <h4 className="text-xs font-medium tracking-widest uppercase text-cream/40 mb-4 font-sans">Legal</h4>
-              <div className="flex flex-col gap-2.5">
-                <a href="#" className="text-sm text-cream/70 hover:text-cream transition-colors">Impressum</a>
-                <a href="#" className="text-sm text-cream/70 hover:text-cream transition-colors">Datenschutz</a>
-                <a href="#" className="text-sm text-cream/70 hover:text-cream transition-colors">AGB</a>
-              </div>
-            </div>
-          </div>
-          <div className="mt-12 pt-8 border-t border-cream/10">
-            <p className="text-xs text-cream/30">&copy; {new Date().getFullYear()} Equivie MED. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       <WaitlistModal open={waitlistOpen} onClose={() => setWaitlistOpen(false)} />
     </div>
