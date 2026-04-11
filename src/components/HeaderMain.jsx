@@ -10,7 +10,7 @@ const navLabels = {
 
 const langs = ['de', 'fr', 'en'];
 
-export default function HeaderMain() {
+export default function HeaderMain({ onBookClick }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { lang, setLang } = useLang();
@@ -82,12 +82,21 @@ export default function HeaderMain() {
                 </span>
               ))}
             </div>
-            <a
-              href={anchorHref('#pricing')}
-              className="bg-forest text-cream font-sans font-medium text-xs uppercase tracking-wider px-5 py-2.5 rounded-[2px] hover:bg-forest-mid transition-colors no-underline"
-            >
-              {nav.bookNow}
-            </a>
+            {onBookClick ? (
+              <button
+                onClick={onBookClick}
+                className="bg-forest text-cream font-sans font-medium text-xs uppercase tracking-wider px-5 py-2.5 rounded-[2px] hover:bg-forest-mid transition-colors border-0 cursor-pointer"
+              >
+                {nav.bookNow}
+              </button>
+            ) : (
+              <a
+                href={anchorHref('#pricing')}
+                className="bg-forest text-cream font-sans font-medium text-xs uppercase tracking-wider px-5 py-2.5 rounded-[2px] hover:bg-forest-mid transition-colors no-underline"
+              >
+                {nav.bookNow}
+              </a>
+            )}
           </div>
 
           {/* Mobile: Lang Toggle + Hamburger */}
@@ -140,13 +149,22 @@ export default function HeaderMain() {
             <Link to="/blog" onClick={() => setMenuOpen(false)} className="block py-3 text-base font-sans text-stone no-underline hover:text-forest transition-colors border-b border-border/30">
               {nav.blog}
             </Link>
-            <a
-              href={anchorHref('#pricing')}
-              onClick={() => setMenuOpen(false)}
-              className="mt-6 block w-full bg-forest text-cream text-sm font-sans font-medium uppercase tracking-wider px-5 py-3 rounded-[2px] hover:bg-forest-mid transition-colors no-underline text-center"
-            >
-              {nav.bookNow}
-            </a>
+            {onBookClick ? (
+              <button
+                onClick={() => { setMenuOpen(false); onBookClick(); }}
+                className="mt-6 block w-full bg-forest text-cream text-sm font-sans font-medium uppercase tracking-wider px-5 py-3 rounded-[2px] hover:bg-forest-mid transition-colors border-0 cursor-pointer text-center"
+              >
+                {nav.bookNow}
+              </button>
+            ) : (
+              <a
+                href={anchorHref('#pricing')}
+                onClick={() => setMenuOpen(false)}
+                className="mt-6 block w-full bg-forest text-cream text-sm font-sans font-medium uppercase tracking-wider px-5 py-3 rounded-[2px] hover:bg-forest-mid transition-colors no-underline text-center"
+              >
+                {nav.bookNow}
+              </a>
+            )}
           </nav>
         </div>
       )}

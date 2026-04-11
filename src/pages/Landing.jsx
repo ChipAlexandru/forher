@@ -4,6 +4,7 @@ import { useLang } from '../context/LanguageContext';
 import { quizSteps, getProfile } from '../data/quizData';
 import HeaderMain from '../components/HeaderMain';
 import SEO from '../components/SEO';
+import WaitlistModal from '../components/WaitlistModal';
 
 /* ──────────────────── CONTENT DATA ──────────────────── */
 const content = {
@@ -33,23 +34,22 @@ const content = {
       ],
     },
     doctor: {
-      name: 'Dr. med. [Name]',
-      title: 'Facharzt/Fachärztin für Gynäkologie & Geburtshilfe (FMH) | Menopause-Spezialisierung',
-      bio: 'Dr. [Name] gehört zu den wenigen Fachpersonen in der Schweiz mit einer spezialisierten Menopause-Zertifizierung. Mit [X] Jahren klinischer Erfahrung in Perimenopause, Menopause und Hormontherapie bringt Dr. [Name] die Expertise, die den meisten Ärztinnen und Ärzten in der Ausbildung schlicht nicht vermittelt wurde. 45–60 Minuten pro Konsultation, weil Menopause kein 20-Minuten-Gespräch ist. Vorab-Review Ihres gesamten Gesundheitsprofils, weil Ihre Geschichte nicht noch einmal erzählt werden sollte.',
-      badges: ['FMH-zertifiziert', 'Menopause-Spezialisierung', 'Evidenzbasierte Medizin', 'Telemedizin aus Zürich'],
+      tag: 'Unser Anspruch',
+      title: 'Was Sie von Ihrer Fachperson erwarten dürfen',
+      points: [
+        'FMH-zertifizierte Fachärztin/Facharzt für Gynäkologie & Geburtshilfe',
+        'Zusätzliche Menopause-spezifische Zertifizierung',
+        '45–60 Minuten pro Konsultation — keine Hektik, kein Abwimmeln',
+        'Vorab-Review Ihres gesamten Gesundheitsprofils',
+        'Auf dem neuesten Stand der Evidenz zur Hormontherapie',
+        'Telemedizin aus Zürich — sicher, verschlüsselt, bequem von zu Hause',
+      ],
+      note: 'In der Schweiz haben die wenigsten Gynäkologinnen und Gynäkologen eine spezialisierte Menopause-Ausbildung erhalten — sie ist nicht Teil des FMH-Kerncurriculums. Wir arbeiten ausschliesslich mit Fachpersonen, die diese Lücke geschlossen haben.',
     },
     symptoms: {
       title: 'Was wir behandeln',
       items: ['Hitzewallungen', 'Schlafstörungen', 'Stimmungsschwankungen', 'Vaginale Trockenheit', 'Gelenkschmerzen', 'Gewichtsveränderungen', 'Gehirnnebel', 'Libidoverlust'],
       note: 'Hormontherapie (HRT), nicht-hormonelle Alternativen und Lebensstil-Empfehlungen — evidenzbasiert und individuell auf Ihre Bedürfnisse, Ihr Risikoprofil und Ihre Präferenzen abgestimmt.',
-    },
-    testimonials: {
-      title: 'Was unsere Patientinnen sagen',
-      items: [
-        { quote: 'Meine Gynäkologin sagte mir, ich solle einfach abwarten. Hier hat mir zum ersten Mal jemand wirklich zugehört — und nach 45 Minuten hatte ich einen konkreten Plan.', attribution: 'K., 48, Zürich' },
-        { quote: 'In 45 Minuten hatte ich mehr Klarheit als in drei Jahren bei verschiedenen Ärzten. Ich wusste endlich, was mit mir los ist.', attribution: 'S., 52, Winterthur' },
-        { quote: 'Das Rezept war noch am selben Tag in meiner Apotheke. Mein Hausarzt hatte mich monatelang auf Antidepressiva gesetzt, ohne je über die Wechseljahre zu sprechen.', attribution: 'M., 46, Zürich' },
-      ],
     },
     pricing: {
       title: 'Ihre Konsultation',
@@ -67,20 +67,18 @@ const content = {
       note: 'Bezahlung mit Kreditkarte oder TWINT. Keine Versicherungsabrechnung nötig.',
     },
     faq: [
-      { q: 'Brauche ich eine Überweisung?', a: 'Nein. In der Schweiz können Sie direkt zu einer gynäkologischen Fachperson gehen, ohne Überweisung. Sie buchen einfach und bezahlen.' },
-      { q: 'Wird die Konsultation von der Krankenkasse übernommen?', a: 'Die Konsultationsgebühr von CHF 300 ist eine Selbstzahlerleistung. Die verschriebenen Medikamente (HRT, Progesteron etc.) werden jedoch von der Grundversicherung übernommen, sofern sie auf der Spezialitätenliste stehen. Einige Zusatzversicherungen decken auch Präventions- und Komplementärkonsultationen ab — erkundigen Sie sich bei Ihrer Versicherung.' },
-      { q: 'Werde ich Hormone verschrieben bekommen?', a: 'Das hängt ganz von Ihren Symptomen, Ihrer Krankengeschichte und Ihren Präferenzen ab. Ihre Fachperson bespricht alle evidenzbasierten Optionen mit Ihnen — hormonell, nicht-hormonell und lebensstilbasiert — und gemeinsam entscheiden Sie, was für Ihre Situation richtig ist. Es gibt keinen Einheitsansatz. Genau dafür gibt es die Spezialkonsultation.' },
-      { q: 'Meine Estradot-Pflaster werden nicht mehr von der Versicherung gedeckt. Können Sie helfen?', a: 'Ja. Sandoz hat Estradot im September 2025 aufgrund eines Preisstreits von der Spezialitätenliste genommen. Mehrere alternative HRT-Produkte bleiben vollständig gedeckt, darunter transdermale Östradiol-Gele (Oestrogel, Estreva), orale Formulierungen und vaginale Präparate. Ihre Fachperson hilft Ihnen, die beste gedeckte Alternative für Ihre Situation zu finden.' },
-      { q: 'Was unterscheidet Equivie von meiner regulären Gynäkologin oder meinem Gynäkologen?', a: 'Die meisten Gynäkologinnen und Gynäkologen in der Schweiz haben keine spezialisierte Menopause-Ausbildung erhalten — sie ist nicht Teil des FMH-Kerncurriculums. Unsere Fachpersonen haben eine zusätzliche Menopause-spezifische Zertifizierung abgeschlossen und sind auf dem neuesten Stand der Evidenz zur Hormontherapie. 45–60 Minuten pro Konsultation (statt der üblichen 15–20 Minuten), vorab-Review Ihrer gesamten Krankengeschichte und ein schriftlicher Behandlungsplan. Das ist spezialisierte Menopause-Versorgung, kein allgemeiner Wellness-Check.' },
-      { q: 'Was passiert nach der Konsultation?', a: 'Sie erhalten Ihren Behandlungsplan und Ihr Rezept innerhalb von 24 Stunden. Das Rezept wird elektronisch an Ihre gewählte Apotheke gesendet. Sie können 7 Tage lang Rückfragen per E-Mail stellen. Wenn Sie fortlaufende Betreuung benötigen, bieten wir ein Abonnement-Betreuungsprogramm an (demnächst verfügbar).' },
+      { q: 'Brauche ich eine Überweisung?', a: 'Nein. In der Schweiz können Sie direkt zu einer gynäkologischen Fachperson gehen, ohne Überweisung.' },
+      { q: 'Wird die Konsultation von der Krankenkasse übernommen?', a: 'Die Konsultationsgebühr ist eine Selbstzahlerleistung. Die verschriebenen Medikamente (HRT, Progesteron etc.) werden jedoch von der Grundversicherung übernommen, sofern sie auf der Spezialitätenliste stehen. Einige Zusatzversicherungen decken auch Präventions- und Komplementärkonsultationen ab — erkundigen Sie sich bei Ihrer Versicherung.' },
+      { q: 'Ist eine Hormontherapie die einzige Option?', a: 'Nein. Ihre Fachperson bespricht alle evidenzbasierten Optionen mit Ihnen — hormonell, nicht-hormonell und lebensstilbasiert — und gemeinsam entscheiden Sie, was für Ihre Situation richtig ist. Es gibt keinen Einheitsansatz.' },
+      { q: 'Meine Estradot-Pflaster werden nicht mehr von der Versicherung gedeckt. Was nun?', a: 'Sandoz hat Estradot im September 2025 aufgrund eines Preisstreits von der Spezialitätenliste genommen. Mehrere alternative HRT-Produkte bleiben vollständig gedeckt, darunter transdermale Östradiol-Gele (Oestrogel, Estreva), orale Formulierungen und vaginale Präparate.' },
+      { q: 'Was unterscheidet eine Menopause-Fachperson von einer regulären Gynäkologin?', a: 'Die meisten Gynäkologinnen und Gynäkologen in der Schweiz haben keine spezialisierte Menopause-Ausbildung erhalten — sie ist nicht Teil des FMH-Kerncurriculums. Menopause-Fachpersonen haben eine zusätzliche Zertifizierung abgeschlossen und sind auf dem neuesten Stand der Evidenz zur Hormontherapie.' },
       { q: 'Welche Beschwerden werden behandelt?', a: 'Hitzewallungen, Nachtschweiss, Schlafstörungen, Stimmungsschwankungen, Angst, Gehirnnebel, Gelenkschmerzen, vaginale Trockenheit, Libidoverlust, Gewichtsveränderungen, Herzrasen und Erschöpfung. Wenn Ihre Symptome mit der Perimenopause oder Menopause zusammenhängen, können wir helfen.' },
-      { q: 'Wie funktioniert die Video-Konsultation?', a: 'Nach der Buchung erhalten Sie einen Link für einen sicheren Videoanruf (verschlüsselt, auf Schweizer Servern gehostet). Sie verbinden sich von Ihrem Smartphone, Tablet oder Computer. Keine Software-Installation nötig. Ihre Fachperson ist in Zürich ansässig und im Kanton Zürich zugelassen.' },
     ],
     footerCta: 'Bereit? Ihre Wechseljahre verdienen mehr als Abwarten.',
     footer: {
       tagline: 'Telemedizin aus Zürich',
       contact: 'kontakt@equivie.ch',
-      medical: 'Ärztliche Leitung: Dr. med. [Name], FMH Gynäkologie & Geburtshilfe',
+      medical: 'Spezialisierte Menopause-Versorgung durch FMH-zertifizierte Fachpersonen',
     },
   },
   fr: {
@@ -109,23 +107,22 @@ const content = {
       ],
     },
     doctor: {
-      name: 'Dr méd. [Nom]',
-      title: 'Spécialiste en gynécologie et obstétrique (FMH) | Spécialiste de la ménopause',
-      bio: 'La Dre [Nom] fait partie des rares médecins en Suisse à détenir une certification spécialisée en ménopause. Forte de [X] années d\'expérience clinique en périménopause, ménopause et thérapie hormonale, la Dre [Nom] apporte l\'expertise que la plupart des médecins n\'ont tout simplement pas reçue au cours de leur formation. 45–60 minutes par consultation, parce que la ménopause n\'est pas une conversation de 20 minutes. Examen préalable de l\'intégralité de votre profil de santé, parce que vous ne devriez pas avoir à répéter votre histoire à un énième médecin.',
-      badges: ['Certifiée FMH', 'Spécialiste de la ménopause', 'Médecine fondée sur les preuves', 'Télémédecine depuis Zurich'],
+      tag: 'Notre exigence',
+      title: 'Ce que vous pouvez attendre de votre spécialiste',
+      points: [
+        'Gynécologue certifiée FMH en gynécologie et obstétrique',
+        'Certification complémentaire spécifique à la ménopause',
+        '45–60 minutes par consultation — sans précipitation, sans banalisation',
+        'Examen préalable de l\'intégralité de votre profil de santé',
+        'À jour des dernières données probantes sur la thérapie hormonale',
+        'Télémédecine depuis Zurich — sécurisée, chiffrée, depuis chez vous',
+      ],
+      note: 'En Suisse, la plupart des gynécologues n\'ont pas reçu de formation spécialisée en ménopause — elle ne fait pas partie du cursus FMH de base. Nous collaborons exclusivement avec des spécialistes qui ont comblé cette lacune.',
     },
     symptoms: {
       title: 'Ce que nous traitons',
       items: ['Bouffées de chaleur', 'Troubles du sommeil', 'Sautes d\'humeur', 'Sécheresse vaginale', 'Douleurs articulaires', 'Variations de poids', 'Brouillard mental', 'Baisse de libido'],
       note: 'Thérapie hormonale (THS), alternatives non hormonales et recommandations de mode de vie — fondées sur les preuves et personnalisées selon vos besoins, votre profil de risque et vos préférences.',
-    },
-    testimonials: {
-      title: 'Ce que disent nos patientes',
-      items: [
-        { quote: 'Ma gynécologue m\'a dit d\'attendre que ça passe. Ici, pour la première fois, quelqu\'un m\'a vraiment écoutée — et après 45 minutes, j\'avais un plan concret.', attribution: 'K., 48, Zurich' },
-        { quote: 'En 45 minutes, j\'ai eu plus de clarté qu\'en trois ans avec différents médecins. J\'ai enfin compris ce qui m\'arrivait.', attribution: 'S., 52, Winterthour' },
-        { quote: 'L\'ordonnance était à ma pharmacie le jour même. Mon médecin traitant m\'avait mise sous antidépresseurs pendant des mois sans jamais évoquer la ménopause.', attribution: 'M., 46, Zurich' },
-      ],
     },
     pricing: {
       title: 'Votre consultation',
@@ -143,20 +140,18 @@ const content = {
       note: 'Paiement par carte de crédit ou TWINT. Aucune démarche d\'assurance requise.',
     },
     faq: [
-      { q: 'Ai-je besoin d\'une ordonnance de mon médecin ?', a: 'Non. En Suisse, vous pouvez consulter directement une gynécologue sans ordonnance de votre médecin traitant. Il vous suffit de réserver et de payer.' },
-      { q: 'La consultation est-elle prise en charge par l\'assurance maladie ?', a: 'Les honoraires de CHF 300 sont à votre charge. Cependant, les médicaments prescrits (THS, progestérone, etc.) sont couverts par l\'assurance de base s\'ils figurent sur la liste des spécialités. Certaines assurances complémentaires couvrent également les consultations de prévention et de médecine complémentaire — renseignez-vous auprès de votre assureur.' },
-      { q: 'Des hormones me seront-elles prescrites ?', a: 'Cela dépend entièrement de vos symptômes, de vos antécédents médicaux et de vos préférences. Votre médecin discutera avec vous de toutes les options fondées sur les preuves — hormonales, non hormonales et basées sur le mode de vie — et ensemble, vous déciderez ce qui convient le mieux à votre situation. Il n\'existe pas d\'approche unique. C\'est précisément la raison d\'être d\'une consultation spécialisée.' },
-      { q: 'Mes patchs Estradot ne sont plus remboursés par l\'assurance. Pouvez-vous m\'aider ?', a: 'Oui. Sandoz a retiré Estradot de la liste des spécialités en septembre 2025 en raison d\'un litige tarifaire. Plusieurs alternatives de THS restent entièrement couvertes, notamment les gels d\'œstradiol transdermiques (Oestrogel, Estreva), les formulations orales et les préparations vaginales. Votre médecin vous aidera à trouver la meilleure alternative couverte pour votre situation.' },
-      { q: 'Qu\'est-ce qui distingue Equivie de ma gynécologue habituelle ?', a: 'La plupart des gynécologues en Suisse n\'ont pas reçu de formation spécialisée en ménopause — elle ne fait pas partie du cursus FMH de base. Nos médecins ont obtenu une certification complémentaire spécifique à la ménopause et se tiennent à jour des dernières données probantes sur la thérapie hormonale. 45–60 minutes par consultation (contre les 15–20 minutes habituelles), examen préalable de l\'intégralité de vos antécédents médicaux et plan de traitement écrit. C\'est un suivi spécialisé de la ménopause, pas un bilan de santé général.' },
-      { q: 'Que se passe-t-il après la consultation ?', a: 'Vous recevez votre plan de traitement et votre ordonnance sous 24 heures. L\'ordonnance est envoyée par voie électronique à la pharmacie de votre choix. Vous pouvez poser des questions de suivi par e-mail pendant 7 jours. Si vous avez besoin d\'un accompagnement continu, nous proposons un programme de suivi par abonnement (bientôt disponible).' },
+      { q: 'Ai-je besoin d\'une ordonnance de mon médecin ?', a: 'Non. En Suisse, vous pouvez consulter directement une gynécologue sans ordonnance de votre médecin traitant.' },
+      { q: 'La consultation est-elle prise en charge par l\'assurance maladie ?', a: 'Les honoraires de consultation sont à votre charge. Cependant, les médicaments prescrits (THS, progestérone, etc.) sont couverts par l\'assurance de base s\'ils figurent sur la liste des spécialités. Certaines assurances complémentaires couvrent également les consultations de prévention — renseignez-vous auprès de votre assureur.' },
+      { q: 'L\'hormonothérapie est-elle la seule option ?', a: 'Non. Votre médecin discutera avec vous de toutes les options fondées sur les preuves — hormonales, non hormonales et basées sur le mode de vie — et ensemble, vous déciderez ce qui convient le mieux à votre situation.' },
+      { q: 'Mes patchs Estradot ne sont plus remboursés. Que faire ?', a: 'Sandoz a retiré Estradot de la liste des spécialités en septembre 2025 en raison d\'un litige tarifaire. Plusieurs alternatives de THS restent entièrement couvertes, notamment les gels d\'œstradiol transdermiques (Oestrogel, Estreva), les formulations orales et les préparations vaginales.' },
+      { q: 'Qu\'est-ce qui distingue une spécialiste de la ménopause d\'une gynécologue habituelle ?', a: 'La plupart des gynécologues en Suisse n\'ont pas reçu de formation spécialisée en ménopause — elle ne fait pas partie du cursus FMH de base. Les spécialistes de la ménopause ont obtenu une certification complémentaire et se tiennent à jour des dernières données probantes sur la thérapie hormonale.' },
       { q: 'Quels symptômes traitez-vous ?', a: 'Bouffées de chaleur, sueurs nocturnes, troubles du sommeil, sautes d\'humeur, anxiété, brouillard mental, douleurs articulaires, sécheresse vaginale, baisse de libido, variations de poids, palpitations cardiaques et fatigue. Si vos symptômes sont liés à la périménopause ou à la ménopause, nous pouvons vous aider.' },
-      { q: 'Comment fonctionne la consultation vidéo ?', a: 'Après votre réservation, vous recevez un lien pour un appel vidéo sécurisé (chiffré, hébergé sur des serveurs suisses). Vous vous connectez depuis votre smartphone, tablette ou ordinateur. Aucun logiciel à installer. Votre médecin est basée à Zurich et autorisée à exercer dans le canton de Zurich.' },
     ],
     footerCta: 'Prête ? Votre ménopause mérite mieux que l\'attente.',
     footer: {
       tagline: 'Télémédecine depuis Zurich',
       contact: 'contact@equivie.ch',
-      medical: 'Direction médicale : Dre méd. [Nom], FMH gynécologie et obstétrique',
+      medical: 'Soins spécialisés de la ménopause par des gynécologues certifiées FMH',
     },
   },
   en: {
@@ -185,23 +180,22 @@ const content = {
       ],
     },
     doctor: {
-      name: 'Dr. med. [Name]',
-      title: 'Specialist in Gynaecology & Obstetrics (FMH Board Certified) | Menopause Specialist',
-      bio: 'Dr. [Name] is one of fewer than [X] physicians in Switzerland with specialist menopause certification. With [X] years of clinical experience in perimenopause, menopause, and hormone therapy, Dr. [Name] brings the expertise that most doctors simply were not trained to provide. 45–60 minutes per consultation because menopause is not a 20-minute conversation. Full health profile review before your session because repeating your story to yet another doctor who doesn\u2019t listen is part of the problem we\u2019re solving.',
-      badges: ['FMH Board Certified', 'Menopause Specialist', 'Evidence-Based Medicine', 'Telehealth from Zürich'],
+      tag: 'Our standard',
+      title: 'What you can expect from your specialist',
+      points: [
+        'FMH board-certified gynaecologist',
+        'Additional menopause-specific certification',
+        '45–60 minutes per consultation — no rush, no dismissal',
+        'Full health profile review before your session',
+        'Up to date with the latest evidence on hormone therapy',
+        'Telehealth from Zürich — secure, encrypted, from the comfort of home',
+      ],
+      note: 'Most gynaecologists in Switzerland have not received specialist menopause training — it is not part of the core FMH curriculum. We work exclusively with specialists who have closed that gap.',
     },
     symptoms: {
       title: 'What we treat',
       items: ['Hot flashes', 'Sleep disruption', 'Mood changes', 'Vaginal dryness', 'Joint pain', 'Weight changes', 'Brain fog', 'Low libido'],
       note: 'Hormone therapy (HRT), non-hormonal alternatives, and lifestyle recommendations — evidence-based and personalised to your needs, your risk profile, and your preferences.',
-    },
-    testimonials: {
-      title: 'What our patients say',
-      items: [
-        { quote: 'My gynaecologist told me to just wait it out. Here, for the first time, someone actually listened — and after 45 minutes I had a concrete plan.', attribution: 'K., 48, Zürich' },
-        { quote: 'In 45 minutes I had more clarity than in three years with different doctors. I finally knew what was happening to me.', attribution: 'S., 52, Winterthur' },
-        { quote: 'The prescription was at my pharmacy the same day. My GP had put me on antidepressants for months without ever discussing menopause.', attribution: 'M., 46, Zürich' },
-      ],
     },
     pricing: {
       title: 'Your consultation',
@@ -219,20 +213,18 @@ const content = {
       note: 'Pay by credit card or TWINT. No insurance paperwork needed.',
     },
     faq: [
-      { q: 'Do I need a referral?', a: 'No. In Switzerland, you can see a gynaecologist directly without a GP referral. You simply book and pay.' },
-      { q: 'Is the consultation covered by health insurance?', a: 'The CHF 300 consultation fee is self-pay. However, any medications prescribed (HRT, progesterone, etc.) are covered by your Grundversicherung if they are on the Spezialitätenliste. Some Zusatzversicherung plans also cover prevention and complementary consultations — check with your insurer.' },
-      { q: 'Will I be prescribed hormones?', a: 'That depends entirely on your symptoms, medical history, and preferences. Our doctor will discuss all evidence-based options with you — hormonal, non-hormonal, and lifestyle-based — and together you\u2019ll decide what\u2019s right for your situation. There is no one-size-fits-all approach. That\u2019s exactly why a specialist consultation exists.' },
-      { q: 'My Estradot patches are no longer covered by insurance. Can you help?', a: 'Yes. Sandoz removed Estradot from the Spezialitätenliste in September 2025 due to a price dispute. Several alternative HRT products remain fully covered, including transdermal estradiol gels (Oestrogel, Estreva), oral formulations, and vaginal preparations. Our doctor will help you find the best covered alternative for your situation.' },
-      { q: 'What makes this different from seeing my regular gynaecologist?', a: 'Most gynaecologists in Switzerland have not received specialist menopause training — it is not part of the core FMH curriculum. Our doctors have completed additional menopause-specific certification and stay current with the latest evidence on hormone therapy. 45–60 minutes per consultation (versus the typical 15–20 minutes), full medical history reviewed in advance, and a written treatment plan. This is specialist menopause care, not a general wellness check.' },
-      { q: 'What happens after the consultation?', a: 'You receive your treatment plan and prescription within 24 hours. The prescription is sent electronically to your chosen pharmacy. You can email follow-up questions for 7 days. If you need ongoing support, we offer a subscription care programme (coming soon).' },
+      { q: 'Do I need a referral?', a: 'No. In Switzerland, you can see a gynaecologist directly without a GP referral.' },
+      { q: 'Is the consultation covered by health insurance?', a: 'The consultation fee is self-pay. However, any medications prescribed (HRT, progesterone, etc.) are covered by your Grundversicherung if they are on the Spezialitätenliste. Some Zusatzversicherung plans also cover prevention and complementary consultations — check with your insurer.' },
+      { q: 'Is hormone therapy the only option?', a: 'No. Your specialist will discuss all evidence-based options with you — hormonal, non-hormonal, and lifestyle-based — and together you\u2019ll decide what\u2019s right for your situation. There is no one-size-fits-all approach.' },
+      { q: 'My Estradot patches are no longer covered by insurance. What now?', a: 'Sandoz removed Estradot from the Spezialitätenliste in September 2025 due to a price dispute. Several alternative HRT products remain fully covered, including transdermal estradiol gels (Oestrogel, Estreva), oral formulations, and vaginal preparations.' },
+      { q: 'What makes a menopause specialist different from a regular gynaecologist?', a: 'Most gynaecologists in Switzerland have not received specialist menopause training — it is not part of the core FMH curriculum. Menopause specialists have completed additional certification and stay current with the latest evidence on hormone therapy.' },
       { q: 'What symptoms do you treat?', a: 'Hot flashes, night sweats, sleep disruption, mood changes, anxiety, brain fog, joint pain, vaginal dryness, low libido, weight changes, heart palpitations, and fatigue. If your symptoms are related to perimenopause or menopause, we can help.' },
-      { q: 'How does the video consultation work?', a: 'After booking you receive a link for a secure video call (encrypted, Swiss-hosted). You connect from your phone, tablet, or computer. No software to install. Your doctor is based in Zürich and licensed to practise in Kanton Zürich.' },
     ],
     footerCta: 'Ready? Your menopause deserves more than waiting it out.',
     footer: {
       tagline: 'Telehealth from Zürich',
       contact: 'contact@equivie.ch',
-      medical: 'Medical Director: Dr. med. [Name], FMH Board Certified Gynaecology & Obstetrics',
+      medical: 'Specialist menopause care by FMH board-certified gynaecologists',
     },
   },
 };
@@ -320,6 +312,9 @@ export default function Landing() {
 
   const toggleFaq = (i) => setOpenFaq(openFaq === i ? null : i);
 
+  /* Waitlist modal state */
+  const [waitlistOpen, setWaitlistOpen] = useState(false);
+
   /* Quiz state */
   const [quizOpen, setQuizOpen] = useState(false);
   const [quizScreen, setQuizScreen] = useState('questions');
@@ -372,7 +367,7 @@ export default function Landing() {
       {/* ════════════════════════════════════════════
           HEADER
           ════════════════════════════════════════════ */}
-      <HeaderMain />
+      <HeaderMain onBookClick={() => setWaitlistOpen(true)} />
 
       {/* ════════════════════════════════════════════
           QUIZ BAR (collapsible)
@@ -490,7 +485,7 @@ export default function Landing() {
                 <div className="bg-forest rounded-[2px] p-8 md:p-10 text-center mb-8">
                   <h3 className="font-serif font-bold text-cream text-2xl md:text-3xl mb-3">{lang === 'de' ? 'Sprechen Sie mit einer Menopause-Fachperson' : 'Talk to a menopause specialist'}</h3>
                   <p className="font-sans text-cream/70 text-sm leading-relaxed mb-6 max-w-md mx-auto">{lang === 'de' ? '45–60 Minuten Video-Konsultation. Diagnose, Behandlungsplan und Rezept — in einer Sitzung.' : '45–60 min video consultation. Diagnosis, treatment plan, and prescription — in one session.'}</p>
-                  <a href="#pricing" className="inline-block bg-rose text-cream font-sans font-medium text-sm uppercase tracking-wider px-10 py-4 rounded-[2px] hover:bg-rose/90 transition-colors">{lang === 'de' ? 'Termin buchen — CHF 300' : 'Book your consultation — CHF 300'}</a>
+                  <button onClick={() => setWaitlistOpen(true)} className="inline-block bg-rose text-cream font-sans font-medium text-sm uppercase tracking-wider px-10 py-4 rounded-[2px] hover:bg-rose/90 transition-colors border-0 cursor-pointer">{lang === 'de' ? 'Termin buchen — CHF 300' : 'Book your consultation — CHF 300'}</button>
                 </div>
                 <div className="text-center">
                   <button onClick={() => { setQuizScreen('questions'); setStepIndex(0); setAnswers({}); setSelectedValue(null); setShowEmpathy(false); }} className="font-sans text-stone/50 text-xs underline bg-transparent border-0 cursor-pointer hover:text-stone transition-colors">{lang === 'de' ? 'Check-in wiederholen' : 'Retake check-in'}</button>
@@ -515,12 +510,12 @@ export default function Landing() {
               <p className="font-sans text-stone text-lg leading-relaxed mb-10 max-w-lg">
                 {t.hero.subhead}
               </p>
-              <a
-                href="#pricing"
-                className="inline-block bg-forest text-cream font-sans font-medium text-sm uppercase tracking-wider px-8 py-4 rounded-[2px] hover:bg-forest-mid transition-colors"
+              <button
+                onClick={() => setWaitlistOpen(true)}
+                className="inline-block bg-forest text-cream font-sans font-medium text-sm uppercase tracking-wider px-8 py-4 rounded-[2px] hover:bg-forest-mid transition-colors border-0 cursor-pointer"
               >
                 {t.hero.cta}
-              </a>
+              </button>
               <p className="font-sans text-stone text-sm mt-4">{t.hero.note}</p>
             </div>
 
@@ -600,43 +595,28 @@ export default function Landing() {
       </section>
 
       {/* ════════════════════════════════════════════
-          4. YOUR DOCTOR
+          4. OUR STANDARD
           ════════════════════════════════════════════ */}
       <section className="fade-in-section bg-cream">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Photo placeholder */}
-            <div className="bg-cream-dark border border-border rounded-lg aspect-[4/5] flex items-center justify-center max-w-md mx-auto lg:mx-0 w-full">
-              <div className="text-center">
-                <div className="w-32 h-32 rounded-full bg-sage/20 mx-auto mb-4 flex items-center justify-center">
-                  <span className="font-serif text-sage text-3xl">FÄ</span>
-                </div>
-                <p className="font-sans text-stone-light text-sm">
-                  {lang === 'de' ? 'Foto Ihrer Fachperson' : 'Photo of your specialist'}
-                </p>
-              </div>
-            </div>
-
-            {/* Bio */}
-            <div>
-              <span className="tag">
-                {lang === 'de' ? 'Ihre Fachperson' : 'Your specialist'}
-              </span>
-              <hr className="rule mt-5 mb-6" />
-              <h2 className="font-serif font-bold text-forest text-3xl md:text-4xl mb-2">
-                {t.doctor.name}
-              </h2>
-              <p className="font-sans text-sage text-sm font-medium mb-6">
-                {t.doctor.title}
-              </p>
-              <p className="font-body text-stone text-base leading-[1.8] mb-8">
-                {t.doctor.bio}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {t.doctor.badges.map((badge, i) => (
-                  <span key={i} className="tag">{badge}</span>
-                ))}
-              </div>
+          <div className="max-w-3xl mx-auto">
+            <span className="tag">{t.doctor.tag}</span>
+            <hr className="rule mt-5 mb-6" />
+            <h2 className="font-serif font-bold text-forest text-3xl md:text-4xl lg:text-5xl mb-10">
+              {t.doctor.title}
+            </h2>
+            <ul className="space-y-4 mb-10">
+              {t.doctor.points.map((point, i) => (
+                <li key={i} className="flex items-start gap-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B8F6E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-1" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                  <span className="font-sans text-stone text-base leading-relaxed">{point}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="bg-cream-dark border-l-4 border-sage rounded-r-[2px] p-6">
+              <p className="font-sans text-stone text-sm leading-relaxed">{t.doctor.note}</p>
             </div>
           </div>
         </div>
@@ -667,32 +647,6 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════
-          6. TESTIMONIALS
-          ════════════════════════════════════════════ */}
-      <section className="fade-in-section bg-rose-pale">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
-          <div className="text-center mb-14">
-            <span className="tag">{lang === 'de' ? 'Erfahrungen' : 'Testimonials'}</span>
-            <h2 className="font-serif font-bold text-forest text-3xl md:text-4xl lg:text-5xl mt-5">
-              {t.testimonials.title}
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {t.testimonials.items.map((item, i) => (
-              <div key={i} className="bg-white rounded-[2px] p-8 shadow-sm">
-                <span className="font-serif text-rose text-5xl leading-none select-none" aria-hidden="true">&ldquo;</span>
-                <p className="font-body text-stone text-sm leading-[1.8] mt-3 mb-6">
-                  {item.quote}
-                </p>
-                <div className="border-t border-border pt-4">
-                  <p className="font-sans font-medium text-forest text-sm">{item.attribution}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ════════════════════════════════════════════
           7. PRICING — Single card
@@ -725,12 +679,12 @@ export default function Landing() {
                   </p>
                 ))}
               </div>
-              <a
-                href="#"
-                className="block w-full bg-forest text-cream font-sans font-medium text-sm uppercase tracking-wider px-8 py-4 rounded-[2px] hover:bg-forest-mid transition-colors text-center"
+              <button
+                onClick={() => setWaitlistOpen(true)}
+                className="block w-full bg-forest text-cream font-sans font-medium text-sm uppercase tracking-wider px-8 py-4 rounded-[2px] hover:bg-forest-mid transition-colors text-center border-0 cursor-pointer"
               >
                 {t.pricing.cta}
-              </a>
+              </button>
               <p className="font-sans text-stone-light text-xs mt-4">
                 {t.pricing.note}
               </p>
@@ -816,6 +770,8 @@ export default function Landing() {
           </div>
         </div>
       </footer>
+
+      <WaitlistModal open={waitlistOpen} onClose={() => setWaitlistOpen(false)} />
     </div>
   );
 }
