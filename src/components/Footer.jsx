@@ -1,75 +1,86 @@
 import { Link } from 'react-router-dom'
 import { useLang } from '../context/LanguageContext'
 
-export default function Footer() {
-  const { lang, t } = useLang()
+const footerText = {
+  de: {
+    tagline: 'Telemedizin aus Zürich. Medizinische Begleitung für die Wechseljahre — diskret, kompetent, digital.',
+    noticeTitle: 'Wichtiger Hinweis',
+    notice: 'Equivie MED bietet keine medizinische Beratung, Diagnose oder Behandlung an. Unsere Plattform verbindet Sie mit zertifizierten Gesundheitsfachpersonen — darunter FMH-lizenzierte Ärztinnen und zertifizierte Naturheilpraktikerinnen —, die Ihre individuelle Situation beurteilen und eine persönliche Betreuung anbieten. Konsultieren Sie immer eine qualifizierte Fachperson, bevor Sie gesundheitliche Entscheidungen treffen.',
+    legalTitle: 'Rechtliches',
+    imprint: 'Impressum',
+    privacy: 'Datenschutz',
+    terms: 'AGB',
+    disclaimer: 'Equivie MED ist eine Telemedizinplattform, die unter Schweizer Bundesrecht operiert, einschliesslich des Bundesgesetzes über den Datenschutz (nDSG). Alle persönlichen und gesundheitsbezogenen Daten werden in der Schweiz verarbeitet und gespeichert.',
+  },
+  fr: {
+    tagline: 'Télémédecine depuis Zurich. Accompagnement médical pour la ménopause — discret, compétent, numérique.',
+    noticeTitle: 'Avis important',
+    notice: 'Equivie MED ne fournit pas de conseils médicaux, de diagnostic ni de traitement. Notre plateforme vous met en relation avec des professionnels de santé certifiés — dont des médecins agréés FMH et des naturopathes certifiés — qui évaluent votre situation individuelle et vous offrent des soins personnalisés. Consultez toujours un professionnel qualifié avant de prendre des décisions concernant votre santé.',
+    legalTitle: 'Juridique',
+    imprint: 'Mentions légales',
+    privacy: 'Politique de confidentialité',
+    terms: 'Conditions d\'utilisation',
+    disclaimer: 'Equivie MED est une plateforme de télémédecine opérant sous le droit fédéral suisse, y compris la loi fédérale sur la protection des données (nLPD). Toutes les données personnelles et de santé sont traitées et stockées en Suisse.',
+  },
+  en: {
+    tagline: 'Telehealth from Zurich. Medical support for menopause — discreet, expert, digital.',
+    noticeTitle: 'Important notice',
+    notice: 'Equivie MED does not provide medical advice, diagnosis, or treatment. Our platform connects you with certified healthcare professionals — including FMH-licensed physicians and certified naturopaths — who assess your individual situation and provide personalised care. Always consult a qualified professional before making health decisions.',
+    legalTitle: 'Legal',
+    imprint: 'Legal notice',
+    privacy: 'Privacy policy',
+    terms: 'Terms of use',
+    disclaimer: 'Equivie MED is a telemedicine platform operating under Swiss federal law, including the Federal Act on Data Protection (nDSG). All personal and health data is processed and stored in Switzerland.',
+  },
+}
 
-  const contactLabel = lang === 'fr' ? 'Contact' : lang === 'en' ? 'Contact' : 'Kontakt'
+export default function Footer() {
+  const { lang } = useLang()
+  const f = footerText[lang] || footerText.de
 
   return (
     <footer className="bg-forest text-cream/80">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
-          {/* Brand column */}
-          <div className="lg:col-span-2">
-            <Link to="/" className="inline-block">
-              <p className="font-serif text-2xl font-bold text-cream">
-                <span className="text-cream">Equi</span>
-                <span className="text-sage font-bold">vie</span>
-                <span className="text-cream font-sans font-medium uppercase text-[0.55em] tracking-widest ml-1.5">med</span>
-              </p>
-            </Link>
-            <p className="mt-3 text-sm leading-relaxed text-cream/60 font-light max-w-md">
-              {t.footer?.tagline}
-            </p>
-            <div className="mt-4 flex items-center gap-4 text-xs text-cream/40">
-              <span>Swiss-regulated</span>
-              <span className="w-1 h-1 rounded-full bg-sage" />
-              <span>nDSG compliant</span>
-              <span className="w-1 h-1 rounded-full bg-sage" />
-              <span>HIN e-prescription</span>
-            </div>
-          </div>
+        {/* Brand */}
+        <Link to="/" className="inline-block">
+          <p className="font-serif text-2xl font-bold text-cream">
+            <span className="text-cream">Equi</span>
+            <span className="text-sage font-bold">vie</span>
+            <span className="text-cream font-sans font-medium uppercase text-[0.55em] tracking-widest ml-1.5">med</span>
+          </p>
+        </Link>
+        <p className="mt-3 text-sm leading-relaxed text-cream/60 font-light max-w-xl">
+          {f.tagline}
+        </p>
 
-          {/* Contact column */}
-          <div>
-            <h4 className="text-xs font-medium tracking-widest uppercase text-cream/40 mb-4 font-sans">
-              {contactLabel}
-            </h4>
-            <p className="font-sans text-cream/70 text-sm">contact@equivie.ch</p>
-            <p className="font-sans text-cream/40 text-xs leading-relaxed mt-3">
-              {t.footer?.regulatory}
-            </p>
-          </div>
+        {/* Important notice */}
+        <div className="mt-10">
+          <h4 className="text-xs font-medium tracking-widest uppercase text-cream/40 mb-3 font-sans">
+            {f.noticeTitle}
+          </h4>
+          <p className="text-xs leading-relaxed text-cream/40 max-w-3xl">
+            {f.notice}
+          </p>
+        </div>
 
-          {/* Legal column */}
-          <div>
-            <h4 className="text-xs font-medium tracking-widest uppercase text-cream/40 mb-4 font-sans">
-              {lang === 'fr' ? 'Juridique' : lang === 'en' ? 'Legal' : 'Rechtliches'}
-            </h4>
-            <div className="flex flex-col gap-2.5">
-              <Link to="/impressum" className="text-sm text-cream/70 hover:text-cream transition-colors">
-                {t.footer?.links?.imprint || 'Impressum'}
-              </Link>
-              <Link to="/datenschutz" className="text-sm text-cream/70 hover:text-cream transition-colors">
-                {t.footer?.links?.privacy || 'Datenschutz'}
-              </Link>
-              <Link to="/agb" className="text-sm text-cream/70 hover:text-cream transition-colors">
-                {t.footer?.links?.terms || 'AGB'}
-              </Link>
-            </div>
+        {/* Legal links */}
+        <div className="mt-10">
+          <h4 className="text-xs font-medium tracking-widest uppercase text-cream/40 mb-3 font-sans">
+            {f.legalTitle}
+          </h4>
+          <div className="flex items-center gap-2 text-sm">
+            <Link to="/impressum" className="text-cream/70 hover:text-cream transition-colors">{f.imprint}</Link>
+            <span className="text-cream/30">&middot;</span>
+            <Link to="/datenschutz" className="text-cream/70 hover:text-cream transition-colors">{f.privacy}</Link>
+            <span className="text-cream/30">&middot;</span>
+            <Link to="/agb" className="text-cream/70 hover:text-cream transition-colors">{f.terms}</Link>
           </div>
         </div>
 
-        {/* Divider + copyright */}
-        <div className="mt-12 pt-8 border-t border-cream/10">
-          {t.footer?.legal && (
-            <p className="text-cream/40 text-xs leading-relaxed max-w-2xl mb-4">
-              {t.footer.legal}
-            </p>
-          )}
-          <p className="text-xs text-cream/30">
-            &copy; {new Date().getFullYear()} Equivie MED. {lang === 'fr' ? 'Tous droits réservés.' : lang === 'en' ? 'All rights reserved.' : 'Alle Rechte vorbehalten.'}
+        {/* Disclaimer */}
+        <div className="mt-10 pt-8 border-t border-cream/10">
+          <p className="text-xs leading-relaxed text-cream/30 max-w-3xl">
+            {f.disclaimer}
           </p>
         </div>
       </div>
