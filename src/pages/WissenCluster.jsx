@@ -44,9 +44,23 @@ export default function WissenCluster() {
 
   const toggleFaq = (i) => setOpenFaq(openFaq === i ? null : i);
 
+  // Resolve content: multilingual object (new pillar articles) or flat string (old articles)
+  const resolvedPillarContent = pillarArticle
+    ? (typeof pillarArticle.content === 'object'
+        ? (pillarArticle.content[lang] || pillarArticle.content.de || '')
+        : pillarArticle.content)
+    : '';
+
+  // Resolve faq: multilingual object or flat array
+  const resolvedPillarFaq = pillarArticle
+    ? (Array.isArray(pillarArticle.faq)
+        ? pillarArticle.faq
+        : (pillarArticle.faq ? (pillarArticle.faq[lang] || pillarArticle.faq.de || []) : []))
+    : [];
+
   // Parse headings from pillar content for TOC
-  const pillarParagraphs = pillarArticle
-    ? pillarArticle.content.split(/\n\n+/).map((p) => p.trim()).filter(Boolean)
+  const pillarParagraphs = resolvedPillarContent
+    ? resolvedPillarContent.split(/\n\n+/).map((p) => p.trim()).filter(Boolean)
     : [];
 
   const breadcrumbWissen = lang === 'fr' ? 'Savoir' : lang === 'en' ? 'Knowledge' : 'Wissen';
@@ -126,13 +140,13 @@ export default function WissenCluster() {
               ))}
 
               {/* FAQ Accordion */}
-              {pillarArticle.faq && pillarArticle.faq.length > 0 && (
+              {resolvedPillarFaq && resolvedPillarFaq.length > 0 && (
                 <div className="mt-14 pt-10 border-t border-sage/20">
                   <h3 className="font-serif font-bold text-forest text-2xl mb-6">
                     {lang === 'fr' ? 'Questions frequentes' : lang === 'en' ? 'Frequently asked questions' : 'Haufig gestellte Fragen'}
                   </h3>
                   <div className="divide-y divide-sage/20 border-t border-sage/20">
-                    {pillarArticle.faq.map((item, i) => (
+                    {resolvedPillarFaq.map((item, i) => (
                       <div key={i}>
                         <button
                           onClick={() => toggleFaq(i)}

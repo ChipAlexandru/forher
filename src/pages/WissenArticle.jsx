@@ -68,7 +68,17 @@ export default function WissenArticle() {
     );
   }
 
-  const paragraphs = article.content
+  // Resolve content: multilingual object (new pillar articles) or flat string (old articles)
+  const resolvedContent = typeof article.content === 'object'
+    ? (article.content[lang] || article.content.de || '')
+    : article.content;
+
+  // Resolve faq: multilingual object or flat array
+  const resolvedFaq = Array.isArray(article.faq)
+    ? article.faq
+    : (article.faq ? (article.faq[lang] || article.faq.de || []) : []);
+
+  const paragraphs = resolvedContent
     .split(/\n\n+/)
     .map((p) => p.trim())
     .filter(Boolean);
@@ -101,11 +111,11 @@ export default function WissenArticle() {
     mainEntityOfPage: `https://equiviemed.ch/wissen/${clusterSlug}/${slug}`,
   };
 
-  const faqSchema = article.faq && article.faq.length > 0
+  const faqSchema = resolvedFaq && resolvedFaq.length > 0
     ? {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
-        mainEntity: article.faq.map((item) => ({
+        mainEntity: resolvedFaq.map((item) => ({
           '@type': 'Question',
           name: item.q,
           acceptedAnswer: {
@@ -237,13 +247,13 @@ export default function WissenArticle() {
               })}
 
               {/* FAQ Section */}
-              {article.faq && article.faq.length > 0 && (
+              {resolvedFaq && resolvedFaq.length > 0 && (
                 <div className="mt-14 pt-10 border-t border-sage/20">
                   <h2 className="font-serif font-bold text-forest text-2xl mb-6">
                     {lang === 'fr' ? 'Questions frequentes' : lang === 'en' ? 'Frequently asked questions' : 'Haufig gestellte Fragen'}
                   </h2>
                   <div className="divide-y divide-sage/20 border-t border-sage/20">
-                    {article.faq.map((item, i) => (
+                    {resolvedFaq.map((item, i) => (
                       <div key={i}>
                         <button
                           onClick={() => toggleFaq(i)}
