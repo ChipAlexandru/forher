@@ -49,7 +49,7 @@ export default function WissenArticle() {
   const breadcrumbWissen = lang === 'fr' ? 'Savoir' : lang === 'en' ? 'Knowledge' : 'Wissen';
   const minuteRead = lang === 'fr' ? 'min de lecture' : lang === 'en' ? 'min read' : 'Min. Lesezeit';
   const lastUpdated = lang === 'fr' ? 'Derniere mise a jour' : lang === 'en' ? 'Last updated' : 'Zuletzt aktualisiert';
-  const medReviewed = lang === 'fr' ? 'Medicalement verifie le' : lang === 'en' ? 'Medically reviewed on' : 'Medizinisch gepruft am';
+  const publishedOn = lang === 'fr' ? 'Publié le' : lang === 'en' ? 'Published' : 'Veröffentlicht am';
 
   if (!article || !cluster) {
     return (
@@ -174,7 +174,7 @@ export default function WissenArticle() {
                 </div>
                 <span className="text-sage/40 hidden sm:inline" aria-hidden="true">&middot;</span>
                 <span className="font-sans text-sm text-charcoal-light">
-                  {medReviewed} {formatDate(article.date)}
+                  {publishedOn} {formatDate(article.date)}
                 </span>
                 <span className="text-sage/40 hidden sm:inline" aria-hidden="true">&middot;</span>
                 <span className="font-sans text-sm text-charcoal-light">

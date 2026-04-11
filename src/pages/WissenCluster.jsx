@@ -77,7 +77,6 @@ export default function WissenCluster() {
             </span>
           </nav>
 
-          <span className="text-4xl mb-4 block" aria-hidden="true">{cluster.icon}</span>
           <h1 className="font-serif font-bold text-forest text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight max-w-3xl mb-4">
             {cluster.title[lang] || cluster.title.de}
           </h1>

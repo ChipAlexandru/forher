@@ -8,19 +8,19 @@ const pageText = {
   de: {
     tag: 'Wissen',
     title: 'Evidenzbasiertes Wissen zu den Wechseljahren',
-    subtitle: 'Medizinisch geprufte Artikel zu Perimenopause, Hormontherapie, Symptomen und Behandlungsoptionen. Geschrieben und uberpruft von Schweizer Fachärztinnen.',
+    subtitle: 'Evidenzbasierte Artikel zu Perimenopause, Hormontherapie, Symptomen und Behandlungsoptionen.',
     articles: 'Artikel',
   },
   en: {
     tag: 'Knowledge',
     title: 'Evidence-based menopause knowledge',
-    subtitle: 'Medically reviewed articles on perimenopause, hormone therapy, symptoms and treatment options. Written and reviewed by Swiss medical specialists.',
+    subtitle: 'Evidence-based articles on perimenopause, hormone therapy, symptoms and treatment options.',
     articles: 'articles',
   },
   fr: {
     tag: 'Savoir',
     title: 'Connaissances fondees sur les preuves',
-    subtitle: 'Articles medicalement revises sur la perimenopause, la therapie hormonale, les symptomes et les options de traitement.',
+    subtitle: 'Articles fondés sur les preuves concernant la périménopause, la thérapie hormonale, les symptômes et les options de traitement.',
     articles: 'articles',
   },
 };
@@ -69,11 +69,6 @@ export default function WissenIndex() {
                   to={`/wissen/${cluster.slug}`}
                   className="bg-white border border-sage/20 rounded-[2px] p-6 lg:p-7 flex flex-col hover:border-sage/50 hover:shadow-sm transition-all duration-200 no-underline group"
                 >
-                  {/* Icon */}
-                  <span className="text-3xl mb-4" aria-hidden="true">
-                    {cluster.icon}
-                  </span>
-
                   {/* Title */}
                   <h2 className="font-serif font-bold text-forest text-xl leading-snug mb-3 group-hover:text-sage transition-colors">
                     {cluster.title[lang] || cluster.title.de}

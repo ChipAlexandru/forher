@@ -7,7 +7,7 @@ export const clusters = [
       en: 'Early signs, diagnosis, and the beginning of hormonal transition.',
       fr: 'Premiers signes, diagnostic et debut de la transition hormonale.',
     },
-    icon: '\u{1F321}\uFE0F',
+    icon: null,
   },
   {
     slug: 'symptome',
@@ -17,7 +17,7 @@ export const clusters = [
       en: 'Hot flashes, sleep issues, mood swings and what helps.',
       fr: 'Bouffees de chaleur, troubles du sommeil, sautes d\'humeur et solutions.',
     },
-    icon: '\u{1FA7A}',
+    icon: null,
   },
   {
     slug: 'hormontherapie',
@@ -27,7 +27,7 @@ export const clusters = [
       en: 'Evidence-based information on hormone replacement therapy, risks and benefits.',
       fr: 'Informations fondees sur les preuves concernant le THS, risques et benefices.',
     },
-    icon: '\u{1F48A}',
+    icon: null,
   },
   {
     slug: 'psychische-gesundheit',
@@ -37,7 +37,7 @@ export const clusters = [
       en: 'Depression, anxiety, and cognitive changes during menopause.',
       fr: 'Depression, anxiete et changements cognitifs pendant la menopause.',
     },
-    icon: '\u{1F9E0}',
+    icon: null,
   },
   {
     slug: 'ernaehrung',
@@ -47,7 +47,7 @@ export const clusters = [
       en: 'Nutritional strategies, vitamins and minerals for menopause.',
       fr: 'Strategies nutritionnelles, vitamines et mineraux pour la menopause.',
     },
-    icon: '\u{1F96C}',
+    icon: null,
   },
   {
     slug: 'sexualitaet',
@@ -57,7 +57,7 @@ export const clusters = [
       en: 'Vaginal dryness, libido and intimacy during menopause.',
       fr: 'Secheresse vaginale, libido et intimite pendant la menopause.',
     },
-    icon: '\u{1F495}',
+    icon: null,
   },
   {
     slug: 'nach-den-wechseljahren',
@@ -67,7 +67,7 @@ export const clusters = [
       en: 'Bone health, cardiovascular care and long-term prevention.',
       fr: 'Sante osseuse, cardiovasculaire et prevention a long terme.',
     },
-    icon: '\u{1F9B4}',
+    icon: null,
   },
   {
     slug: 'arbeitsplatz',
@@ -77,7 +77,7 @@ export const clusters = [
       en: 'Workplace support, policies and practical accommodations.',
       fr: 'Soutien au travail, politiques et amenagements pratiques.',
     },
-    icon: '\u{1F4BC}',
+    icon: null,
   },
   {
     slug: 'behandlungsoptionen',
@@ -87,7 +87,7 @@ export const clusters = [
       en: 'Hormonal and non-hormonal therapies compared.',
       fr: 'Therapies hormonales et non hormonales comparees.',
     },
-    icon: '\u{2696}\uFE0F',
+    icon: null,
   },
   {
     slug: 'schweiz',
@@ -97,7 +97,7 @@ export const clusters = [
       en: 'Insurance coverage, drug lists and the Swiss health system.',
       fr: 'Remboursement, liste des specialites et systeme de sante suisse.',
     },
-    icon: '\u{1F1E8}\u{1F1ED}',
+    icon: null,
   },
 ];
 
