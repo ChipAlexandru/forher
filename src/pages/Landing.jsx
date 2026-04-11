@@ -361,7 +361,7 @@ export default function Landing() {
         title="Equivie MED — Menopause specialists who listen | Switzerland"
         description={content.en.hero.subhead.slice(0, 155)}
         canonical="https://equiviemed.ch/"
-        ogImage="/og-image.svg"
+        ogImage="/og-image.png"
       />
 
       {/* ════════════════════════════════════════════

@@ -4,7 +4,7 @@ const BASE_URL = 'https://equiviemed.ch';
 const DEFAULTS = {
   title: 'Equivie MED — Menopause specialists who listen | Switzerland',
   description: 'Video consultation with a gynaecologist specialised in menopause. Diagnosis, personalised treatment plan and prescription in one 45-60 minute session. FMH-certified, Swiss-regulated.',
-  ogImage: '/og-image.svg',
+  ogImage: '/og-image.png',
   type: 'website',
 };
 
