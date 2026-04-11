@@ -5,16 +5,7 @@
 ## Main
 - [Homepage](https://equiviemed.ch/): Overview of services — video consultations with menopause specialists, how it works, pricing, and FAQ
 
-## Blog — Evidence-Based Menopause Guides
-- [All articles](https://equiviemed.ch/blog): Index of all published guides on menopause, hormones, and women's health
-- [Was ist die Perimenopause und wie erkenne ich sie?](https://equiviemed.ch/blog/was-ist-die-perimenopause): Recognising perimenopause — symptoms, timeline, when to seek medical advice
-- [HRT und Brustkrebs: Was sagt die aktuelle Forschung?](https://equiviemed.ch/blog/hrt-und-brustkrebs-aktuelle-forschung): Current evidence on hormone therapy and breast cancer risk — debunking outdated fears
-- [Warum Östrogen für die Knochengesundheit entscheidend ist](https://equiviemed.ch/blog/oestrogen-und-knochengesundheit): Oestrogen's role in bone health, osteoporosis prevention during menopause
-- [Wechseljahre am Arbeitsplatz](https://equiviemed.ch/blog/wechseljahre-am-arbeitsplatz): How menopause affects working women and what employers can do
-- [Die Abnahme von Estradot von der Spezialitätenliste](https://equiviemed.ch/blog/estradot-abnahme-spezialitaetenliste): Estradot removed from Swiss reimbursement list — what patients need to know
-- [Alternativen zu Estradot](https://equiviemed.ch/blog/alternativen-zu-estradot): Alternative transdermal oestrogen options available in Switzerland
-
-## Knowledge Hub (Wissen) — English Pillar Articles
+## Knowledge Hub (Wissen) — Pillar Articles
 - [Knowledge hub](https://equiviemed.ch/wissen): Index of all knowledge clusters and articles on menopause
 - [What Is Perimenopause?](https://equiviemed.ch/wissen/perimenopause/what-is-perimenopause): Symptoms, duration, and when to seek help — comprehensive perimenopause guide
 - [Menopause Symptoms](https://equiviemed.ch/wissen/symptome/symptoms-management): How to recognise every sign and find effective relief

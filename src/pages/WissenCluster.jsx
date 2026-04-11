@@ -3,6 +3,7 @@ import { useLang } from '../context/LanguageContext';
 import { useFadeIn } from '../hooks/useFadeIn';
 import { clusters, wissenArticles, getArticlesByCluster, getClusterBySlug } from '../data/wissen';
 import SEO from '../components/SEO';
+import MarkdownContent from '../components/MarkdownContent';
 import { useState } from 'react';
 
 function formatDate(dateString) {
@@ -58,10 +59,7 @@ export default function WissenCluster() {
         : (pillarArticle.faq ? (pillarArticle.faq[lang] || pillarArticle.faq.de || []) : []))
     : [];
 
-  // Parse headings from pillar content for TOC
-  const pillarParagraphs = resolvedPillarContent
-    ? resolvedPillarContent.split(/\n\n+/).map((p) => p.trim()).filter(Boolean)
-    : [];
+  // pillarParagraphs no longer needed — MarkdownContent handles rendering
 
   const breadcrumbWissen = lang === 'fr' ? 'Savoir' : lang === 'en' ? 'Knowledge' : 'Wissen';
   const readMoreLabel = lang === 'fr' ? 'Lire' : lang === 'en' ? 'Read' : 'Lesen';
@@ -126,18 +124,7 @@ export default function WissenCluster() {
               </div>
 
               {/* Body */}
-              {pillarParagraphs.map((paragraph, i) => (
-                <p
-                  key={i}
-                  className={
-                    i === 0
-                      ? 'font-sans text-xl leading-relaxed text-charcoal mb-7'
-                      : 'font-sans text-lg leading-relaxed text-charcoal mb-6'
-                  }
-                >
-                  {paragraph}
-                </p>
-              ))}
+              <MarkdownContent content={resolvedPillarContent} />
 
               {/* FAQ Accordion */}
               {resolvedPillarFaq && resolvedPillarFaq.length > 0 && (

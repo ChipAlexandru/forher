@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useLang } from '../context/LanguageContext';
 import { wissenArticles, getArticlesByCluster, getClusterBySlug } from '../data/wissen';
 import SEO from '../components/SEO';
+import MarkdownContent from '../components/MarkdownContent';
 
 function formatDate(dateString) {
   const date = new Date(dateString);
@@ -78,17 +79,13 @@ export default function WissenArticle() {
     ? article.faq
     : (article.faq ? (article.faq[lang] || article.faq.de || []) : []);
 
-  const paragraphs = resolvedContent
-    .split(/\n\n+/)
-    .map((p) => p.trim())
-    .filter(Boolean);
-
   // Build TOC from H2 headings in content
-  const tocItems = paragraphs
-    .filter((p) => p.startsWith('## '))
-    .map((p) => {
-      const text = p.replace(/^## /, '');
-      const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  const tocItems = resolvedContent
+    .split('\n')
+    .filter((line) => line.trim().startsWith('## ') && !line.trim().startsWith('### '))
+    .map((line) => {
+      const text = line.trim().replace(/^## /, '');
+      const id = text.toLowerCase().replace(/[^a-z0-9äöüàéèêïôùûç]+/g, '-').replace(/(^-|-$)/g, '');
       return { text, id };
     });
 
@@ -207,44 +204,7 @@ export default function WissenArticle() {
 
             {/* ARTICLE BODY */}
             <article className="max-w-3xl">
-              {paragraphs.map((paragraph, i) => {
-                // H2 heading
-                if (paragraph.startsWith('## ')) {
-                  const headingText = paragraph.replace(/^## /, '');
-                  const headingId = headingText.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-                  return (
-                    <h2
-                      key={i}
-                      id={headingId}
-                      className="font-serif font-bold text-forest text-2xl mt-10 mb-5 scroll-mt-24"
-                    >
-                      {headingText}
-                    </h2>
-                  );
-                }
-
-                // Render inline bold (**text**) as <strong>
-                const renderWithBold = (text) => {
-                  const parts = text.split(/\*\*(.+?)\*\*/g);
-                  if (parts.length === 1) return text;
-                  return parts.map((part, j) =>
-                    j % 2 === 1 ? <strong key={j} className="font-semibold">{part}</strong> : part
-                  );
-                };
-
-                return (
-                  <p
-                    key={i}
-                    className={
-                      i === 0
-                        ? 'font-sans text-xl leading-relaxed text-charcoal mb-7'
-                        : 'font-sans text-lg leading-relaxed text-charcoal mb-6'
-                    }
-                  >
-                    {renderWithBold(paragraph)}
-                  </p>
-                );
-              })}
+              <MarkdownContent content={resolvedContent} />
 
               {/* FAQ Section */}
               {resolvedFaq && resolvedFaq.length > 0 && (

@@ -59,9 +59,15 @@ export default function WissenIndex() {
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-24">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {clusters.map((cluster) => {
-              const articleCount = wissenArticles.filter(
+              const clusterArticles = wissenArticles.filter(
                 (a) => a.cluster === cluster.slug
-              ).length;
+              );
+              const totalCount = clusterArticles.length;
+              const supportingCount = clusterArticles.filter((a) => !a.isPillar).length;
+
+              const countLabel = supportingCount > 0
+                ? `${totalCount} ${t.articles}`
+                : (lang === 'fr' ? 'Guide complet' : lang === 'en' ? 'Comprehensive guide' : 'Umfassender Ratgeber');
 
               return (
                 <Link
@@ -79,9 +85,9 @@ export default function WissenIndex() {
                     {cluster.description[lang] || cluster.description.de}
                   </p>
 
-                  {/* Article count */}
+                  {/* Article count or guide label */}
                   <span className="font-sans text-xs uppercase tracking-widest text-sage">
-                    {articleCount} {t.articles}
+                    {countLabel}
                   </span>
                 </Link>
               );

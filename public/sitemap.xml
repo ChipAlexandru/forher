@@ -10,11 +10,6 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/" />
   </url>
   <url>
-    <loc>https://equiviemed.ch/blog</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://equiviemed.ch/wissen</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
