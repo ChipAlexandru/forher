@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useLang } from '../context/LanguageContext';
 import { useFadeIn } from '../hooks/useFadeIn';
 import { articles } from '../data/articles';
+import SEO from '../components/SEO';
 
 const cardPhotos = [
   'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&q=80',
@@ -33,6 +34,12 @@ export default function Blog() {
 
   return (
     <div ref={containerRef}>
+      <SEO
+        title="Blog — Equivie MED | Menopause health resources"
+        description="Evidence-based articles on menopause, perimenopause, hormone therapy and women's health. Written and reviewed by Swiss medical specialists."
+        canonical="https://equiviemed.ch/blog"
+        type="website"
+      />
 
       {/* PAGE HEADER */}
       <section className="fade-in-section bg-cream border-b border-sage/20">

@@ -51,7 +51,7 @@ export default function HeaderMain() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-7" role="navigation" aria-label="Main navigation">
             <a href={anchorHref('#how-it-works')} className="text-sm font-sans text-stone no-underline hover:text-forest transition-colors">
               {nav.howItWorks}
             </a>
@@ -65,12 +65,14 @@ export default function HeaderMain() {
 
           {/* Desktop Right: Lang Toggle + CTA */}
           <div className="hidden lg:flex items-center gap-5">
-            <div className="flex items-center gap-1.5 text-xs font-sans tracking-wide">
+            <div className="flex items-center gap-1.5 text-xs font-sans tracking-wide" role="group" aria-label="Language selection">
               {langs.map((l, i) => (
                 <span key={l} className="flex items-center gap-1.5">
                   {i > 0 && <span className="text-border">|</span>}
                   <button
                     onClick={() => setLang(l)}
+                    aria-label={`Switch language to ${l.toUpperCase()}`}
+                    aria-pressed={lang === l}
                     className={`bg-transparent border-0 cursor-pointer uppercase text-xs tracking-wide transition-colors ${
                       lang === l ? 'text-forest font-medium' : 'text-stone hover:text-forest'
                     }`}
@@ -90,12 +92,14 @@ export default function HeaderMain() {
 
           {/* Mobile: Lang Toggle + Hamburger */}
           <div className="flex lg:hidden items-center gap-3">
-            <div className="flex items-center gap-1 text-xs font-sans">
+            <div className="flex items-center gap-1 text-xs font-sans" role="group" aria-label="Language selection">
               {langs.map((l, i) => (
                 <span key={l} className="flex items-center gap-1">
                   {i > 0 && <span className="text-border">|</span>}
                   <button
                     onClick={() => setLang(l)}
+                    aria-label={`Switch language to ${l.toUpperCase()}`}
+                    aria-pressed={lang === l}
                     className={`bg-transparent border-0 cursor-pointer uppercase text-xs transition-colors ${
                       lang === l ? 'text-forest font-medium' : 'text-stone hover:text-forest'
                     }`}
@@ -126,7 +130,7 @@ export default function HeaderMain() {
       {menuOpen && (
         <div className="lg:hidden fixed inset-0 top-16 z-40">
           <div className="absolute inset-0 bg-charcoal/20" onClick={() => setMenuOpen(false)} />
-          <nav className="relative bg-cream border-t border-border/50 px-6 py-8 flex flex-col gap-1 shadow-lg">
+          <nav className="relative bg-cream border-t border-border/50 px-6 py-8 flex flex-col gap-1 shadow-lg" role="navigation" aria-label="Mobile navigation">
             <a href={anchorHref('#how-it-works')} onClick={() => setMenuOpen(false)} className="block py-3 text-base font-sans text-stone no-underline hover:text-forest transition-colors border-b border-border/30">
               {nav.howItWorks}
             </a>

@@ -3,6 +3,7 @@ import { useFadeIn } from '../hooks/useFadeIn';
 import { useLang } from '../context/LanguageContext';
 import { quizSteps, getProfile } from '../data/quizData';
 import HeaderMain from '../components/HeaderMain';
+import SEO from '../components/SEO';
 
 /* ──────────────────── CONTENT DATA ──────────────────── */
 const content = {
@@ -361,6 +362,12 @@ export default function Landing() {
 
   return (
     <div ref={containerRef} className="min-h-screen flex flex-col">
+      <SEO
+        title="Equivie MED — Menopause specialists who listen | Switzerland"
+        description={content.en.hero.subhead.slice(0, 155)}
+        canonical="https://equiviemed.ch/"
+        ogImage="/og-image.svg"
+      />
 
       {/* ════════════════════════════════════════════
           HEADER
@@ -370,7 +377,7 @@ export default function Landing() {
       {/* ════════════════════════════════════════════
           QUIZ BAR (collapsible)
           ════════════════════════════════════════════ */}
-      <section ref={quizRef} className="bg-rose-pale border-y border-rose/20">
+      <section ref={quizRef} className="bg-rose-pale border-y border-rose/20" aria-label="Menopause symptom check-in quiz">
         {!quizOpen && quizScreen !== 'results' && (
           <div className="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">

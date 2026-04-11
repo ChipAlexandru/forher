@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#FAF7F2"/>
+
+  <!-- Bottom decorative strip -->
+  <rect y="590" width="1200" height="40" fill="#1C3A25"/>
+
+  <!-- Logo text -->
+  <text x="100" y="260" font-family="Georgia, serif" font-size="72" letter-spacing="-1">
+    <tspan fill="#1C3A25">Equi</tspan><tspan fill="#6B8F6E" font-weight="bold">vie</tspan>
+  </text>
+  <text x="370" y="248" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="500" fill="#1C3A25" letter-spacing="4" text-transform="uppercase">MED</text>
+
+  <!-- Tagline -->
+  <text x="100" y="340" font-family="Georgia, serif" font-size="36" fill="#2C2826">
+    Menopause specialists who listen.
+  </text>
+
+  <!-- URL -->
+  <text x="100" y="410" font-family="system-ui, -apple-system, sans-serif" font-size="22" fill="#6B6560">
+    equiviemed.ch
+  </text>
+</svg>

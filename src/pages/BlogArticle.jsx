@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useLang } from '../context/LanguageContext';
 import { articles } from '../data/articles';
+import SEO from '../components/SEO';
 
 const categoryLabels = {
   hormones: 'Hormone & HRT',
@@ -83,8 +84,35 @@ export default function BlogArticle() {
     .map((p) => p.trim())
     .filter(Boolean);
 
+  const blogPostingSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: article.title,
+    description: (article.excerpt || article.content || '').slice(0, 155),
+    datePublished: article.date,
+    dateModified: article.dateModified || article.date,
+    author: {
+      '@type': 'Organization',
+      name: 'Equivie MED Medical Team',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Equivie MED',
+      url: 'https://equiviemed.ch',
+    },
+    mainEntityOfPage: `https://equiviemed.ch/blog/${slug}`,
+  };
+
   return (
     <>
+      <SEO
+        title={`${article.title} — Equivie MED`}
+        description={(article.excerpt || article.content || '').slice(0, 155)}
+        canonical={`https://equiviemed.ch/blog/${slug}`}
+        type="article"
+        structuredData={blogPostingSchema}
+      />
+
       {/* Reading progress bar */}
       <div
         className="reading-progress"

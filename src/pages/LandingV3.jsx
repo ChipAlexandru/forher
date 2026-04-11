@@ -241,15 +241,19 @@ export default function LandingV3() {
             <span className="text-forest">Equi</span><span className="text-sage font-bold">vie</span>
           </a>
           <div className="flex items-center gap-6">
-            <div className="flex gap-1">
+            <div className="flex gap-1" role="group" aria-label="Language selection">
               <button
                 onClick={() => setLang('de')}
+                aria-label="Switch language to DE"
+                aria-pressed={lang === 'de'}
                 className={`font-sans text-xs px-2 py-1 rounded-[2px] border-0 cursor-pointer transition-colors ${lang === 'de' ? 'bg-forest text-cream' : 'bg-transparent text-stone hover:text-forest'}`}
               >
                 DE
               </button>
               <button
                 onClick={() => setLang('en')}
+                aria-label="Switch language to EN"
+                aria-pressed={lang === 'en'}
                 className={`font-sans text-xs px-2 py-1 rounded-[2px] border-0 cursor-pointer transition-colors ${lang === 'en' ? 'bg-forest text-cream' : 'bg-transparent text-stone hover:text-forest'}`}
               >
                 EN
@@ -308,7 +312,7 @@ export default function LandingV3() {
       {/* ════════════════════════════════════════════
           QUIZ BAR (collapsible)
           ════════════════════════════════════════════ */}
-      <section ref={quizRef} className="bg-rose-pale border-y border-rose/20">
+      <section ref={quizRef} className="bg-rose-pale border-y border-rose/20" aria-label="Menopause symptom check-in quiz">
         {/* Collapsed bar */}
         {!quizOpen && quizScreen !== 'results' && (
           <div className="max-w-7xl mx-auto px-6 lg:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">

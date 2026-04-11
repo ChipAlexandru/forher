@@ -1,24 +1,26 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import Header from './components/Header';
 import HeaderMain from './components/HeaderMain';
 import Footer from './components/Footer';
 import HeaderV0 from './components/HeaderV0';
 import FooterV0 from './components/FooterV0';
-import Home from './pages/Home';
-import HomeV0 from './pages/HomeV0';
-import HowItWorksV0 from './pages/HowItWorksV0';
-import SymptomsV0 from './pages/SymptomsV0';
-import TreatmentsV0 from './pages/TreatmentsV0';
-import PricingV0 from './pages/PricingV0';
-import AssessmentV0 from './pages/AssessmentV0';
-import EmployersV0 from './pages/EmployersV0';
-import Employers from './pages/Employers';
-import Blog from './pages/Blog';
-import BlogArticle from './pages/BlogArticle';
 import Landing from './pages/Landing';
-import LandingV3 from './pages/LandingV3';
-import NotFound from './pages/NotFound';
+
+// Lazy-loaded pages
+const Home = lazy(() => import('./pages/Home'));
+const HomeV0 = lazy(() => import('./pages/HomeV0'));
+const HowItWorksV0 = lazy(() => import('./pages/HowItWorksV0'));
+const SymptomsV0 = lazy(() => import('./pages/SymptomsV0'));
+const TreatmentsV0 = lazy(() => import('./pages/TreatmentsV0'));
+const PricingV0 = lazy(() => import('./pages/PricingV0'));
+const AssessmentV0 = lazy(() => import('./pages/AssessmentV0'));
+const EmployersV0 = lazy(() => import('./pages/EmployersV0'));
+const Employers = lazy(() => import('./pages/Employers'));
+const Blog = lazy(() => import('./pages/Blog'));
+const BlogArticle = lazy(() => import('./pages/BlogArticle'));
+const LandingV3 = lazy(() => import('./pages/LandingV3'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -37,17 +39,19 @@ export default function App() {
         <ScrollToTop />
         <HeaderV0 />
         <main className="flex-1">
-          <Routes>
-            <Route path="/0" element={<HomeV0 />} />
-            <Route path="/0/how-it-works" element={<HowItWorksV0 />} />
-            <Route path="/0/symptoms" element={<SymptomsV0 />} />
-            <Route path="/0/treatments" element={<TreatmentsV0 />} />
-            <Route path="/0/pricing" element={<PricingV0 />} />
-            <Route path="/0/assessment" element={<AssessmentV0 />} />
-            <Route path="/0/employers" element={<EmployersV0 />} />
-            <Route path="/0/blog" element={<Blog />} />
-            <Route path="/0/blog/:slug" element={<BlogArticle />} />
-          </Routes>
+          <Suspense fallback={<div className="min-h-screen bg-cream" />}>
+            <Routes>
+              <Route path="/0" element={<HomeV0 />} />
+              <Route path="/0/how-it-works" element={<HowItWorksV0 />} />
+              <Route path="/0/symptoms" element={<SymptomsV0 />} />
+              <Route path="/0/treatments" element={<TreatmentsV0 />} />
+              <Route path="/0/pricing" element={<PricingV0 />} />
+              <Route path="/0/assessment" element={<AssessmentV0 />} />
+              <Route path="/0/employers" element={<EmployersV0 />} />
+              <Route path="/0/blog" element={<Blog />} />
+              <Route path="/0/blog/:slug" element={<BlogArticle />} />
+            </Routes>
+          </Suspense>
         </main>
         <FooterV0 />
       </div>
@@ -61,7 +65,9 @@ export default function App() {
         <ScrollToTop />
         <Header onQuizOpen={() => setQuizOpen(true)} />
         <main className="flex-1">
-          <Home quizOpen={quizOpen} setQuizOpen={setQuizOpen} />
+          <Suspense fallback={<div className="min-h-screen bg-cream" />}>
+            <Home quizOpen={quizOpen} setQuizOpen={setQuizOpen} />
+          </Suspense>
         </main>
         <Footer />
       </div>
@@ -83,7 +89,9 @@ export default function App() {
     return (
       <>
         <ScrollToTop />
-        <LandingV3 />
+        <Suspense fallback={<div className="min-h-screen bg-cream" />}>
+          <LandingV3 />
+        </Suspense>
       </>
     );
   }
@@ -104,12 +112,14 @@ export default function App() {
       <ScrollToTop />
       <HeaderMain />
       <main className="flex-1">
-        <Routes>
-          <Route path="/employers" element={<Employers />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogArticle />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={<div className="min-h-screen bg-cream" />}>
+          <Routes>
+            <Route path="/employers" element={<Employers />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogArticle />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </main>
       <Footer />
     </div>
