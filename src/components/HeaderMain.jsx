@@ -3,9 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 import { useLang } from '../context/LanguageContext';
 
 const navLabels = {
-  de: { howItWorks: 'So funktioniert es', pricing: 'Preise', blog: 'Blog', bookNow: 'Termin buchen' },
-  fr: { howItWorks: 'Comment ça marche', pricing: 'Tarifs', blog: 'Blog', bookNow: 'Réserver' },
-  en: { howItWorks: 'How it works', pricing: 'Pricing', blog: 'Blog', bookNow: 'Book now' },
+  de: { howItWorks: 'So funktioniert es', pricing: 'Preise', blog: 'Wissen', bookNow: 'Termin buchen' },
+  fr: { howItWorks: 'Comment ça marche', pricing: 'Tarifs', blog: 'Savoir', bookNow: 'Réserver' },
+  en: { howItWorks: 'How it works', pricing: 'Pricing', blog: 'Knowledge', bookNow: 'Book now' },
 };
 
 const langs = ['de', 'fr', 'en'];
@@ -58,7 +58,7 @@ export default function HeaderMain({ onBookClick }) {
             <a href={anchorHref('#pricing')} className="text-sm font-sans text-stone no-underline hover:text-forest transition-colors">
               {nav.pricing}
             </a>
-            <Link to="/blog" className="text-sm font-sans text-stone no-underline hover:text-forest transition-colors">
+            <Link to="/wissen" className="text-sm font-sans text-stone no-underline hover:text-forest transition-colors">
               {nav.blog}
             </Link>
           </nav>
@@ -146,7 +146,7 @@ export default function HeaderMain({ onBookClick }) {
             <a href={anchorHref('#pricing')} onClick={() => setMenuOpen(false)} className="block py-3 text-base font-sans text-stone no-underline hover:text-forest transition-colors border-b border-border/30">
               {nav.pricing}
             </a>
-            <Link to="/blog" onClick={() => setMenuOpen(false)} className="block py-3 text-base font-sans text-stone no-underline hover:text-forest transition-colors border-b border-border/30">
+            <Link to="/wissen" onClick={() => setMenuOpen(false)} className="block py-3 text-base font-sans text-stone no-underline hover:text-forest transition-colors border-b border-border/30">
               {nav.blog}
             </Link>
             {onBookClick ? (

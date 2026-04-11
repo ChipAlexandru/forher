@@ -3,11 +3,15 @@ import { useEffect, lazy, Suspense } from 'react';
 import HeaderMain from './components/HeaderMain';
 import Footer from './components/Footer';
 import Landing from './pages/Landing';
+import { BlogIndexRedirect, BlogArticleRedirect } from './components/BlogRedirect';
 
 // Lazy-loaded pages
 const Employers = lazy(() => import('./pages/Employers'));
 const Blog = lazy(() => import('./pages/Blog'));
 const BlogArticle = lazy(() => import('./pages/BlogArticle'));
+const WissenIndex = lazy(() => import('./pages/WissenIndex'));
+const WissenCluster = lazy(() => import('./pages/WissenCluster'));
+const WissenArticle = lazy(() => import('./pages/WissenArticle'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 function ScrollToTop() {
@@ -38,8 +42,16 @@ export default function App() {
         <Suspense fallback={<div className="min-h-screen bg-cream" />}>
           <Routes>
             <Route path="/employers" element={<Employers />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogArticle />} />
+
+            {/* Wissen (Knowledge Hub) */}
+            <Route path="/wissen" element={<WissenIndex />} />
+            <Route path="/wissen/:cluster" element={<WissenCluster />} />
+            <Route path="/wissen/:cluster/:slug" element={<WissenArticle />} />
+
+            {/* Blog redirects (301-equivalent client-side) */}
+            <Route path="/blog" element={<BlogIndexRedirect />} />
+            <Route path="/blog/:slug" element={<BlogArticleRedirect />} />
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

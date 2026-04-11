@@ -13,7 +13,7 @@ export default function Footer() {
 
   const weitereLinks = [
     { label: 'Arbeitgeber', to: '/employers' },
-    { label: 'Ratgeber', to: '/blog' },
+    { label: 'Wissen', to: '/wissen' },
     { label: 'Kontakt', href: '#kontakt' },
   ]
 
