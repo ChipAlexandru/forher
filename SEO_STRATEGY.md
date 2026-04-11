@@ -15,8 +15,8 @@ Additionally, **2026 SEO serves two ecosystems simultaneously**: traditional sea
 - No SSR/SSG — pure CSR with single index.html entry point
 
 ### Domain Strategy (Future)
-- `equivimed.ch` — primary domain for Swiss market (ccTLD = strongest geo signal)
-- `equivimed.com` — international/English domain
+- `equiviemed.ch` — primary domain for Swiss market (ccTLD = strongest geo signal)
+- `equiviemed.com` — international/English domain
 - URL structure: `/de/`, `/fr/`, `/en/` language subdirectories
 - hreflang: `de-CH`, `fr-CH`, `en` with bidirectional tags
 
@@ -90,7 +90,7 @@ Every article/page should display:
 - [ ] Accessibility audit (ARIA labels, keyboard navigation)
 
 ### Phase 3: Production Domains
-- [ ] Set up equivimed.ch + equivimed.com
+- [ ] Set up equiviemed.ch + equiviemed.com
 - [ ] Configure hreflang with region codes (de-CH, fr-CH, en)
 - [ ] Submit sitemaps to Google Search Console + Bing
 - [ ] Verify structured data in Rich Results Test

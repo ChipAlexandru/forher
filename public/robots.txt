@@ -5,4 +5,4 @@ Disallow: /1
 Disallow: /2
 Disallow: /3
 
-Sitemap: https://equivimed.ch/sitemap.xml
+Sitemap: https://equiviemed.ch/sitemap.xml
