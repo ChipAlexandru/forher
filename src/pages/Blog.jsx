@@ -61,7 +61,10 @@ export default function Blog() {
                 {/* Article photo */}
                 <img
                   src={cardPhotos[i % cardPhotos.length]}
-                  alt=""
+                  alt={article.title}
+                  loading="lazy"
+                  width="600"
+                  height="400"
                   className="h-48 w-full rounded-t-[2px] shrink-0 object-cover bg-cream-dark"
                 />
 

@@ -1,6 +1,8 @@
 import { useState, useRef } from 'react';
 import { useFadeIn } from '../hooks/useFadeIn';
+import { useLang } from '../context/LanguageContext';
 import { quizSteps, getProfile } from '../data/quizData';
+import HeaderMain from '../components/HeaderMain';
 
 /* ──────────────────── CONTENT DATA ──────────────────── */
 const content = {
@@ -78,6 +80,82 @@ const content = {
       tagline: 'Telemedizin aus Zürich',
       contact: 'kontakt@equivie.ch',
       medical: 'Ärztliche Leitung: Dr. med. [Name], FMH Gynäkologie & Geburtshilfe',
+    },
+  },
+  fr: {
+    lang: 'Français',
+    hero: {
+      headline: 'Ménopause. Enfin une spécialiste qui vous écoute.',
+      subhead: 'Consultation vidéo avec une gynécologue spécialisée en ménopause. Diagnostic, plan de traitement personnalisé et ordonnance — en une seule séance approfondie. Parce que vos symptômes sont réels, vos questions méritent des réponses, et 20 minutes n\'ont jamais suffi.',
+      cta: 'Réserver votre consultation — CHF 300',
+      note: '45–60 minutes. Vidéo. Sans liste d\'attente.',
+    },
+    stats: {
+      title: 'Votre santé mérite plus que 20 minutes.',
+      items: [
+        { number: '78%', text: 'des femmes ménopausées présentent des symptômes — bouffées de chaleur, troubles du sommeil, sautes d\'humeur, douleurs articulaires.' },
+        { number: '41%', text: 'des femmes ayant consulté un médecin pour la ménopause se sont senties ignorées ou pas prises au sérieux.' },
+        { number: '33%', text: 'des femmes suisses ont réduit leur activité professionnelle, changé d\'emploi ou pris un congé à cause des symptômes de la ménopause.' },
+      ],
+      source: 'Sources : BCG 2025, Bonafide State of Menopause Survey 2024, MenoSupport Suisse / Inselspital Berne 2025',
+    },
+    howItWorks: {
+      title: 'Comment ça marche',
+      steps: [
+        { icon: 'clipboard', title: 'Remplissez votre profil de santé', text: 'Symptômes, antécédents médicaux, médicaments actuels, traitements déjà essayés — 5 minutes en ligne. Votre médecin examine tout avant la séance afin que vous n\'ayez pas à répéter votre histoire.' },
+        { icon: 'video', title: 'Consultation vidéo', text: '45–60 minutes avec une gynécologue spécialisée en ménopause. Votre profil a été lu. Les bonnes questions seront posées. Pas de précipitation. Pas de banalisation. Vous serez écoutée.' },
+        { icon: 'document', title: 'Votre plan de traitement', text: 'Diagnostic personnalisé, recommandation thérapeutique fondée sur les preuves (THS, alternatives non hormonales ou changements de mode de vie) et ordonnance — envoyée directement à votre pharmacie. Résumé PDF par e-mail sous 24 heures.' },
+      ],
+    },
+    doctor: {
+      name: 'Dr méd. [Nom]',
+      title: 'Spécialiste en gynécologie et obstétrique (FMH) | Spécialiste de la ménopause',
+      bio: 'La Dre [Nom] fait partie des rares médecins en Suisse à détenir une certification spécialisée en ménopause. Forte de [X] années d\'expérience clinique en périménopause, ménopause et thérapie hormonale, la Dre [Nom] apporte l\'expertise que la plupart des médecins n\'ont tout simplement pas reçue au cours de leur formation. 45–60 minutes par consultation, parce que la ménopause n\'est pas une conversation de 20 minutes. Examen préalable de l\'intégralité de votre profil de santé, parce que vous ne devriez pas avoir à répéter votre histoire à un énième médecin.',
+      badges: ['Certifiée FMH', 'Spécialiste de la ménopause', 'Médecine fondée sur les preuves', 'Télémédecine depuis Zurich'],
+    },
+    symptoms: {
+      title: 'Ce que nous traitons',
+      items: ['Bouffées de chaleur', 'Troubles du sommeil', 'Sautes d\'humeur', 'Sécheresse vaginale', 'Douleurs articulaires', 'Variations de poids', 'Brouillard mental', 'Baisse de libido'],
+      note: 'Thérapie hormonale (THS), alternatives non hormonales et recommandations de mode de vie — fondées sur les preuves et personnalisées selon vos besoins, votre profil de risque et vos préférences.',
+    },
+    testimonials: {
+      title: 'Ce que disent nos patientes',
+      items: [
+        { quote: 'Ma gynécologue m\'a dit d\'attendre que ça passe. Ici, pour la première fois, quelqu\'un m\'a vraiment écoutée — et après 45 minutes, j\'avais un plan concret.', attribution: 'K., 48, Zurich' },
+        { quote: 'En 45 minutes, j\'ai eu plus de clarté qu\'en trois ans avec différents médecins. J\'ai enfin compris ce qui m\'arrivait.', attribution: 'S., 52, Winterthour' },
+        { quote: 'L\'ordonnance était à ma pharmacie le jour même. Mon médecin traitant m\'avait mise sous antidépresseurs pendant des mois sans jamais évoquer la ménopause.', attribution: 'M., 46, Zurich' },
+      ],
+    },
+    pricing: {
+      title: 'Votre consultation',
+      price: 'CHF 300',
+      included: [
+        '45–60 min de consultation vidéo avec une spécialiste de la ménopause',
+        'Examen préalable de votre profil de santé par votre médecin',
+        'Plan de traitement personnalisé (PDF)',
+        'Ordonnance envoyée à votre pharmacie',
+        'Questionnaire de symptômes en amont',
+        'Questions de suivi par e-mail pendant 7 jours',
+      ],
+      notIncluded: ['Médicaments (via votre pharmacie / assurance maladie)', 'Analyses de laboratoire si nécessaire (prescrites via votre médecin traitant ou laboratoire sans rendez-vous)'],
+      cta: 'Réserver votre consultation',
+      note: 'Paiement par carte de crédit ou TWINT. Aucune démarche d\'assurance requise.',
+    },
+    faq: [
+      { q: 'Ai-je besoin d\'une ordonnance de mon médecin ?', a: 'Non. En Suisse, vous pouvez consulter directement une gynécologue sans ordonnance de votre médecin traitant. Il vous suffit de réserver et de payer.' },
+      { q: 'La consultation est-elle prise en charge par l\'assurance maladie ?', a: 'Les honoraires de CHF 300 sont à votre charge. Cependant, les médicaments prescrits (THS, progestérone, etc.) sont couverts par l\'assurance de base s\'ils figurent sur la liste des spécialités. Certaines assurances complémentaires couvrent également les consultations de prévention et de médecine complémentaire — renseignez-vous auprès de votre assureur.' },
+      { q: 'Des hormones me seront-elles prescrites ?', a: 'Cela dépend entièrement de vos symptômes, de vos antécédents médicaux et de vos préférences. Votre médecin discutera avec vous de toutes les options fondées sur les preuves — hormonales, non hormonales et basées sur le mode de vie — et ensemble, vous déciderez ce qui convient le mieux à votre situation. Il n\'existe pas d\'approche unique. C\'est précisément la raison d\'être d\'une consultation spécialisée.' },
+      { q: 'Mes patchs Estradot ne sont plus remboursés par l\'assurance. Pouvez-vous m\'aider ?', a: 'Oui. Sandoz a retiré Estradot de la liste des spécialités en septembre 2025 en raison d\'un litige tarifaire. Plusieurs alternatives de THS restent entièrement couvertes, notamment les gels d\'œstradiol transdermiques (Oestrogel, Estreva), les formulations orales et les préparations vaginales. Votre médecin vous aidera à trouver la meilleure alternative couverte pour votre situation.' },
+      { q: 'Qu\'est-ce qui distingue Equivie de ma gynécologue habituelle ?', a: 'La plupart des gynécologues en Suisse n\'ont pas reçu de formation spécialisée en ménopause — elle ne fait pas partie du cursus FMH de base. Nos médecins ont obtenu une certification complémentaire spécifique à la ménopause et se tiennent à jour des dernières données probantes sur la thérapie hormonale. 45–60 minutes par consultation (contre les 15–20 minutes habituelles), examen préalable de l\'intégralité de vos antécédents médicaux et plan de traitement écrit. C\'est un suivi spécialisé de la ménopause, pas un bilan de santé général.' },
+      { q: 'Que se passe-t-il après la consultation ?', a: 'Vous recevez votre plan de traitement et votre ordonnance sous 24 heures. L\'ordonnance est envoyée par voie électronique à la pharmacie de votre choix. Vous pouvez poser des questions de suivi par e-mail pendant 7 jours. Si vous avez besoin d\'un accompagnement continu, nous proposons un programme de suivi par abonnement (bientôt disponible).' },
+      { q: 'Quels symptômes traitez-vous ?', a: 'Bouffées de chaleur, sueurs nocturnes, troubles du sommeil, sautes d\'humeur, anxiété, brouillard mental, douleurs articulaires, sécheresse vaginale, baisse de libido, variations de poids, palpitations cardiaques et fatigue. Si vos symptômes sont liés à la périménopause ou à la ménopause, nous pouvons vous aider.' },
+      { q: 'Comment fonctionne la consultation vidéo ?', a: 'Après votre réservation, vous recevez un lien pour un appel vidéo sécurisé (chiffré, hébergé sur des serveurs suisses). Vous vous connectez depuis votre smartphone, tablette ou ordinateur. Aucun logiciel à installer. Votre médecin est basée à Zurich et autorisée à exercer dans le canton de Zurich.' },
+    ],
+    footerCta: 'Prête ? Votre ménopause mérite mieux que l\'attente.',
+    footer: {
+      tagline: 'Télémédecine depuis Zurich',
+      contact: 'contact@equivie.ch',
+      medical: 'Direction médicale : Dre méd. [Nom], FMH gynécologie et obstétrique',
     },
   },
   en: {
@@ -235,7 +313,7 @@ const symptomIcons = {
 /* ──────────────────── COMPONENT ──────────────────── */
 export default function Landing() {
   const containerRef = useFadeIn();
-  const [lang, setLang] = useState('en');
+  const { lang } = useLang();
   const [openFaq, setOpenFaq] = useState(null);
   const t = content[lang];
 
@@ -285,37 +363,9 @@ export default function Landing() {
     <div ref={containerRef} className="min-h-screen flex flex-col">
 
       {/* ════════════════════════════════════════════
-          HEADER — Minimal, single-page
+          HEADER
           ════════════════════════════════════════════ */}
-      <header className="sticky top-0 z-50 bg-cream/95 backdrop-blur-sm border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-16">
-          <a href="#" className="font-serif text-xl tracking-tight">
-            <span className="text-forest">Equi</span><span className="text-sage font-bold">vie</span>
-          </a>
-          <div className="flex items-center gap-6">
-            <div className="flex gap-1">
-              <button
-                onClick={() => setLang('de')}
-                className={`font-sans text-xs px-2 py-1 rounded-[2px] border-0 cursor-pointer transition-colors ${lang === 'de' ? 'bg-forest text-cream' : 'bg-transparent text-stone hover:text-forest'}`}
-              >
-                DE
-              </button>
-              <button
-                onClick={() => setLang('en')}
-                className={`font-sans text-xs px-2 py-1 rounded-[2px] border-0 cursor-pointer transition-colors ${lang === 'en' ? 'bg-forest text-cream' : 'bg-transparent text-stone hover:text-forest'}`}
-              >
-                EN
-              </button>
-            </div>
-            <a
-              href="#pricing"
-              className="hidden sm:inline-block bg-forest text-cream font-sans font-medium text-xs uppercase tracking-wider px-5 py-2.5 rounded-[2px] hover:bg-forest-mid transition-colors"
-            >
-              {lang === 'de' ? 'Termin buchen' : 'Book now'}
-            </a>
-          </div>
-        </div>
-      </header>
+      <HeaderMain />
 
       {/* ════════════════════════════════════════════
           QUIZ BAR (collapsible)
@@ -513,7 +563,7 @@ export default function Landing() {
       {/* ════════════════════════════════════════════
           3. HOW IT WORKS
           ════════════════════════════════════════════ */}
-      <section className="fade-in-section bg-forest">
+      <section id="how-it-works" className="fade-in-section bg-forest">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-28">
           <span className="tag border-cream/30 text-cream/60">
             {lang === 'de' ? '3 Schritte' : '3 Steps'}
@@ -729,7 +779,7 @@ export default function Landing() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
             <div className="lg:col-span-2">
               <p className="font-serif text-2xl font-bold text-cream">
-                <span className="text-cream">Equi</span><span className="text-sage font-bold">vie</span>
+                <span className="text-cream">Equi</span><span className="text-sage font-bold">vie</span><span className="text-cream font-sans font-medium uppercase text-[0.55em] tracking-widest ml-1.5">med</span>
               </p>
               <p className="mt-3 text-sm leading-relaxed text-cream/60 font-light max-w-md">{t.footer.tagline}</p>
               <div className="mt-4 flex items-center gap-4 text-xs text-cream/40">
@@ -755,7 +805,7 @@ export default function Landing() {
             </div>
           </div>
           <div className="mt-12 pt-8 border-t border-cream/10">
-            <p className="text-xs text-cream/30">&copy; {new Date().getFullYear()} Equivie. All rights reserved.</p>
+            <p className="text-xs text-cream/30">&copy; {new Date().getFullYear()} Equivie MED. All rights reserved.</p>
           </div>
         </div>
       </footer>

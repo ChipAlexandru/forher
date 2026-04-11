@@ -192,7 +192,10 @@ export default function BlogArticle() {
                         {/* Article thumbnail */}
                         <img
                           src={relatedPhotos[i % relatedPhotos.length]}
-                          alt=""
+                          alt={related.title}
+                          loading="lazy"
+                          width="600"
+                          height="400"
                           className="h-28 w-full object-cover bg-cream-dark"
                         />
                         <div className="p-4">

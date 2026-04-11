@@ -1,6 +1,7 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Header from './components/Header';
+import HeaderMain from './components/HeaderMain';
 import Footer from './components/Footer';
 import HeaderV0 from './components/HeaderV0';
 import FooterV0 from './components/FooterV0';
@@ -17,6 +18,7 @@ import Blog from './pages/Blog';
 import BlogArticle from './pages/BlogArticle';
 import Landing from './pages/Landing';
 import LandingV3 from './pages/LandingV3';
+import NotFound from './pages/NotFound';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -100,12 +102,13 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col">
       <ScrollToTop />
-      <Header onQuizOpen={() => setQuizOpen(true)} />
+      <HeaderMain />
       <main className="flex-1">
         <Routes>
           <Route path="/employers" element={<Employers />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogArticle />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
