@@ -5,14 +5,15 @@ import { articles } from '../data/articles';
 import SEO from '../components/SEO';
 
 const categoryLabels = {
-  hormones: 'Hormone & HRT',
-  symptoms: 'Symptome',
-  lifestyle: 'Lebensstil',
+  de: { hormones: 'Hormone & HRT', symptoms: 'Symptome', lifestyle: 'Lebensstil' },
+  fr: { hormones: 'Hormones & THS', symptoms: 'Symptômes', lifestyle: 'Mode de vie' },
+  en: { hormones: 'Hormones & HRT', symptoms: 'Symptoms', lifestyle: 'Lifestyle' },
 };
 
-function formatDate(dateString) {
+function formatDate(dateString, lang = 'de') {
   const date = new Date(dateString);
-  return date.toLocaleDateString('de-CH', {
+  const locale = lang === 'fr' ? 'fr-CH' : lang === 'en' ? 'en-GB' : 'de-CH';
+  return date.toLocaleDateString(locale, {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
@@ -26,7 +27,7 @@ const relatedPhotos = [
 
 export default function BlogArticle() {
   const { slug } = useParams();
-  const { t } = useLang();
+  const { lang, t } = useLang();
   const [scrollProgress, setScrollProgress] = useState(0);
 
   const article = articles.find((a) => a.slug === slug);
@@ -59,21 +60,28 @@ export default function BlogArticle() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [article]);
 
+  const blogUi = {
+    de: { error: 'Fehler', notFound: 'Artikel nicht gefunden', notFoundDesc: 'Der gesuchte Artikel existiert nicht oder wurde entfernt.', backToGuide: 'Zurück zum Ratgeber', allArticles: 'Alle Ratgeber-Artikel', ctaTitle: 'Haben Sie Fragen zu Ihrer Situation?', ctaBody: 'Unsere Ärztinnen beraten Sie diskret und individuell.', ctaButton: 'Kostenlose Bewertung starten' },
+    fr: { error: 'Erreur', notFound: 'Article introuvable', notFoundDesc: 'L\'article recherché n\'existe pas ou a été supprimé.', backToGuide: 'Retour au guide', allArticles: 'Tous les articles', ctaTitle: 'Des questions sur votre situation ?', ctaBody: 'Nos médecins vous conseillent de manière discrète et individuelle.', ctaButton: 'Commencer l\'évaluation gratuite' },
+    en: { error: 'Error', notFound: 'Article not found', notFoundDesc: 'The article you are looking for does not exist or has been removed.', backToGuide: 'Back to guide', allArticles: 'All guide articles', ctaTitle: 'Questions about your situation?', ctaBody: 'Our doctors advise you discreetly and individually.', ctaButton: 'Start free assessment' },
+  };
+  const bu = blogUi[lang] || blogUi.de;
+
   if (!article) {
     return (
       <div className="max-w-3xl mx-auto px-6 lg:px-10 py-28 text-center">
-        <p className="font-sans text-xs uppercase tracking-widest text-sage mb-4">Fehler</p>
+        <p className="font-sans text-xs uppercase tracking-widest text-sage mb-4">{bu.error}</p>
         <h1 className="font-serif font-bold text-forest text-4xl mb-6">
-          Artikel nicht gefunden
+          {bu.notFound}
         </h1>
         <p className="font-sans text-charcoal-light text-lg leading-relaxed mb-10">
-          Der gesuchte Artikel existiert nicht oder wurde entfernt.
+          {bu.notFoundDesc}
         </p>
         <Link
           to="/blog"
           className="font-sans font-medium text-base text-forest border-b border-forest pb-px hover:text-sage hover:border-sage transition-colors"
         >
-          &larr;&thinsp;Zurück zum Ratgeber
+          &larr;&thinsp;{bu.backToGuide}
         </Link>
       </div>
     );
@@ -121,7 +129,7 @@ export default function BlogArticle() {
         aria-valuenow={Math.round(scrollProgress)}
         aria-valuemin={0}
         aria-valuemax={100}
-        aria-label="Lesefortschritt"
+        aria-label={lang === 'fr' ? 'Progression de lecture' : lang === 'en' ? 'Reading progress' : 'Lesefortschritt'}
       />
 
       <div className="bg-cream min-h-screen">
@@ -134,13 +142,13 @@ export default function BlogArticle() {
               to="/blog"
               className="inline-block font-sans text-sm text-charcoal-light hover:text-forest transition-colors mb-8"
             >
-              &larr;&thinsp;{t.blog.title ?? 'Ratgeber'}
+              &larr;&thinsp;{t.blog?.title ?? 'Ratgeber'}
             </Link>
 
             <div className="max-w-4xl">
               {/* Category tag */}
               <span className="inline-block font-sans text-xs uppercase tracking-widest text-sage mb-5">
-                {categoryLabels[article.category] || article.category}
+                {(categoryLabels[lang] || categoryLabels.de)[article.category] || article.category}
               </span>
 
               {/* Title */}
@@ -161,7 +169,7 @@ export default function BlogArticle() {
                 </div>
                 <span className="text-sage/40 hidden sm:inline" aria-hidden="true">·</span>
                 <span className="font-sans text-sm text-charcoal-light">
-                  {formatDate(article.date)}
+                  {formatDate(article.date, lang)}
                 </span>
                 <span className="text-sage/40 hidden sm:inline" aria-hidden="true">·</span>
                 <span className="font-sans text-sm text-charcoal-light">
@@ -197,7 +205,7 @@ export default function BlogArticle() {
                   to="/blog"
                   className="font-sans font-medium text-base text-forest border-b border-forest pb-px hover:text-sage hover:border-sage transition-colors"
                 >
-                  &larr;&thinsp;Alle Ratgeber-Artikel
+                  &larr;&thinsp;{bu.allArticles}
                 </Link>
               </div>
             </article>
@@ -207,7 +215,7 @@ export default function BlogArticle() {
               <aside className="hidden lg:block">
                 <div className="sticky top-24">
                   <p className="font-sans text-xs uppercase tracking-widest text-sage mb-6">
-                    {t.blog.relatedArticles ?? 'Ähnliche Artikel'}
+                    {t.blog?.relatedArticles ?? 'Ähnliche Artikel'}
                   </p>
 
                   <div className="flex flex-col gap-5">
@@ -228,7 +236,7 @@ export default function BlogArticle() {
                         />
                         <div className="p-4">
                           <span className="font-sans text-xs uppercase tracking-widest text-sage block mb-2">
-                            {categoryLabels[related.category] || related.category}
+                            {(categoryLabels[lang] || categoryLabels.de)[related.category] || related.category}
                           </span>
                           <h3 className="font-serif font-semibold text-forest text-base leading-snug group-hover:text-sage transition-colors">
                             {related.title}
@@ -244,16 +252,16 @@ export default function BlogArticle() {
                   {/* CTA nudge */}
                   <div className="mt-10 p-5 bg-cream-dark border border-sage/20 rounded-[2px]">
                     <p className="font-serif font-semibold text-forest text-base leading-snug mb-3">
-                      Haben Sie Fragen zu Ihrer Situation?
+                      {bu.ctaTitle}
                     </p>
                     <p className="font-sans text-xs text-charcoal-light leading-relaxed mb-4">
-                      Unsere Ärztinnen beraten Sie diskret und individuell.
+                      {bu.ctaBody}
                     </p>
                     <Link
                       to="/"
                       className="inline-block font-sans font-medium text-xs text-forest border border-forest px-4 py-2 rounded-[2px] hover:bg-forest hover:text-cream transition-colors"
                     >
-                      Kostenlose Bewertung starten
+                      {bu.ctaButton}
                     </Link>
                   </div>
                 </div>

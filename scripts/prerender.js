@@ -7,7 +7,7 @@
  *   3. Waits for lazy components and react-helmet-async meta tags to render
  *   4. Captures the final HTML and writes it to the appropriate path in `dist/`
  *
- * Routes to pre-render are: /, /blog, and every /blog/:slug from articles data.
+ * Routes to pre-render are: /, /employers, /blog, /wissen, /wissen/:cluster, and /wissen/:cluster/:slug from wissen data.
  */
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
@@ -26,17 +26,25 @@ const PORT = 4173;
 
 async function getRoutes() {
   // Static routes
-  const routes = ['/', '/blog'];
+  const routes = ['/', '/employers', '/wissen', '/blog'];
 
-  // Dynamic blog routes from articles data.
+  // Dynamic wissen routes from wissen data.
   // We import the built JS to extract slugs. Since the source is ESM with no
   // JSX, we can read the source file directly and extract slugs with a regex.
-  const articlesPath = join(__dirname, '..', 'src', 'data', 'articles.js');
-  const articlesSource = readFileSync(articlesPath, 'utf-8');
-  const slugRegex = /slug:\s*['"]([^'"]+)['"]/g;
+  const wissenPath = join(__dirname, '..', 'src', 'data', 'wissen.js');
+  const wissenSource = readFileSync(wissenPath, 'utf-8');
+
+  // Extract article entries: slug + cluster pairs
+  const articleRegex = /slug:\s*'([^']+)',\s*\n\s*cluster:\s*'([^']+)'/g;
+  const clusterSlugs = new Set();
   let match;
-  while ((match = slugRegex.exec(articlesSource)) !== null) {
-    routes.push(`/blog/${match[1]}`);
+  while ((match = articleRegex.exec(wissenSource)) !== null) {
+    clusterSlugs.add(match[2]);
+    routes.push(`/wissen/${match[2]}/${match[1]}`);
+  }
+  // Add cluster index pages
+  for (const cluster of clusterSlugs) {
+    routes.push(`/wissen/${cluster}`);
   }
 
   return routes;

@@ -6,9 +6,10 @@ import SEO from '../components/SEO';
 import MarkdownContent from '../components/MarkdownContent';
 import { useState } from 'react';
 
-function formatDate(dateString) {
+function formatDate(dateString, lang = 'de') {
   const date = new Date(dateString);
-  return date.toLocaleDateString('de-CH', {
+  const locale = lang === 'fr' ? 'fr-CH' : lang === 'en' ? 'en-GB' : 'de-CH';
+  return date.toLocaleDateString(locale, {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
@@ -26,18 +27,25 @@ export default function WissenCluster() {
   const pillarArticle = articles.find((a) => a.isPillar);
   const supportingArticles = articles.filter((a) => !a.isPillar);
 
+  const ui = {
+    de: { error: 'Fehler', notFound: 'Thema nicht gefunden', back: 'Zurück zum Wissen', faq: 'Häufig gestellte Fragen' },
+    fr: { error: 'Erreur', notFound: 'Thème introuvable', back: 'Retour au savoir', faq: 'Questions fréquentes' },
+    en: { error: 'Error', notFound: 'Topic not found', back: 'Back to Knowledge', faq: 'Frequently asked questions' },
+  };
+  const uiText = ui[lang] || ui.de;
+
   if (!cluster) {
     return (
       <div className="max-w-3xl mx-auto px-6 lg:px-10 py-28 text-center">
-        <p className="font-sans text-xs uppercase tracking-widest text-sage mb-4">Fehler</p>
+        <p className="font-sans text-xs uppercase tracking-widest text-sage mb-4">{uiText.error}</p>
         <h1 className="font-serif font-bold text-forest text-4xl mb-6">
-          Thema nicht gefunden
+          {uiText.notFound}
         </h1>
         <Link
           to="/wissen"
           className="font-sans font-medium text-base text-forest border-b border-forest pb-px hover:text-sage hover:border-sage transition-colors"
         >
-          &larr;&thinsp;Zuruck zum Wissen
+          &larr;&thinsp;{uiText.back}
         </Link>
       </div>
     );
@@ -115,7 +123,7 @@ export default function WissenCluster() {
                 </span>
                 <span className="text-sage/40" aria-hidden="true">&middot;</span>
                 <span className="font-sans text-sm text-charcoal-light">
-                  {formatDate(pillarArticle.date)}
+                  {formatDate(pillarArticle.date, lang)}
                 </span>
                 <span className="text-sage/40" aria-hidden="true">&middot;</span>
                 <span className="font-sans text-sm text-charcoal-light">
@@ -130,7 +138,7 @@ export default function WissenCluster() {
               {resolvedPillarFaq && resolvedPillarFaq.length > 0 && (
                 <div className="mt-14 pt-10 border-t border-sage/20">
                   <h3 className="font-serif font-bold text-forest text-2xl mb-6">
-                    {lang === 'fr' ? 'Questions frequentes' : lang === 'en' ? 'Frequently asked questions' : 'Haufig gestellte Fragen'}
+                    {uiText.faq}
                   </h3>
                   <div className="divide-y divide-sage/20 border-t border-sage/20">
                     {resolvedPillarFaq.map((item, i) => (

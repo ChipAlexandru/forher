@@ -5,9 +5,10 @@ import { wissenArticles, getArticlesByCluster, getClusterBySlug } from '../data/
 import SEO from '../components/SEO';
 import MarkdownContent from '../components/MarkdownContent';
 
-function formatDate(dateString) {
+function formatDate(dateString, lang = 'de') {
   const date = new Date(dateString);
-  return date.toLocaleDateString('de-CH', {
+  const locale = lang === 'fr' ? 'fr-CH' : lang === 'en' ? 'en-GB' : 'de-CH';
+  return date.toLocaleDateString(locale, {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
@@ -47,23 +48,25 @@ export default function WissenArticle() {
 
   const toggleFaq = (i) => setOpenFaq(openFaq === i ? null : i);
 
-  const breadcrumbWissen = lang === 'fr' ? 'Savoir' : lang === 'en' ? 'Knowledge' : 'Wissen';
-  const minuteRead = lang === 'fr' ? 'min de lecture' : lang === 'en' ? 'min read' : 'Min. Lesezeit';
-  const lastUpdated = lang === 'fr' ? 'Derniere mise a jour' : lang === 'en' ? 'Last updated' : 'Zuletzt aktualisiert';
-  const publishedOn = lang === 'fr' ? 'Publié le' : lang === 'en' ? 'Published' : 'Veröffentlicht am';
+  const ui = {
+    de: { breadcrumb: 'Wissen', minuteRead: 'Min. Lesezeit', lastUpdated: 'Zuletzt aktualisiert', published: 'Veröffentlicht am', error: 'Fehler', notFound: 'Artikel nicht gefunden', backToWissen: 'Zurück zum Wissen', faq: 'Häufig gestellte Fragen', toc: 'Inhalt', related: 'Ähnliche Artikel', ctaTitle: 'Haben Sie Fragen zu Ihrer Situation?', ctaBody: 'Unsere Ärztinnen beraten Sie diskret und individuell.', ctaButton: 'Kostenlose Bewertung starten', progress: 'Lesefortschritt' },
+    fr: { breadcrumb: 'Savoir', minuteRead: 'min de lecture', lastUpdated: 'Dernière mise à jour', published: 'Publié le', error: 'Erreur', notFound: 'Article introuvable', backToWissen: 'Retour au savoir', faq: 'Questions fréquentes', toc: 'Sommaire', related: 'Articles similaires', ctaTitle: 'Des questions sur votre situation ?', ctaBody: 'Nos médecins vous conseillent de manière discrète et individuelle.', ctaButton: 'Commencer l\'évaluation gratuite', progress: 'Progression de lecture' },
+    en: { breadcrumb: 'Knowledge', minuteRead: 'min read', lastUpdated: 'Last updated', published: 'Published', error: 'Error', notFound: 'Article not found', backToWissen: 'Back to Knowledge', faq: 'Frequently asked questions', toc: 'Contents', related: 'Related articles', ctaTitle: 'Questions about your situation?', ctaBody: 'Our doctors advise you discreetly and individually.', ctaButton: 'Start free assessment', progress: 'Reading progress' },
+  };
+  const t = ui[lang] || ui.de;
 
   if (!article || !cluster) {
     return (
       <div className="max-w-3xl mx-auto px-6 lg:px-10 py-28 text-center">
-        <p className="font-sans text-xs uppercase tracking-widest text-sage mb-4">Fehler</p>
+        <p className="font-sans text-xs uppercase tracking-widest text-sage mb-4">{t.error}</p>
         <h1 className="font-serif font-bold text-forest text-4xl mb-6">
-          Artikel nicht gefunden
+          {t.notFound}
         </h1>
         <Link
           to="/wissen"
           className="font-sans font-medium text-base text-forest border-b border-forest pb-px hover:text-sage hover:border-sage transition-colors"
         >
-          &larr;&thinsp;Zuruck zum Wissen
+          &larr;&thinsp;{t.backToWissen}
         </Link>
       </div>
     );
@@ -145,7 +148,7 @@ export default function WissenArticle() {
         aria-valuenow={Math.round(scrollProgress)}
         aria-valuemin={0}
         aria-valuemax={100}
-        aria-label="Lesefortschritt"
+        aria-label={t.progress}
       />
 
       <div className="bg-cream min-h-screen">
@@ -156,7 +159,7 @@ export default function WissenArticle() {
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 font-sans text-sm text-charcoal-light mb-8">
               <Link to="/wissen" className="hover:text-forest transition-colors">
-                {breadcrumbWissen}
+                {t.breadcrumb}
               </Link>
               <span aria-hidden="true">/</span>
               <Link to={`/wissen/${clusterSlug}`} className="hover:text-forest transition-colors">
@@ -187,11 +190,11 @@ export default function WissenArticle() {
                 </div>
                 <span className="text-sage/40 hidden sm:inline" aria-hidden="true">&middot;</span>
                 <span className="font-sans text-sm text-charcoal-light">
-                  {publishedOn} {formatDate(article.date)}
+                  {t.published} {formatDate(article.date, lang)}
                 </span>
                 <span className="text-sage/40 hidden sm:inline" aria-hidden="true">&middot;</span>
                 <span className="font-sans text-sm text-charcoal-light">
-                  {article.readingTime}&thinsp;{minuteRead}
+                  {article.readingTime}&thinsp;{t.minuteRead}
                 </span>
               </div>
             </div>
@@ -210,7 +213,7 @@ export default function WissenArticle() {
               {resolvedFaq && resolvedFaq.length > 0 && (
                 <div className="mt-14 pt-10 border-t border-sage/20">
                   <h2 className="font-serif font-bold text-forest text-2xl mb-6">
-                    {lang === 'fr' ? 'Questions frequentes' : lang === 'en' ? 'Frequently asked questions' : 'Haufig gestellte Fragen'}
+                    {t.faq}
                   </h2>
                   <div className="divide-y divide-sage/20 border-t border-sage/20">
                     {resolvedFaq.map((item, i) => (
@@ -243,7 +246,7 @@ export default function WissenArticle() {
               {/* Last updated */}
               <div className="mt-10 pt-6 border-t border-sage/20">
                 <p className="font-sans text-xs text-charcoal-light">
-                  {lastUpdated}: {formatDate(article.date)}
+                  {t.lastUpdated}: {formatDate(article.date, lang)}
                 </p>
               </div>
 
@@ -265,7 +268,7 @@ export default function WissenArticle() {
                 {tocItems.length > 0 && (
                   <>
                     <p className="font-sans text-xs uppercase tracking-widest text-sage mb-4">
-                      {lang === 'fr' ? 'Sommaire' : lang === 'en' ? 'Contents' : 'Inhalt'}
+                      {t.toc}
                     </p>
                     <nav className="mb-10">
                       <ul className="flex flex-col gap-2">
@@ -288,7 +291,7 @@ export default function WissenArticle() {
                 {relatedArticles.length > 0 && (
                   <>
                     <p className="font-sans text-xs uppercase tracking-widest text-sage mb-6">
-                      {lang === 'fr' ? 'Articles similaires' : lang === 'en' ? 'Related articles' : 'Ahnliche Artikel'}
+                      {t.related}
                     </p>
                     <div className="flex flex-col gap-4">
                       {relatedArticles.map((related) => (
@@ -312,16 +315,16 @@ export default function WissenArticle() {
                 {/* CTA nudge */}
                 <div className="mt-10 p-5 bg-cream-dark border border-sage/20 rounded-[2px]">
                   <p className="font-serif font-semibold text-forest text-base leading-snug mb-3">
-                    {lang === 'fr' ? 'Des questions sur votre situation?' : lang === 'en' ? 'Questions about your situation?' : 'Haben Sie Fragen zu Ihrer Situation?'}
+                    {t.ctaTitle}
                   </p>
                   <p className="font-sans text-xs text-charcoal-light leading-relaxed mb-4">
-                    {lang === 'fr' ? 'Nos medecins vous conseillent de maniere discrete et individuelle.' : lang === 'en' ? 'Our doctors advise you discreetly and individually.' : 'Unsere Arztinnen beraten Sie diskret und individuell.'}
+                    {t.ctaBody}
                   </p>
                   <Link
                     to="/"
                     className="inline-block font-sans font-medium text-xs text-forest border border-forest px-4 py-2 rounded-[2px] hover:bg-forest hover:text-cream transition-colors no-underline"
                   >
-                    {lang === 'fr' ? 'Commencer l\'evaluation gratuite' : lang === 'en' ? 'Start free assessment' : 'Kostenlose Bewertung starten'}
+                    {t.ctaButton}
                   </Link>
                 </div>
               </div>

@@ -14,14 +14,15 @@ const cardPhotos = [
 ];
 
 const categoryLabels = {
-  hormones: 'Hormone & HRT',
-  symptoms: 'Symptome',
-  lifestyle: 'Lebensstil',
+  de: { hormones: 'Hormone & HRT', symptoms: 'Symptome', lifestyle: 'Lebensstil' },
+  fr: { hormones: 'Hormones & THS', symptoms: 'Symptômes', lifestyle: 'Mode de vie' },
+  en: { hormones: 'Hormones & HRT', symptoms: 'Symptoms', lifestyle: 'Lifestyle' },
 };
 
-function formatDate(dateString) {
+function formatDate(dateString, lang = 'de') {
   const date = new Date(dateString);
-  return date.toLocaleDateString('de-CH', {
+  const locale = lang === 'fr' ? 'fr-CH' : lang === 'en' ? 'en-GB' : 'de-CH';
+  return date.toLocaleDateString(locale, {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
@@ -29,7 +30,7 @@ function formatDate(dateString) {
 }
 
 export default function Blog() {
-  const { t } = useLang();
+  const { lang, t } = useLang();
   const containerRef = useFadeIn();
 
   return (
@@ -45,7 +46,7 @@ export default function Blog() {
       <section className="fade-in-section bg-cream border-b border-sage/20">
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
           <p className="font-sans text-xs uppercase tracking-widest text-sage mb-4">
-            Ratgeber
+            {lang === 'fr' ? 'Guide' : lang === 'en' ? 'Guide' : 'Ratgeber'}
           </p>
           <h1 className="font-serif font-bold text-forest text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight max-w-3xl mb-6">
             {t.blog.title}
@@ -80,7 +81,7 @@ export default function Blog() {
                   {/* Meta row */}
                   <div className="flex items-center gap-3 mb-4">
                     <span className="font-sans text-xs uppercase tracking-widest text-sage">
-                      {categoryLabels[article.category] || article.category}
+                      {(categoryLabels[lang] || categoryLabels.de)[article.category] || article.category}
                     </span>
                     <span className="text-sage/40 text-xs" aria-hidden="true">·</span>
                     <span className="font-sans text-xs text-charcoal-light">
@@ -101,7 +102,7 @@ export default function Blog() {
                   {/* Footer row */}
                   <div className="flex items-center justify-between pt-5 border-t border-sage/15">
                     <span className="font-sans text-xs text-charcoal-light">
-                      {formatDate(article.date)}
+                      {formatDate(article.date, lang)}
                     </span>
                     <Link
                       to={`/blog/${article.slug}`}
