@@ -73,8 +73,14 @@ export default function WissenArticle() {
     .map((p) => p.trim())
     .filter(Boolean);
 
-  // Build TOC from paragraphs that look like headings (for long articles)
-  // Since content is plain text paragraphs, we skip TOC for now (no H2 markers in plain text)
+  // Build TOC from H2 headings in content
+  const tocItems = paragraphs
+    .filter((p) => p.startsWith('## '))
+    .map((p) => {
+      const text = p.replace(/^## /, '');
+      const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      return { text, id };
+    });
 
   const blogPostingSchema = {
     '@context': 'https://schema.org',
@@ -191,18 +197,44 @@ export default function WissenArticle() {
 
             {/* ARTICLE BODY */}
             <article className="max-w-3xl">
-              {paragraphs.map((paragraph, i) => (
-                <p
-                  key={i}
-                  className={
-                    i === 0
-                      ? 'font-sans text-xl leading-relaxed text-charcoal mb-7'
-                      : 'font-sans text-lg leading-relaxed text-charcoal mb-6'
-                  }
-                >
-                  {paragraph}
-                </p>
-              ))}
+              {paragraphs.map((paragraph, i) => {
+                // H2 heading
+                if (paragraph.startsWith('## ')) {
+                  const headingText = paragraph.replace(/^## /, '');
+                  const headingId = headingText.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                  return (
+                    <h2
+                      key={i}
+                      id={headingId}
+                      className="font-serif font-bold text-forest text-2xl mt-10 mb-5 scroll-mt-24"
+                    >
+                      {headingText}
+                    </h2>
+                  );
+                }
+
+                // Render inline bold (**text**) as <strong>
+                const renderWithBold = (text) => {
+                  const parts = text.split(/\*\*(.+?)\*\*/g);
+                  if (parts.length === 1) return text;
+                  return parts.map((part, j) =>
+                    j % 2 === 1 ? <strong key={j} className="font-semibold">{part}</strong> : part
+                  );
+                };
+
+                return (
+                  <p
+                    key={i}
+                    className={
+                      i === 0
+                        ? 'font-sans text-xl leading-relaxed text-charcoal mb-7'
+                        : 'font-sans text-lg leading-relaxed text-charcoal mb-6'
+                    }
+                  >
+                    {renderWithBold(paragraph)}
+                  </p>
+                );
+              })}
 
               {/* FAQ Section */}
               {article.faq && article.faq.length > 0 && (
@@ -259,6 +291,29 @@ export default function WissenArticle() {
             {/* SIDEBAR — desktop only */}
             <aside className="hidden lg:block">
               <div className="sticky top-24">
+                {/* Table of contents */}
+                {tocItems.length > 0 && (
+                  <>
+                    <p className="font-sans text-xs uppercase tracking-widest text-sage mb-4">
+                      {lang === 'fr' ? 'Sommaire' : lang === 'en' ? 'Contents' : 'Inhalt'}
+                    </p>
+                    <nav className="mb-10">
+                      <ul className="flex flex-col gap-2">
+                        {tocItems.map((item) => (
+                          <li key={item.id}>
+                            <a
+                              href={`#${item.id}`}
+                              className="font-sans text-sm text-charcoal-light hover:text-forest transition-colors leading-snug block no-underline"
+                            >
+                              {item.text}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </nav>
+                  </>
+                )}
+
                 {/* Related articles */}
                 {relatedArticles.length > 0 && (
                   <>
