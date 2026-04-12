@@ -520,15 +520,21 @@ export default function Landing() {
               <p className="font-sans text-stone text-sm mt-4">{t.hero.note}</p>
             </div>
 
-            {/* Right — placeholder image area */}
-            <div className="relative bg-forest rounded-lg min-h-[420px] flex items-center justify-center overflow-hidden">
-              <div className="w-56 h-56 rounded-full bg-forest-mid/60 flex items-center justify-center">
-                <span className="font-sans text-cream/40 text-sm text-center px-6">Foto</span>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 bg-forest-mid/80 backdrop-blur-sm px-8 py-5 rounded-b-lg">
+            {/* Right — hero image */}
+            <div className="relative rounded-lg min-h-[420px] overflow-hidden">
+              <img
+                src="/hero.jpg"
+                alt={lang === 'de' ? 'Frau geniesst einen ruhigen Moment bei einer Tasse Tee' : lang === 'fr' ? 'Femme savourant un moment calme avec une tasse de thé' : 'Woman enjoying a calm moment with a cup of tea'}
+                className="w-full h-full min-h-[420px] object-cover object-top rounded-lg"
+                loading="eager"
+                fetchPriority="high"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-forest/70 backdrop-blur-sm px-8 py-5 rounded-b-lg">
                 <p className="font-body italic text-cream/80 text-sm leading-relaxed">
                   {lang === 'de'
                     ? 'Ihre Gesundheit verdient mehr als 20 Minuten.'
+                    : lang === 'fr'
+                    ? 'Votre santé mérite plus que 20 minutes.'
                     : 'Your health deserves more than 20 minutes.'}
                 </p>
               </div>
