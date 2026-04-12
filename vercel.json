@@ -13,15 +13,6 @@
       ]
     }
   ],
-  "redirects": [
-    { "source": "/", "destination": "/de", "statusCode": 301 },
-    { "source": "/wissen/:cluster/:slug", "destination": "/de/wissen/:cluster/:slug", "statusCode": 301 },
-    { "source": "/wissen/:cluster", "destination": "/de/wissen/:cluster", "statusCode": 301 },
-    { "source": "/wissen", "destination": "/de/wissen", "statusCode": 301 },
-    { "source": "/employers", "destination": "/de/employers", "statusCode": 301 },
-    { "source": "/blog/:slug", "destination": "/de/blog/:slug", "statusCode": 301 },
-    { "source": "/blog", "destination": "/de/wissen", "statusCode": 301 }
-  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
