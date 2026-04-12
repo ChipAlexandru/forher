@@ -3,11 +3,11 @@
  *
  * After `vite build` produces `dist/`, this script:
  *   1. Spins up a local static server serving `dist/`
- *   2. Uses Puppeteer to visit each route
+ *   2. Uses Puppeteer to visit each route (3 languages x all pages)
  *   3. Waits for lazy components and react-helmet-async meta tags to render
  *   4. Captures the final HTML and writes it to the appropriate path in `dist/`
  *
- * Routes to pre-render are: /, /employers, /blog, /wissen, /wissen/:cluster, and /wissen/:cluster/:slug from wissen data.
+ * URL structure: /:lang/... where lang is de, fr, or en.
  */
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
@@ -19,18 +19,17 @@ import puppeteer from 'puppeteer';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = join(__dirname, '..', 'dist');
 const PORT = 4173;
+const LANGS = ['de', 'fr', 'en'];
 
 // ---------------------------------------------------------------------------
 // 1. Discover routes
 // ---------------------------------------------------------------------------
 
 async function getRoutes() {
-  // Static routes
-  const routes = ['/', '/employers', '/wissen', '/blog'];
+  // Base paths (without language prefix)
+  const basePaths = ['/', '/employers', '/wissen'];
 
   // Dynamic wissen routes from wissen data.
-  // We import the built JS to extract slugs. Since the source is ESM with no
-  // JSX, we can read the source file directly and extract slugs with a regex.
   const wissenPath = join(__dirname, '..', 'src', 'data', 'wissen.js');
   const wissenSource = readFileSync(wissenPath, 'utf-8');
 
@@ -40,11 +39,19 @@ async function getRoutes() {
   let match;
   while ((match = articleRegex.exec(wissenSource)) !== null) {
     clusterSlugs.add(match[2]);
-    routes.push(`/wissen/${match[2]}/${match[1]}`);
+    basePaths.push(`/wissen/${match[2]}/${match[1]}`);
   }
   // Add cluster index pages
   for (const cluster of clusterSlugs) {
-    routes.push(`/wissen/${cluster}`);
+    basePaths.push(`/wissen/${cluster}`);
+  }
+
+  // Generate routes for all 3 languages
+  const routes = [];
+  for (const lang of LANGS) {
+    for (const path of basePaths) {
+      routes.push(`/${lang}${path === '/' ? '' : path}`);
+    }
   }
 
   return routes;
@@ -109,16 +116,11 @@ async function renderRoute(browser, route) {
   await page.goto(url, { waitUntil: 'networkidle0' });
 
   // Wait for Suspense boundaries to resolve (lazy components).
-  // We check that no fallback placeholder divs remain and that the page
-  // has meaningful content beyond the empty root div.
   await page.waitForFunction(
     () => {
       const root = document.getElementById('root');
       if (!root) return false;
-      // Wait until root has rendered children (not just the empty div)
       if (root.children.length === 0) return false;
-      // Check that helmet has had a chance to run by looking for a title
-      // or meta description in <head>
       const title = document.querySelector('title');
       return title && title.textContent.length > 0;
     },
@@ -128,23 +130,17 @@ async function renderRoute(browser, route) {
   // Small extra delay for any remaining async renders
   await new Promise((r) => setTimeout(r, 500));
 
-  // Clean up duplicate <head> tags. react-helmet-async appends its tags
-  // alongside the original static ones from index.html. We keep helmet's
-  // versions (which appear later) and remove the earlier duplicates.
+  // Clean up duplicate <head> tags from react-helmet-async
   await page.evaluate(() => {
     const head = document.head;
 
-    // Deduplicate <title> — keep only the first one (helmet places its own first)
     const titles = head.querySelectorAll('title');
     if (titles.length > 1) {
-      // Keep the first title (helmet's), remove the rest
       for (let i = 1; i < titles.length; i++) titles[i].remove();
     }
 
-    // Deduplicate meta tags by name or property attribute
     const seen = new Map();
     const metas = head.querySelectorAll('meta[name], meta[property]');
-    // Iterate in reverse so we keep the LAST occurrence (helmet's)
     for (let i = metas.length - 1; i >= 0; i--) {
       const key = metas[i].getAttribute('name') || metas[i].getAttribute('property');
       if (seen.has(key)) {
@@ -154,16 +150,25 @@ async function renderRoute(browser, route) {
       }
     }
 
-    // Deduplicate link[rel="canonical"]
     const canonicals = head.querySelectorAll('link[rel="canonical"]');
     if (canonicals.length > 1) {
       for (let i = 0; i < canonicals.length - 1; i++) canonicals[i].remove();
     }
+
+    // Deduplicate hreflang links
+    const hreflangs = head.querySelectorAll('link[rel="alternate"][hreflang]');
+    const seenHreflang = new Map();
+    for (let i = hreflangs.length - 1; i >= 0; i--) {
+      const key = hreflangs[i].getAttribute('hreflang');
+      if (seenHreflang.has(key)) {
+        hreflangs[i].remove();
+      } else {
+        seenHreflang.set(key, true);
+      }
+    }
   });
 
   let html = await page.content();
-
-  // Remove any Vite HMR / dev-only scripts (shouldn't exist in prod, but safe)
   html = html.replace(/<script[^>]*type="module"[^>]*src="[^"]*@vite[^"]*"[^>]*><\/script>/g, '');
 
   await page.close();
@@ -179,8 +184,6 @@ function writeRoute(route, html) {
   if (route === '/') {
     outPath = join(DIST_DIR, 'index.html');
   } else {
-    // e.g. /blog -> dist/blog/index.html
-    // e.g. /blog/my-slug -> dist/blog/my-slug/index.html
     const dir = join(DIST_DIR, route.slice(1));
     mkdirSync(dir, { recursive: true });
     outPath = join(dir, 'index.html');

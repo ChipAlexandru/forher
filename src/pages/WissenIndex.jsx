@@ -26,7 +26,7 @@ const pageText = {
 };
 
 export default function WissenIndex() {
-  const { lang } = useLang();
+  const { lang, langPath } = useLang();
   const containerRef = useFadeIn();
   const t = pageText[lang] || pageText.de;
 
@@ -35,7 +35,7 @@ export default function WissenIndex() {
       <SEO
         title={`${t.tag} — Equivie MED | Menopause Wissen`}
         description={t.subtitle}
-        canonical="https://equiviemed.ch/wissen"
+        pagePath="/wissen"
         type="website"
       />
 
@@ -72,7 +72,7 @@ export default function WissenIndex() {
               return (
                 <Link
                   key={cluster.slug}
-                  to={`/wissen/${cluster.slug}`}
+                  to={langPath(`/wissen/${cluster.slug}`)}
                   className="bg-white border border-sage/20 rounded-[2px] p-6 lg:p-7 flex flex-col hover:border-sage/50 hover:shadow-sm transition-all duration-200 no-underline group"
                 >
                   {/* Title */}

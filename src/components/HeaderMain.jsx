@@ -13,9 +13,9 @@ const langs = ['de', 'fr', 'en'];
 export default function HeaderMain({ onBookClick }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { lang, setLang } = useLang();
+  const { lang, setLang, langPath } = useLang();
   const location = useLocation();
-  const isHome = location.pathname === '/';
+  const isHome = location.pathname === `/${lang}` || location.pathname === `/${lang}/`;
   const nav = navLabels[lang] || navLabels.en;
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function HeaderMain({ onBookClick }) {
   }, [menuOpen]);
 
   // Anchor links point to sections on home page
-  const anchorHref = (hash) => isHome ? hash : `/${hash}`;
+  const anchorHref = (hash) => isHome ? hash : `/${lang}${hash}`;
 
   return (
     <header
@@ -44,7 +44,7 @@ export default function HeaderMain({ onBookClick }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="font-serif text-2xl tracking-tight no-underline">
+          <Link to={langPath('/')} className="font-serif text-2xl tracking-tight no-underline">
             <span className="text-forest">Equi</span>
             <span className="font-bold text-sage">vie</span>
             <span className="text-forest font-sans font-medium uppercase text-[0.55em] tracking-widest ml-1.5">med</span>
@@ -58,7 +58,7 @@ export default function HeaderMain({ onBookClick }) {
             <a href={anchorHref('#pricing')} className="text-sm font-sans text-stone no-underline hover:text-forest transition-colors">
               {nav.pricing}
             </a>
-            <Link to="/wissen" className="text-sm font-sans text-stone no-underline hover:text-forest transition-colors">
+            <Link to={langPath('/wissen')} className="text-sm font-sans text-stone no-underline hover:text-forest transition-colors">
               {nav.blog}
             </Link>
           </nav>
@@ -146,7 +146,7 @@ export default function HeaderMain({ onBookClick }) {
             <a href={anchorHref('#pricing')} onClick={() => setMenuOpen(false)} className="block py-3 text-base font-sans text-stone no-underline hover:text-forest transition-colors border-b border-border/30">
               {nav.pricing}
             </a>
-            <Link to="/wissen" onClick={() => setMenuOpen(false)} className="block py-3 text-base font-sans text-stone no-underline hover:text-forest transition-colors border-b border-border/30">
+            <Link to={langPath('/wissen')} onClick={() => setMenuOpen(false)} className="block py-3 text-base font-sans text-stone no-underline hover:text-forest transition-colors border-b border-border/30">
               {nav.blog}
             </Link>
             {onBookClick ? (

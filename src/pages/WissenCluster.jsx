@@ -18,7 +18,7 @@ function formatDate(dateString, lang = 'de') {
 
 export default function WissenCluster() {
   const { cluster: clusterSlug } = useParams();
-  const { lang } = useLang();
+  const { lang, langPath } = useLang();
   const containerRef = useFadeIn();
   const [openFaq, setOpenFaq] = useState(null);
 
@@ -42,7 +42,7 @@ export default function WissenCluster() {
           {uiText.notFound}
         </h1>
         <Link
-          to="/wissen"
+          to={langPath('/wissen')}
           className="font-sans font-medium text-base text-forest border-b border-forest pb-px hover:text-sage hover:border-sage transition-colors"
         >
           &larr;&thinsp;{uiText.back}
@@ -67,8 +67,6 @@ export default function WissenCluster() {
         : (pillarArticle.faq ? (pillarArticle.faq[lang] || pillarArticle.faq.de || []) : []))
     : [];
 
-  // pillarParagraphs no longer needed — MarkdownContent handles rendering
-
   const breadcrumbWissen = lang === 'fr' ? 'Savoir' : lang === 'en' ? 'Knowledge' : 'Wissen';
   const readMoreLabel = lang === 'fr' ? 'Lire' : lang === 'en' ? 'Read' : 'Lesen';
   const minuteRead = lang === 'fr' ? 'min de lecture' : lang === 'en' ? 'min read' : 'Min. Lesezeit';
@@ -79,7 +77,7 @@ export default function WissenCluster() {
       <SEO
         title={`${cluster.title[lang] || cluster.title.de} — Equivie MED`}
         description={cluster.description[lang] || cluster.description.de}
-        canonical={`https://equiviemed.ch/wissen/${clusterSlug}`}
+        pagePath={`/wissen/${clusterSlug}`}
         type="website"
       />
 
@@ -88,7 +86,7 @@ export default function WissenCluster() {
         <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 font-sans text-sm text-charcoal-light mb-6">
-            <Link to="/wissen" className="hover:text-forest transition-colors">
+            <Link to={langPath('/wissen')} className="hover:text-forest transition-colors">
               {breadcrumbWissen}
             </Link>
             <span aria-hidden="true">/</span>
@@ -117,7 +115,7 @@ export default function WissenCluster() {
               </h2>
 
               {/* Byline */}
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-10">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-4">
                 <span className="font-sans text-sm text-charcoal-light">
                   {pillarArticle.author}
                 </span>
@@ -188,7 +186,7 @@ export default function WissenCluster() {
               {supportingArticles.map((article) => (
                 <Link
                   key={article.slug}
-                  to={`/wissen/${clusterSlug}/${article.slug}`}
+                  to={langPath(`/wissen/${clusterSlug}/${article.slug}`)}
                   className="bg-white border border-sage/20 rounded-[2px] p-6 lg:p-7 flex flex-col hover:border-sage/50 hover:shadow-sm transition-all duration-200 no-underline group"
                 >
                   <span className="font-sans text-xs uppercase tracking-widest text-sage mb-3">

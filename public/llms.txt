@@ -1,19 +1,20 @@
 # Equivie MED
 
-> Equivie MED is a Swiss women's health platform specialising in menopause and perimenopause. We provide evidence-based medical consultations via video with Swiss-certified physicians. All content is reviewed for medical accuracy and grounded in current clinical research.
+> Equivie MED is a Swiss women's health platform specialising in menopause and perimenopause. We provide evidence-based medical consultations via video with Swiss-certified physicians. All content is reviewed for medical accuracy and grounded in current clinical research. Content is available in German (/de/), French (/fr/), and English (/en/).
 
 ## Main
-- [Homepage](https://equiviemed.ch/): Overview of services — video consultations with menopause specialists, how it works, pricing, and FAQ
+- [Homepage](https://equiviemed.ch/en): Overview of services — video consultations with menopause specialists, how it works, pricing, and FAQ
+- [Employers](https://equiviemed.ch/en/employers): Workplace menopause support programme for Swiss companies
 
 ## Knowledge Hub (Wissen) — Pillar Articles
-- [Knowledge hub](https://equiviemed.ch/wissen): Index of all knowledge clusters and articles on menopause
-- [What Is Perimenopause?](https://equiviemed.ch/wissen/perimenopause/what-is-perimenopause): Symptoms, duration, and when to seek help — comprehensive perimenopause guide
-- [Menopause Symptoms](https://equiviemed.ch/wissen/symptome/symptoms-management): How to recognise every sign and find effective relief
-- [Hormone Therapy (HRT)](https://equiviemed.ch/wissen/hormontherapie/hormone-therapy): How it works, current evidence, and who it's for
-- [Menopause and Mental Health](https://equiviemed.ch/wissen/psychische-gesundheit/mental-health): Depression, anxiety, and what really helps
-- [Nutrition in Menopause](https://equiviemed.ch/wissen/ernaehrung/nutrition-supplements): What the research recommends — Mediterranean diet, supplements, gut health
-- [Sexuality and Relationships](https://equiviemed.ch/wissen/sexualitaet/sexuality-relationships): GSM, vaginal estrogen, pelvic floor therapy, and partner communication
-- [Post-Menopause Health](https://equiviemed.ch/wissen/nach-den-wechseljahren/post-menopause-health): Protecting bones, heart, and long-term wellbeing
-- [Menopause at Work](https://equiviemed.ch/wissen/arbeitsplatz/workplace-menopause): Rights, practical solutions, and what employers can do
-- [Treatment Options](https://equiviemed.ch/wissen/behandlungsoptionen/treatment-options): From hormone therapy to naturopathy — integrative approach
-- [Menopause in Switzerland](https://equiviemed.ch/wissen/schweiz/swiss-menopause-guide): Insurance, specialists, and navigating the Swiss healthcare system
+- [Knowledge hub](https://equiviemed.ch/en/wissen): Index of all knowledge clusters and articles on menopause
+- [What Is Perimenopause?](https://equiviemed.ch/en/wissen/perimenopause/what-is-perimenopause): Symptoms, duration, and when to seek help — comprehensive perimenopause guide
+- [Menopause Symptoms](https://equiviemed.ch/en/wissen/symptome/symptoms-management): How to recognise every sign and find effective relief
+- [Hormone Therapy (HRT)](https://equiviemed.ch/en/wissen/hormontherapie/hormone-therapy): How it works, current evidence, and who it's for
+- [Menopause and Mental Health](https://equiviemed.ch/en/wissen/psychische-gesundheit/mental-health): Depression, anxiety, and what really helps
+- [Nutrition in Menopause](https://equiviemed.ch/en/wissen/ernaehrung/nutrition-supplements): What the research recommends — Mediterranean diet, supplements, gut health
+- [Sexuality and Relationships](https://equiviemed.ch/en/wissen/sexualitaet/sexuality-relationships): GSM, vaginal estrogen, pelvic floor therapy, and partner communication
+- [Post-Menopause Health](https://equiviemed.ch/en/wissen/nach-den-wechseljahren/post-menopause-health): Protecting bones, heart, and long-term wellbeing
+- [Menopause at Work](https://equiviemed.ch/en/wissen/arbeitsplatz/workplace-menopause): Rights, practical solutions, and what employers can do
+- [Treatment Options](https://equiviemed.ch/en/wissen/behandlungsoptionen/treatment-options): From hormone therapy to naturopathy — integrative approach
+- [Menopause in Switzerland](https://equiviemed.ch/en/wissen/schweiz/swiss-menopause-guide): Insurance, specialists, and navigating the Swiss healthcare system

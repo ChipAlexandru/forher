@@ -17,7 +17,7 @@ function formatDate(dateString, lang = 'de') {
 
 export default function WissenArticle() {
   const { cluster: clusterSlug, slug } = useParams();
-  const { lang } = useLang();
+  const { lang, langPath } = useLang();
   const [scrollProgress, setScrollProgress] = useState(0);
   const [openFaq, setOpenFaq] = useState(null);
 
@@ -63,7 +63,7 @@ export default function WissenArticle() {
           {t.notFound}
         </h1>
         <Link
-          to="/wissen"
+          to={langPath('/wissen')}
           className="font-sans font-medium text-base text-forest border-b border-forest pb-px hover:text-sage hover:border-sage transition-colors"
         >
           &larr;&thinsp;{t.backToWissen}
@@ -92,6 +92,8 @@ export default function WissenArticle() {
       return { text, id };
     });
 
+  const pagePath = `/wissen/${clusterSlug}/${slug}`;
+
   const medicalPageSchema = {
     '@context': 'https://schema.org',
     '@type': 'MedicalWebPage',
@@ -119,7 +121,7 @@ export default function WissenArticle() {
       '@type': 'PatientAudience',
     },
     inLanguage: lang === 'fr' ? 'fr-CH' : lang === 'en' ? 'en' : 'de-CH',
-    mainEntityOfPage: `https://equiviemed.ch/wissen/${clusterSlug}/${slug}`,
+    mainEntityOfPage: `https://equiviemed.ch/${lang}${pagePath}`,
   };
 
   const faqSchema = resolvedFaq && resolvedFaq.length > 0
@@ -146,7 +148,7 @@ export default function WissenArticle() {
       <SEO
         title={`${article.title[lang] || article.title.de} — Equivie MED`}
         description={(article.excerpt[lang] || article.excerpt.de || '').slice(0, 155)}
-        canonical={`https://equiviemed.ch/wissen/${clusterSlug}/${slug}`}
+        pagePath={pagePath}
         type="article"
         structuredData={combinedSchema}
       />
@@ -169,11 +171,11 @@ export default function WissenArticle() {
           <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-12 pb-14 lg:pt-16 lg:pb-18">
             {/* Breadcrumb */}
             <nav className="flex items-center gap-2 font-sans text-sm text-charcoal-light mb-8">
-              <Link to="/wissen" className="hover:text-forest transition-colors">
+              <Link to={langPath('/wissen')} className="hover:text-forest transition-colors">
                 {t.breadcrumb}
               </Link>
               <span aria-hidden="true">/</span>
-              <Link to={`/wissen/${clusterSlug}`} className="hover:text-forest transition-colors">
+              <Link to={langPath(`/wissen/${clusterSlug}`)} className="hover:text-forest transition-colors">
                 {cluster.title[lang] || cluster.title.de}
               </Link>
               <span aria-hidden="true">/</span>
@@ -269,7 +271,7 @@ export default function WissenArticle() {
               {/* Back link */}
               <div className="mt-8">
                 <Link
-                  to={`/wissen/${clusterSlug}`}
+                  to={langPath(`/wissen/${clusterSlug}`)}
                   className="font-sans font-medium text-base text-forest border-b border-forest pb-px hover:text-sage hover:border-sage transition-colors"
                 >
                   &larr;&thinsp;{cluster.title[lang] || cluster.title.de}
@@ -313,14 +315,14 @@ export default function WissenArticle() {
                       {relatedArticles.map((related) => (
                         <Link
                           key={related.slug}
-                          to={`/wissen/${related.cluster}/${related.slug}`}
+                          to={langPath(`/wissen/${related.cluster}/${related.slug}`)}
                           className="group block bg-white border border-sage/20 rounded-[2px] p-4 hover:border-sage/50 hover:shadow-sm transition-all duration-200 no-underline"
                         >
                           <h3 className="font-serif font-semibold text-forest text-base leading-snug group-hover:text-sage transition-colors">
                             {related.title[lang] || related.title.de}
                           </h3>
                           <p className="font-sans text-xs text-charcoal-light mt-2">
-                            {related.readingTime}&thinsp;{minuteRead}
+                            {related.readingTime}&thinsp;{t.minuteRead}
                           </p>
                         </Link>
                       ))}
@@ -337,7 +339,7 @@ export default function WissenArticle() {
                     {t.ctaBody}
                   </p>
                   <Link
-                    to="/"
+                    to={langPath('/')}
                     className="inline-block font-sans font-medium text-xs text-forest border border-forest px-4 py-2 rounded-[2px] hover:bg-forest hover:text-cream transition-colors no-underline"
                   >
                     {t.ctaButton}

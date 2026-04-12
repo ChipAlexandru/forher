@@ -3,68 +3,68 @@
 > Equivie MED is a Swiss women's health platform specialising in menopause and perimenopause. We provide evidence-based medical consultations via video with Swiss-certified (FMH) physicians. All content is reviewed for medical accuracy and grounded in current clinical research (NAMS, EMAS, SGGG guidelines).
 
 ## Homepage
-- URL: https://equiviemed.ch/
+- URL: https://equiviemed.ch/en/
 - Audience: Women in Switzerland experiencing perimenopause or menopause symptoms
 - Content: Overview of the video consultation service — how it works (questionnaire, 45-60 min video session, treatment plan), pricing (CHF 300 self-pay), physician credentials (FMH-certified gynaecologists with additional menopause training), FAQ covering referrals, insurance coverage, hormone therapy, and symptom scope. Available in German, French, and English.
 
 ## Employers
-- URL: https://equiviemed.ch/employers
+- URL: https://equiviemed.ch/en/employers
 - Audience: HR leaders, benefits managers, and CHROs at Swiss companies
 - Content: Business case for workplace menopause support — ROI calculator, prevalence statistics (1 in 4 women consider leaving work due to menopause symptoms), three service tiers (Awareness, Support, Premium), implementation process, and contact form. Targets companies seeking to reduce absenteeism and retain experienced female talent.
 
 ## Knowledge Hub Index
-- URL: https://equiviemed.ch/wissen
+- URL: https://equiviemed.ch/en/wissen
 - Audience: General public seeking menopause health information
 - Content: Index page listing all 10 knowledge clusters with descriptions. Each cluster contains a comprehensive pillar article covering one major aspect of menopause. Organised by topic: perimenopause, symptoms, hormone therapy, mental health, nutrition, sexuality, post-menopause, workplace, treatment options, and Swiss healthcare system.
 
 ## Pillar Articles
 
 ### What Is Perimenopause?
-- URL: https://equiviemed.ch/wissen/perimenopause/what-is-perimenopause
+- URL: https://equiviemed.ch/en/wissen/perimenopause/what-is-perimenopause
 - Audience: Women aged 35-50 noticing early hormonal changes
 - Content: Comprehensive guide covering what happens during perimenopause (hormonal fluctuations, not steady decline), how to recognise it (irregular periods, hot flashes, sleep disruption, mood changes), the four stages of reproductive aging (STRAW+10 criteria), diagnostic approaches (clinical vs. blood tests), when to seek medical help, and the difference between perimenopause and early menopause. Includes data: 90% of women 35+ experience at least one symptom, typical duration 4-8 years.
 
 ### Menopause Symptoms and Management
-- URL: https://equiviemed.ch/wissen/symptome/symptoms-management
+- URL: https://equiviemed.ch/en/wissen/symptome/symptoms-management
 - Audience: Women experiencing menopause symptoms seeking evidence-based relief options
 - Content: Covers the full spectrum of menopause symptoms organised by system — vasomotor (hot flashes, night sweats), neurological (brain fog, headaches), musculoskeletal (joint pain), urogenital (vaginal dryness, UTIs), psychological (anxiety, mood swings), and cardiovascular (palpitations). For each symptom category: what causes it, what the evidence says about treatment, and practical management strategies. Distinguishes between symptoms requiring medical attention vs. lifestyle management.
 
 ### Hormone Therapy (HRT)
-- URL: https://equiviemed.ch/wissen/hormontherapie/hormone-therapy
+- URL: https://equiviemed.ch/en/wissen/hormontherapie/hormone-therapy
 - Audience: Women and healthcare providers evaluating hormone therapy options
 - Content: Evidence-based overview of modern HRT — types (estrogen-only, combined, bioidentical), delivery methods (transdermal patches, gels, oral, vaginal), current research on benefits and risks (WHI reanalysis, timing hypothesis), contraindications, and how to discuss HRT with a physician. Addresses common fears about breast cancer risk with nuanced data. Covers Swiss prescribing context including Spezialitaetenliste coverage.
 
 ### Menopause and Mental Health
-- URL: https://equiviemed.ch/wissen/psychische-gesundheit/mental-health
+- URL: https://equiviemed.ch/en/wissen/psychische-gesundheit/mental-health
 - Audience: Women experiencing mood changes, anxiety, or depression during menopause
 - Content: Explains the neurobiological link between estrogen decline and mental health — serotonin and GABA disruption, sleep-mood feedback loops, and why perimenopause is a vulnerability window for depression. Covers evidence-based interventions: HRT for hormone-related mood changes, CBT, SSRIs/SNRIs, exercise, and when to seek psychiatric vs. gynaecological help. Distinguishes between hormonal mood changes and clinical depression.
 
 ### Nutrition and Supplements in Menopause
-- URL: https://equiviemed.ch/wissen/ernaehrung/nutrition-supplements
+- URL: https://equiviemed.ch/en/wissen/ernaehrung/nutrition-supplements
 - Audience: Women seeking dietary and supplement guidance for menopause
 - Content: Research-backed nutritional strategies — Mediterranean diet evidence, calcium and vitamin D for bone health (with Swiss-specific dosing recommendations), phytoestrogens (soy isoflavones, red clover — what the evidence actually shows), omega-3 fatty acids, magnesium for sleep and mood, and gut microbiome changes during menopause. Separates evidence-supported supplements from marketing claims. Includes practical meal guidance.
 
 ### Sexuality and Relationships
-- URL: https://equiviemed.ch/wissen/sexualitaet/sexuality-relationships
+- URL: https://equiviemed.ch/en/wissen/sexualitaet/sexuality-relationships
 - Audience: Women and couples navigating sexual health changes during menopause
 - Content: Covers genitourinary syndrome of menopause (GSM) — vaginal dryness, atrophy, painful intercourse, recurrent UTIs. Treatment options: vaginal estrogen (local, minimal systemic absorption), ospemifene, laser therapy evidence, lubricants and moisturisers. Also addresses libido changes (hormonal and psychosocial factors), pelvic floor therapy, and partner communication strategies. Emphasises that GSM is progressive and undertreated.
 
 ### Post-Menopause Health
-- URL: https://equiviemed.ch/wissen/nach-den-wechseljahren/post-menopause-health
+- URL: https://equiviemed.ch/en/wissen/nach-den-wechseljahren/post-menopause-health
 - Audience: Women in postmenopause focused on long-term health
 - Content: Long-term health risks after menopause — accelerated bone loss (osteoporosis screening with DEXA, fracture prevention), cardiovascular disease (lipid changes, blood pressure), cognitive health, and metabolic changes. Prevention strategies: weight-bearing exercise, calcium/vitamin D, cardiovascular screening schedule, and when to consider or continue HRT for prevention. Swiss screening recommendations and insurance coverage for preventive tests.
 
 ### Menopause at Work
-- URL: https://equiviemed.ch/wissen/arbeitsplatz/workplace-menopause
+- URL: https://equiviemed.ch/en/wissen/arbeitsplatz/workplace-menopause
 - Audience: Working women and employers/HR professionals
 - Content: Impact of menopause symptoms on work performance — concentration, temperature regulation, fatigue, confidence. Practical workplace accommodations (flexible scheduling, temperature control, bathroom access). Employee rights under Swiss labour law. Guide for employers: how to create a menopause-friendly workplace policy, manager training, and the business case for support (retention, reduced absenteeism). Links to Equivie MED employer programme.
 
 ### Treatment Options Overview
-- URL: https://equiviemed.ch/wissen/behandlungsoptionen/treatment-options
+- URL: https://equiviemed.ch/en/wissen/behandlungsoptionen/treatment-options
 - Audience: Women exploring the full range of menopause treatment approaches
 - Content: Comprehensive comparison of all treatment modalities — systemic HRT, local estrogen therapy, non-hormonal prescription options (SSRIs, gabapentin, clonidine, fezolinetant), complementary approaches (acupuncture, CBT, hypnotherapy — evidence levels for each), herbal remedies (black cohosh, St. John's wort — what works and what lacks evidence), and lifestyle interventions (exercise, sleep hygiene, stress management). Decision framework for choosing between options based on symptom severity, risk profile, and personal preferences.
 
 ### Menopause in Switzerland
-- URL: https://equiviemed.ch/wissen/schweiz/swiss-menopause-guide
+- URL: https://equiviemed.ch/en/wissen/schweiz/swiss-menopause-guide
 - Audience: Women navigating the Swiss healthcare system for menopause care
 - Content: Practical guide to accessing menopause care in Switzerland — Grundversicherung vs. Zusatzversicherung coverage, which medications are on the Spezialitaetenliste (and recent changes like Estradot removal), how to find a menopause specialist (vs. general gynaecologist), cantonal differences in access, telehealth regulations, and what to expect from a menopause consultation in Switzerland. Includes cost breakdown and insurance claim process.

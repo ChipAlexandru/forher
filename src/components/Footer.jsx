@@ -35,14 +35,14 @@ const footerText = {
 }
 
 export default function Footer() {
-  const { lang } = useLang()
+  const { lang, langPath } = useLang()
   const f = footerText[lang] || footerText.de
 
   return (
     <footer className="bg-forest text-cream/80">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16">
         {/* Brand */}
-        <Link to="/" className="inline-block">
+        <Link to={langPath('/')} className="inline-block">
           <p className="font-serif text-2xl font-bold text-cream">
             <span className="text-cream">Equi</span>
             <span className="text-sage font-bold">vie</span>
@@ -69,11 +69,11 @@ export default function Footer() {
             {f.legalTitle}
           </h4>
           <div className="flex items-center gap-2 text-sm">
-            <Link to="/impressum" className="text-cream/70 hover:text-cream transition-colors">{f.imprint}</Link>
+            <Link to={langPath('/impressum')} className="text-cream/70 hover:text-cream transition-colors">{f.imprint}</Link>
             <span className="text-cream/30">&middot;</span>
-            <Link to="/datenschutz" className="text-cream/70 hover:text-cream transition-colors">{f.privacy}</Link>
+            <Link to={langPath('/datenschutz')} className="text-cream/70 hover:text-cream transition-colors">{f.privacy}</Link>
             <span className="text-cream/30">&middot;</span>
-            <Link to="/agb" className="text-cream/70 hover:text-cream transition-colors">{f.terms}</Link>
+            <Link to={langPath('/agb')} className="text-cream/70 hover:text-cream transition-colors">{f.terms}</Link>
           </div>
         </div>
 

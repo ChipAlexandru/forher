@@ -1,82 +1,421 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Homepage -->
   <url>
-    <loc>https://equiviemed.ch/</loc>
+    <loc>https://equiviemed.ch/de</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de" />
   </url>
   <url>
-    <loc>https://equiviemed.ch/employers</loc>
+    <loc>https://equiviemed.ch/fr</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de" />
+  </url>
+  <url>
+    <loc>https://equiviemed.ch/en</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de" />
+  </url>
+
+  <!-- Employers -->
+  <url>
+    <loc>https://equiviemed.ch/de/employers</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/employers" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/employers" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/employers" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/employers" />
   </url>
   <url>
-    <loc>https://equiviemed.ch/wissen</loc>
+    <loc>https://equiviemed.ch/fr/employers</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/employers" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/employers" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/employers" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/employers" />
+  </url>
+  <url>
+    <loc>https://equiviemed.ch/en/employers</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/employers" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/employers" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/employers" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/employers" />
+  </url>
+
+  <!-- Wissen Index -->
+  <url>
+    <loc>https://equiviemed.ch/de/wissen</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen" />
   </url>
   <url>
-    <loc>https://equiviemed.ch/wissen/perimenopause/what-is-perimenopause</loc>
+    <loc>https://equiviemed.ch/fr/wissen</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen" />
+  </url>
+  <url>
+    <loc>https://equiviemed.ch/en/wissen</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen" />
+  </url>
+
+  <!-- Perimenopause -->
+  <url>
+    <loc>https://equiviemed.ch/de/wissen/perimenopause/what-is-perimenopause</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/perimenopause/what-is-perimenopause" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/perimenopause/what-is-perimenopause" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/perimenopause/what-is-perimenopause" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/perimenopause/what-is-perimenopause" />
   </url>
   <url>
-    <loc>https://equiviemed.ch/wissen/symptome/symptoms-management</loc>
+    <loc>https://equiviemed.ch/fr/wissen/perimenopause/what-is-perimenopause</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/perimenopause/what-is-perimenopause" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/perimenopause/what-is-perimenopause" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/perimenopause/what-is-perimenopause" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/perimenopause/what-is-perimenopause" />
   </url>
   <url>
-    <loc>https://equiviemed.ch/wissen/hormontherapie/hormone-therapy</loc>
+    <loc>https://equiviemed.ch/en/wissen/perimenopause/what-is-perimenopause</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/perimenopause/what-is-perimenopause" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/perimenopause/what-is-perimenopause" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/perimenopause/what-is-perimenopause" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/perimenopause/what-is-perimenopause" />
   </url>
+
+  <!-- Symptoms -->
   <url>
-    <loc>https://equiviemed.ch/wissen/psychische-gesundheit/mental-health</loc>
+    <loc>https://equiviemed.ch/de/wissen/symptome/symptoms-management</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/symptome/symptoms-management" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/symptome/symptoms-management" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/symptome/symptoms-management" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/symptome/symptoms-management" />
   </url>
   <url>
-    <loc>https://equiviemed.ch/wissen/ernaehrung/nutrition-supplements</loc>
+    <loc>https://equiviemed.ch/fr/wissen/symptome/symptoms-management</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/symptome/symptoms-management" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/symptome/symptoms-management" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/symptome/symptoms-management" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/symptome/symptoms-management" />
   </url>
   <url>
-    <loc>https://equiviemed.ch/wissen/sexualitaet/sexuality-relationships</loc>
+    <loc>https://equiviemed.ch/en/wissen/symptome/symptoms-management</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/symptome/symptoms-management" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/symptome/symptoms-management" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/symptome/symptoms-management" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/symptome/symptoms-management" />
   </url>
+
+  <!-- Hormone Therapy -->
   <url>
-    <loc>https://equiviemed.ch/wissen/nach-den-wechseljahren/post-menopause-health</loc>
+    <loc>https://equiviemed.ch/de/wissen/hormontherapie/hormone-therapy</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/hormontherapie/hormone-therapy" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/hormontherapie/hormone-therapy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/hormontherapie/hormone-therapy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/hormontherapie/hormone-therapy" />
   </url>
   <url>
-    <loc>https://equiviemed.ch/wissen/arbeitsplatz/workplace-menopause</loc>
+    <loc>https://equiviemed.ch/fr/wissen/hormontherapie/hormone-therapy</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/hormontherapie/hormone-therapy" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/hormontherapie/hormone-therapy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/hormontherapie/hormone-therapy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/hormontherapie/hormone-therapy" />
   </url>
   <url>
-    <loc>https://equiviemed.ch/wissen/behandlungsoptionen/treatment-options</loc>
+    <loc>https://equiviemed.ch/en/wissen/hormontherapie/hormone-therapy</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/hormontherapie/hormone-therapy" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/hormontherapie/hormone-therapy" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/hormontherapie/hormone-therapy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/hormontherapie/hormone-therapy" />
   </url>
+
+  <!-- Mental Health -->
   <url>
-    <loc>https://equiviemed.ch/wissen/schweiz/swiss-menopause-guide</loc>
+    <loc>https://equiviemed.ch/de/wissen/psychische-gesundheit/mental-health</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/psychische-gesundheit/mental-health" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/psychische-gesundheit/mental-health" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/psychische-gesundheit/mental-health" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/psychische-gesundheit/mental-health" />
   </url>
+  <url>
+    <loc>https://equiviemed.ch/fr/wissen/psychische-gesundheit/mental-health</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/psychische-gesundheit/mental-health" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/psychische-gesundheit/mental-health" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/psychische-gesundheit/mental-health" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/psychische-gesundheit/mental-health" />
+  </url>
+  <url>
+    <loc>https://equiviemed.ch/en/wissen/psychische-gesundheit/mental-health</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/psychische-gesundheit/mental-health" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/psychische-gesundheit/mental-health" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/psychische-gesundheit/mental-health" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/psychische-gesundheit/mental-health" />
+  </url>
+
+  <!-- Nutrition -->
+  <url>
+    <loc>https://equiviemed.ch/de/wissen/ernaehrung/nutrition-supplements</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/ernaehrung/nutrition-supplements" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/ernaehrung/nutrition-supplements" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/ernaehrung/nutrition-supplements" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/ernaehrung/nutrition-supplements" />
+  </url>
+  <url>
+    <loc>https://equiviemed.ch/fr/wissen/ernaehrung/nutrition-supplements</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/ernaehrung/nutrition-supplements" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/ernaehrung/nutrition-supplements" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/ernaehrung/nutrition-supplements" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/ernaehrung/nutrition-supplements" />
+  </url>
+  <url>
+    <loc>https://equiviemed.ch/en/wissen/ernaehrung/nutrition-supplements</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/ernaehrung/nutrition-supplements" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/ernaehrung/nutrition-supplements" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/ernaehrung/nutrition-supplements" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/ernaehrung/nutrition-supplements" />
+  </url>
+
+  <!-- Sexuality -->
+  <url>
+    <loc>https://equiviemed.ch/de/wissen/sexualitaet/sexuality-relationships</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/sexualitaet/sexuality-relationships" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/sexualitaet/sexuality-relationships" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/sexualitaet/sexuality-relationships" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/sexualitaet/sexuality-relationships" />
+  </url>
+  <url>
+    <loc>https://equiviemed.ch/fr/wissen/sexualitaet/sexuality-relationships</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/sexualitaet/sexuality-relationships" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/sexualitaet/sexuality-relationships" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/sexualitaet/sexuality-relationships" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/sexualitaet/sexuality-relationships" />
+  </url>
+  <url>
+    <loc>https://equiviemed.ch/en/wissen/sexualitaet/sexuality-relationships</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/sexualitaet/sexuality-relationships" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/sexualitaet/sexuality-relationships" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/sexualitaet/sexuality-relationships" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/sexualitaet/sexuality-relationships" />
+  </url>
+
+  <!-- Post-Menopause -->
+  <url>
+    <loc>https://equiviemed.ch/de/wissen/nach-den-wechseljahren/post-menopause-health</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/nach-den-wechseljahren/post-menopause-health" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/nach-den-wechseljahren/post-menopause-health" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/nach-den-wechseljahren/post-menopause-health" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/nach-den-wechseljahren/post-menopause-health" />
+  </url>
+  <url>
+    <loc>https://equiviemed.ch/fr/wissen/nach-den-wechseljahren/post-menopause-health</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/nach-den-wechseljahren/post-menopause-health" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/nach-den-wechseljahren/post-menopause-health" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/nach-den-wechseljahren/post-menopause-health" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/nach-den-wechseljahren/post-menopause-health" />
+  </url>
+  <url>
+    <loc>https://equiviemed.ch/en/wissen/nach-den-wechseljahren/post-menopause-health</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/nach-den-wechseljahren/post-menopause-health" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/nach-den-wechseljahren/post-menopause-health" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/nach-den-wechseljahren/post-menopause-health" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/nach-den-wechseljahren/post-menopause-health" />
+  </url>
+
+  <!-- Workplace -->
+  <url>
+    <loc>https://equiviemed.ch/de/wissen/arbeitsplatz/workplace-menopause</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/arbeitsplatz/workplace-menopause" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/arbeitsplatz/workplace-menopause" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/arbeitsplatz/workplace-menopause" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/arbeitsplatz/workplace-menopause" />
+  </url>
+  <url>
+    <loc>https://equiviemed.ch/fr/wissen/arbeitsplatz/workplace-menopause</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/arbeitsplatz/workplace-menopause" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/arbeitsplatz/workplace-menopause" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/arbeitsplatz/workplace-menopause" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/arbeitsplatz/workplace-menopause" />
+  </url>
+  <url>
+    <loc>https://equiviemed.ch/en/wissen/arbeitsplatz/workplace-menopause</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/arbeitsplatz/workplace-menopause" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/arbeitsplatz/workplace-menopause" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/arbeitsplatz/workplace-menopause" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/arbeitsplatz/workplace-menopause" />
+  </url>
+
+  <!-- Treatment Options -->
+  <url>
+    <loc>https://equiviemed.ch/de/wissen/behandlungsoptionen/treatment-options</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/behandlungsoptionen/treatment-options" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/behandlungsoptionen/treatment-options" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/behandlungsoptionen/treatment-options" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/behandlungsoptionen/treatment-options" />
+  </url>
+  <url>
+    <loc>https://equiviemed.ch/fr/wissen/behandlungsoptionen/treatment-options</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/behandlungsoptionen/treatment-options" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/behandlungsoptionen/treatment-options" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/behandlungsoptionen/treatment-options" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/behandlungsoptionen/treatment-options" />
+  </url>
+  <url>
+    <loc>https://equiviemed.ch/en/wissen/behandlungsoptionen/treatment-options</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/behandlungsoptionen/treatment-options" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/behandlungsoptionen/treatment-options" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/behandlungsoptionen/treatment-options" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/behandlungsoptionen/treatment-options" />
+  </url>
+
+  <!-- Swiss Guide -->
+  <url>
+    <loc>https://equiviemed.ch/de/wissen/schweiz/swiss-menopause-guide</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/schweiz/swiss-menopause-guide" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/schweiz/swiss-menopause-guide" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/schweiz/swiss-menopause-guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/schweiz/swiss-menopause-guide" />
+  </url>
+  <url>
+    <loc>https://equiviemed.ch/fr/wissen/schweiz/swiss-menopause-guide</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/schweiz/swiss-menopause-guide" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/schweiz/swiss-menopause-guide" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/schweiz/swiss-menopause-guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/schweiz/swiss-menopause-guide" />
+  </url>
+  <url>
+    <loc>https://equiviemed.ch/en/wissen/schweiz/swiss-menopause-guide</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/schweiz/swiss-menopause-guide" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/schweiz/swiss-menopause-guide" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/schweiz/swiss-menopause-guide" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/schweiz/swiss-menopause-guide" />
+  </url>
+
 </urlset>

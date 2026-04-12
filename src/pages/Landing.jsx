@@ -359,9 +359,9 @@ export default function Landing() {
   return (
     <div ref={containerRef} className="min-h-screen flex flex-col">
       <SEO
-        title="Equivie MED — Menopause specialists who listen | Switzerland"
-        description={content.en.hero.subhead.slice(0, 155)}
-        canonical="https://equiviemed.ch/"
+        title={t.hero.headline ? `Equivie MED — ${t.hero.headline.split('.')[0]}` : 'Equivie MED — Menopause specialists who listen | Switzerland'}
+        description={(t.hero.subhead || '').slice(0, 155)}
+        pagePath="/"
         ogImage="/og-image.png"
       />
 

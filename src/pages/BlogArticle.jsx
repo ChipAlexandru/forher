@@ -27,7 +27,7 @@ const relatedPhotos = [
 
 export default function BlogArticle() {
   const { slug } = useParams();
-  const { lang, t } = useLang();
+  const { lang, langPath, t } = useLang();
   const [scrollProgress, setScrollProgress] = useState(0);
 
   const article = articles.find((a) => a.slug === slug);
@@ -78,7 +78,7 @@ export default function BlogArticle() {
           {bu.notFoundDesc}
         </p>
         <Link
-          to="/blog"
+          to={langPath('/blog')}
           className="font-sans font-medium text-base text-forest border-b border-forest pb-px hover:text-sage hover:border-sage transition-colors"
         >
           &larr;&thinsp;{bu.backToGuide}
@@ -108,7 +108,7 @@ export default function BlogArticle() {
       name: 'Equivie MED',
       url: 'https://equiviemed.ch',
     },
-    mainEntityOfPage: `https://equiviemed.ch/blog/${slug}`,
+    mainEntityOfPage: `https://equiviemed.ch/${lang}/blog/${slug}`,
   };
 
   return (
@@ -116,7 +116,7 @@ export default function BlogArticle() {
       <SEO
         title={`${article.title} — Equivie MED`}
         description={(article.excerpt || article.content || '').slice(0, 155)}
-        canonical={`https://equiviemed.ch/blog/${slug}`}
+        pagePath={`/blog/${slug}`}
         type="article"
         structuredData={blogPostingSchema}
       />
@@ -139,7 +139,7 @@ export default function BlogArticle() {
           <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-12 pb-14 lg:pt-16 lg:pb-18">
             {/* Back link */}
             <Link
-              to="/blog"
+              to={langPath('/blog')}
               className="inline-block font-sans text-sm text-charcoal-light hover:text-forest transition-colors mb-8"
             >
               &larr;&thinsp;{t.blog?.title ?? 'Ratgeber'}
@@ -202,7 +202,7 @@ export default function BlogArticle() {
               {/* Back link at bottom */}
               <div className="mt-14 pt-10 border-t border-sage/20">
                 <Link
-                  to="/blog"
+                  to={langPath('/blog')}
                   className="font-sans font-medium text-base text-forest border-b border-forest pb-px hover:text-sage hover:border-sage transition-colors"
                 >
                   &larr;&thinsp;{bu.allArticles}
@@ -222,7 +222,7 @@ export default function BlogArticle() {
                     {relatedArticles.map((related, i) => (
                       <Link
                         key={related.slug}
-                        to={`/blog/${related.slug}`}
+                        to={langPath(`/blog/${related.slug}`)}
                         className="group block bg-white border border-sage/20 rounded-[2px] overflow-hidden hover:border-sage/50 hover:shadow-sm transition-all duration-200"
                       >
                         {/* Article thumbnail */}
@@ -258,7 +258,7 @@ export default function BlogArticle() {
                       {bu.ctaBody}
                     </p>
                     <Link
-                      to="/"
+                      to={langPath('/')}
                       className="inline-block font-sans font-medium text-xs text-forest border border-forest px-4 py-2 rounded-[2px] hover:bg-forest hover:text-cream transition-colors"
                     >
                       {bu.ctaButton}

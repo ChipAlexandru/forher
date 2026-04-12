@@ -30,7 +30,7 @@ function formatDate(dateString, lang = 'de') {
 }
 
 export default function Blog() {
-  const { lang, t } = useLang();
+  const { lang, langPath, t } = useLang();
   const containerRef = useFadeIn();
 
   return (
@@ -38,7 +38,7 @@ export default function Blog() {
       <SEO
         title="Blog — Equivie MED | Menopause health resources"
         description="Evidence-based articles on menopause, perimenopause, hormone therapy and women's health. Written and reviewed by Swiss medical specialists."
-        canonical="https://equiviemed.ch/blog"
+        pagePath="/blog"
         type="website"
       />
 
@@ -105,7 +105,7 @@ export default function Blog() {
                       {formatDate(article.date, lang)}
                     </span>
                     <Link
-                      to={`/blog/${article.slug}`}
+                      to={langPath(`/blog/${article.slug}`)}
                       className="font-sans text-sm font-medium text-forest border-b border-forest pb-px hover:text-sage hover:border-sage transition-colors"
                       aria-label={`${t.blog.readMore}: ${article.title}`}
                     >
