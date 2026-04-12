@@ -1,7 +1,5 @@
 {
   "buildCommand": "npm run build:noprerender",
-  "outputDirectory": "dist",
-  "cleanUrls": true,
   "headers": [
     {
       "source": "/(.*)",
