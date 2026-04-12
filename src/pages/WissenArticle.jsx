@@ -49,9 +49,9 @@ export default function WissenArticle() {
   const toggleFaq = (i) => setOpenFaq(openFaq === i ? null : i);
 
   const ui = {
-    de: { breadcrumb: 'Wissen', minuteRead: 'Min. Lesezeit', lastUpdated: 'Zuletzt aktualisiert', published: 'Veröffentlicht am', error: 'Fehler', notFound: 'Artikel nicht gefunden', backToWissen: 'Zurück zum Wissen', faq: 'Häufig gestellte Fragen', toc: 'Inhalt', related: 'Ähnliche Artikel', ctaTitle: 'Haben Sie Fragen zu Ihrer Situation?', ctaBody: 'Unsere Ärztinnen beraten Sie diskret und individuell.', ctaButton: 'Kostenlose Bewertung starten', progress: 'Lesefortschritt' },
-    fr: { breadcrumb: 'Savoir', minuteRead: 'min de lecture', lastUpdated: 'Dernière mise à jour', published: 'Publié le', error: 'Erreur', notFound: 'Article introuvable', backToWissen: 'Retour au savoir', faq: 'Questions fréquentes', toc: 'Sommaire', related: 'Articles similaires', ctaTitle: 'Des questions sur votre situation ?', ctaBody: 'Nos médecins vous conseillent de manière discrète et individuelle.', ctaButton: 'Commencer l\'évaluation gratuite', progress: 'Progression de lecture' },
-    en: { breadcrumb: 'Knowledge', minuteRead: 'min read', lastUpdated: 'Last updated', published: 'Published', error: 'Error', notFound: 'Article not found', backToWissen: 'Back to Knowledge', faq: 'Frequently asked questions', toc: 'Contents', related: 'Related articles', ctaTitle: 'Questions about your situation?', ctaBody: 'Our doctors advise you discreetly and individually.', ctaButton: 'Start free assessment', progress: 'Reading progress' },
+    de: { breadcrumb: 'Wissen', minuteRead: 'Min. Lesezeit', lastUpdated: 'Zuletzt aktualisiert', published: 'Veröffentlicht am', error: 'Fehler', notFound: 'Artikel nicht gefunden', backToWissen: 'Zurück zum Wissen', faq: 'Häufig gestellte Fragen', toc: 'Inhalt', related: 'Ähnliche Artikel', ctaTitle: 'Haben Sie Fragen zu Ihrer Situation?', ctaBody: 'Unsere Ärztinnen beraten Sie diskret und individuell.', ctaButton: 'Kostenlose Bewertung starten', progress: 'Lesefortschritt', disclaimer: 'Dieser Artikel dient der Information und ersetzt keine ärztliche Beratung. Konsultieren Sie immer eine qualifizierte Fachperson.' },
+    fr: { breadcrumb: 'Savoir', minuteRead: 'min de lecture', lastUpdated: 'Dernière mise à jour', published: 'Publié le', error: 'Erreur', notFound: 'Article introuvable', backToWissen: 'Retour au savoir', faq: 'Questions fréquentes', toc: 'Sommaire', related: 'Articles similaires', ctaTitle: 'Des questions sur votre situation ?', ctaBody: 'Nos médecins vous conseillent de manière discrète et individuelle.', ctaButton: 'Commencer l\'évaluation gratuite', progress: 'Progression de lecture', disclaimer: 'Cet article est fourni à titre informatif et ne remplace pas un avis médical. Consultez toujours un professionnel qualifié.' },
+    en: { breadcrumb: 'Knowledge', minuteRead: 'min read', lastUpdated: 'Last updated', published: 'Published', error: 'Error', notFound: 'Article not found', backToWissen: 'Back to Knowledge', faq: 'Frequently asked questions', toc: 'Contents', related: 'Related articles', ctaTitle: 'Questions about your situation?', ctaBody: 'Our doctors advise you discreetly and individually.', ctaButton: 'Start free assessment', progress: 'Reading progress', disclaimer: 'This article is for informational purposes and does not replace medical advice. Always consult a qualified professional.' },
   };
   const t = ui[lang] || ui.de;
 
@@ -92,22 +92,33 @@ export default function WissenArticle() {
       return { text, id };
     });
 
-  const blogPostingSchema = {
+  const medicalPageSchema = {
     '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
+    '@type': 'MedicalWebPage',
     headline: article.title[lang] || article.title.de,
     description: (article.excerpt[lang] || article.excerpt.de || '').slice(0, 155),
     datePublished: article.date,
-    dateModified: article.date,
+    dateModified: article.dateModified || article.date,
+    lastReviewed: article.dateModified || article.date,
+    reviewedBy: {
+      '@type': 'Organization',
+      name: 'Equivie MED',
+      url: 'https://equiviemed.ch',
+    },
     author: {
       '@type': 'Organization',
-      name: 'Equivie MED Medical Team',
+      name: 'Equivie MED',
+      url: 'https://equiviemed.ch',
     },
     publisher: {
       '@type': 'Organization',
       name: 'Equivie MED',
       url: 'https://equiviemed.ch',
     },
+    medicalAudience: {
+      '@type': 'PatientAudience',
+    },
+    inLanguage: lang === 'fr' ? 'fr-CH' : lang === 'en' ? 'en' : 'de-CH',
     mainEntityOfPage: `https://equiviemed.ch/wissen/${clusterSlug}/${slug}`,
   };
 
@@ -127,8 +138,8 @@ export default function WissenArticle() {
     : null;
 
   const combinedSchema = faqSchema
-    ? [blogPostingSchema, faqSchema]
-    : blogPostingSchema;
+    ? [medicalPageSchema, faqSchema]
+    : medicalPageSchema;
 
   return (
     <>
@@ -197,6 +208,11 @@ export default function WissenArticle() {
                   {article.readingTime}&thinsp;{t.minuteRead}
                 </span>
               </div>
+
+              {/* Medical disclaimer */}
+              <p className="font-sans text-xs text-charcoal-light italic mt-5">
+                {t.disclaimer}
+              </p>
             </div>
           </div>
         </header>
@@ -246,7 +262,7 @@ export default function WissenArticle() {
               {/* Last updated */}
               <div className="mt-10 pt-6 border-t border-sage/20">
                 <p className="font-sans text-xs text-charcoal-light">
-                  {t.lastUpdated}: {formatDate(article.date, lang)}
+                  {t.lastUpdated}: {formatDate(article.dateModified || article.date, lang)}
                 </p>
               </div>
 

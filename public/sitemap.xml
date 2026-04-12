@@ -3,64 +3,79 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://equiviemed.ch/</loc>
+    <lastmod>2026-04-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/" />
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/" />
+  </url>
+  <url>
+    <loc>https://equiviemed.ch/employers</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://equiviemed.ch/wissen</loc>
+    <lastmod>2026-04-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://equiviemed.ch/wissen/perimenopause/what-is-perimenopause</loc>
+    <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://equiviemed.ch/wissen/symptome/symptoms-management</loc>
+    <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://equiviemed.ch/wissen/hormontherapie/hormone-therapy</loc>
+    <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://equiviemed.ch/wissen/psychische-gesundheit/mental-health</loc>
+    <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://equiviemed.ch/wissen/ernaehrung/nutrition-supplements</loc>
+    <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://equiviemed.ch/wissen/sexualitaet/sexuality-relationships</loc>
+    <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://equiviemed.ch/wissen/nach-den-wechseljahren/post-menopause-health</loc>
+    <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://equiviemed.ch/wissen/arbeitsplatz/workplace-menopause</loc>
+    <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://equiviemed.ch/wissen/behandlungsoptionen/treatment-options</loc>
+    <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://equiviemed.ch/wissen/schweiz/swiss-menopause-guide</loc>
+    <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

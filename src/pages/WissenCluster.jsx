@@ -28,9 +28,9 @@ export default function WissenCluster() {
   const supportingArticles = articles.filter((a) => !a.isPillar);
 
   const ui = {
-    de: { error: 'Fehler', notFound: 'Thema nicht gefunden', back: 'Zurück zum Wissen', faq: 'Häufig gestellte Fragen' },
-    fr: { error: 'Erreur', notFound: 'Thème introuvable', back: 'Retour au savoir', faq: 'Questions fréquentes' },
-    en: { error: 'Error', notFound: 'Topic not found', back: 'Back to Knowledge', faq: 'Frequently asked questions' },
+    de: { error: 'Fehler', notFound: 'Thema nicht gefunden', back: 'Zurück zum Wissen', faq: 'Häufig gestellte Fragen', disclaimer: 'Dieser Artikel dient der Information und ersetzt keine ärztliche Beratung. Konsultieren Sie immer eine qualifizierte Fachperson.' },
+    fr: { error: 'Erreur', notFound: 'Thème introuvable', back: 'Retour au savoir', faq: 'Questions fréquentes', disclaimer: 'Cet article est fourni à titre informatif et ne remplace pas un avis médical. Consultez toujours un professionnel qualifié.' },
+    en: { error: 'Error', notFound: 'Topic not found', back: 'Back to Knowledge', faq: 'Frequently asked questions', disclaimer: 'This article is for informational purposes and does not replace medical advice. Always consult a qualified professional.' },
   };
   const uiText = ui[lang] || ui.de;
 
@@ -130,6 +130,11 @@ export default function WissenCluster() {
                   {pillarArticle.readingTime}&thinsp;{minuteRead}
                 </span>
               </div>
+
+              {/* Medical disclaimer */}
+              <p className="font-sans text-xs text-charcoal-light italic mb-10">
+                {uiText.disclaimer}
+              </p>
 
               {/* Body */}
               <MarkdownContent content={resolvedPillarContent} />

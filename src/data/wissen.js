@@ -120,6 +120,7 @@ export const wissenArticles = [
     },
     readingTime: 6,
     date: '2026-04-15',
+    dateModified: '2026-04-15',
     author: 'Equivie MED Editorial Team',
     category: 'symptoms',
     content: {
@@ -305,6 +306,7 @@ En Suisse, l'assurance de base couvre les consultations médicales, les examens 
     },
     readingTime: 7,
     date: '2026-04-15',
+    dateModified: '2026-04-15',
     author: 'Equivie MED Editorial Team',
     category: 'symptoms',
     content: {
@@ -510,6 +512,7 @@ La stratégie la plus efficace combine plusieurs approches : THS pour le contrô
     },
     readingTime: 8,
     date: '2026-04-15',
+    dateModified: '2026-04-15',
     author: 'Equivie MED Editorial Team',
     category: 'hormones',
     content: {
@@ -736,6 +739,7 @@ Le modèle suisse met l'accent sur la décision partagée individualisée et int
     },
     readingTime: 6,
     date: '2026-04-15',
+    dateModified: '2026-04-15',
     author: 'Equivie MED Editorial Team',
     category: 'mental-health',
     content: {
@@ -920,6 +924,7 @@ Consultez si les symptômes d'humeur interfèrent avec le fonctionnement quotidi
     },
     readingTime: 7,
     date: '2026-04-15',
+    dateModified: '2026-04-15',
     author: 'Equivie MED Editorial Team',
     category: 'nutrition',
     content: {
@@ -1119,6 +1124,7 @@ Le stress chronique exacerbe les symptômes ménopausiques et accélère le viei
     },
     readingTime: 6,
     date: '2026-04-15',
+    dateModified: '2026-04-15',
     author: 'Equivie MED Editorial Team',
     category: 'sexuality',
     content: {
@@ -1287,6 +1293,7 @@ Les changements physiques pendant la ménopause affectent les relations, et la c
     },
     readingTime: 6,
     date: '2026-04-15',
+    dateModified: '2026-04-15',
     author: 'Equivie MED Editorial Team',
     category: 'health',
     content: {
@@ -1463,6 +1470,7 @@ L'approche intégrée — évaluer simultanément la santé cardiovasculaire, os
     },
     readingTime: 7,
     date: '2026-04-15',
+    dateModified: '2026-04-15',
     author: 'Equivie MED Editorial Team',
     category: 'lifestyle',
     content: {
@@ -1634,6 +1642,7 @@ Le droit du travail suisse (Loi sur le travail) met l'accent sur la responsabili
     },
     readingTime: 9,
     date: '2026-04-15',
+    dateModified: '2026-04-15',
     author: 'Equivie MED Editorial Team',
     category: 'treatment',
     content: {
@@ -1875,6 +1884,7 @@ Le système d'assurance suisse soutient cette approche intégrative : traitement
     },
     readingTime: 10,
     date: '2026-04-15',
+    dateModified: '2026-04-15',
     author: 'Equivie MED Editorial Team',
     category: 'swiss-healthcare',
     content: {
