@@ -72,10 +72,11 @@ export default function WaitlistModal({ open, onClose }) {
   function handleSubmit(e) {
     e.preventDefault();
     if (!email.trim()) return;
-    // Store in localStorage
-    const existing = JSON.parse(localStorage.getItem('waitlist_emails') || '[]');
-    existing.push({ email: email.trim(), lang, timestamp: new Date().toISOString() });
-    localStorage.setItem('waitlist_emails', JSON.stringify(existing));
+    const payload = { email: email.trim(), lang, timestamp: new Date().toISOString() };
+    fetch('https://script.google.com/macros/s/AKfycbxAJl8e_UPrvOF4dXvJAMyYxByvjTjg4ZSzJjCS9aagBOnEiwTkdisB8unWiYnnLRmd/exec', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    }).catch(() => {});
     setSubmitted(true);
   }
 
