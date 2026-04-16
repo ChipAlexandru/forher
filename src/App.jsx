@@ -7,7 +7,6 @@ import Landing from './pages/Landing';
 import { BlogIndexRedirect, BlogArticleRedirect } from './components/BlogRedirect';
 
 // Lazy-loaded pages
-const Employers = lazy(() => import('./pages/Employers'));
 const WissenIndex = lazy(() => import('./pages/WissenIndex'));
 const WissenCluster = lazy(() => import('./pages/WissenCluster'));
 const WissenArticle = lazy(() => import('./pages/WissenArticle'));
@@ -79,7 +78,6 @@ export default function App() {
       <Route path="/" element={<Navigate to={`/${DEFAULT_LANG}`} replace />} />
 
       {/* Legacy bare URLs → default language (client-side fallback for vercel.json 301s) */}
-      <Route path="/employers" element={<Navigate to={`/${DEFAULT_LANG}/employers`} replace />} />
       <Route path="/wissen" element={<Navigate to={`/${DEFAULT_LANG}/wissen`} replace />} />
       <Route path="/wissen/*" element={<LegacyWissenRedirect />} />
       <Route path="/blog" element={<Navigate to={`/${DEFAULT_LANG}/wissen`} replace />} />
@@ -92,7 +90,6 @@ export default function App() {
 
         {/* All other pages: shared header + footer */}
         <Route element={<SharedLayout />}>
-          <Route path="employers" element={<Employers />} />
           <Route path="wissen" element={<WissenIndex />} />
           <Route path="wissen/:cluster" element={<WissenCluster />} />
           <Route path="wissen/:cluster/:slug" element={<WissenArticle />} />

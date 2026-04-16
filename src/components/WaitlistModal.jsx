@@ -35,6 +35,16 @@ export default function WaitlistModal({ open, onClose }) {
   const [submitted, setSubmitted] = useState(false);
   const inputRef = useRef(null);
 
+  // Track modal open in GA4
+  useEffect(() => {
+    if (open && typeof window.gtag === 'function') {
+      window.gtag('event', 'waitlist_modal_open', {
+        event_category: 'engagement',
+        event_label: lang,
+      });
+    }
+  }, [open, lang]);
+
   // Lock body scroll when open
   useEffect(() => {
     if (open) {
@@ -77,6 +87,13 @@ export default function WaitlistModal({ open, onClose }) {
       method: 'POST',
       body: JSON.stringify(payload),
     }).catch(() => {});
+    // Track email submission in GA4
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'waitlist_signup', {
+        event_category: 'conversion',
+        event_label: lang,
+      });
+    }
     setSubmitted(true);
   }
 

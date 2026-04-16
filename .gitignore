@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# GA4 credentials & reports
+ga-credentials.json
+analytics-report.md
+
+# Project instructions
+CLAUDE.md

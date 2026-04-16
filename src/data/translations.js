@@ -5,7 +5,6 @@ export const translations = {
       symptoms: "Symptome",
       treatments: "Behandlungen",
       pricing: "Preise",
-      employers: "Arbeitgeber",
       blog: "Ratgeber",
       startAssessment: "Jetzt starten",
     },
@@ -219,77 +218,6 @@ export const translations = {
       description:
         "Ab September 2025 fällt Estradot – eines der meistverordneten transdermalen Östrogenpflaster der Schweiz – aus der Pflichtleistungsliste der Krankenkassen (KVG). Das bedeutet: Für viele Frauen steigen die Kosten für ihre bewährte Hormontherapie erheblich. Equivie hilft Ihnen, die für Sie beste und kostengünstigste Lösung zu finden – mit einer persönlichen ärztlichen Beratung und dem Überblick über alle verfügbaren Alternativen.",
       ctaText: "Jetzt Behandlungsoptionen prüfen",
-    },
-
-    employers: {
-      heroTitle: "Gesunde Mitarbeiterinnen. Starkes Unternehmen.",
-      heroSubtitle:
-        "Investieren Sie in das Wohlbefinden Ihrer Mitarbeiterinnen in den Wechseljahren – und profitieren Sie von messbarer Produktivität, weniger Ausfällen und gestärkter Arbeitgebermarke.",
-      stats: [
-        {
-          value: "1 von 4",
-          label: "Beschäftigten ist in den Wechseljahren",
-          detail: "In typischen Schweizer Unternehmen",
-        },
-        {
-          value: "14 Tage",
-          label: "Durchschnittlicher Produktivitätsverlust pro Jahr",
-          detail: "Pro betroffener Mitarbeiterin",
-        },
-        {
-          value: "3×",
-          label: "Höheres Fluktuationsrisiko",
-          detail: "Bei unbehandelten Symptomen",
-        },
-      ],
-      roiTitle: "Ihr Return on Investment",
-      roiDescription:
-        "Studien zeigen: Jeder Franken, der in die Gesundheit von Mitarbeiterinnen in den Wechseljahren investiert wird, bringt bis zu CHF 4 zurück – durch reduzierte Fehlzeiten, höhere Produktivität und sinkende Rekrutierungskosten.",
-      contactTitle: "Gespräch vereinbaren",
-      contactSubtitle:
-        "Lassen Sie uns gemeinsam herausfinden, welches Programm zu Ihrem Unternehmen passt.",
-      contactSuccess:
-        "Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb von 24 Stunden bei Ihnen.",
-      tiers: [
-        {
-          name: "Starter",
-          description: "Für kleine Unternehmen",
-          minEmployees: "ab 10 Mitarbeiterinnen",
-          features: [
-            "Digitaler Zugang für alle Mitarbeiterinnen",
-            "Online-Selbsteinschätzung",
-            "Bildungsinhalte & Ressourcen",
-            "Anonymisierte Nutzungsberichte",
-          ],
-        },
-        {
-          name: "Business",
-          description: "Für mittlere Unternehmen",
-          minEmployees: "ab 50 Mitarbeiterinnen",
-          features: [
-            "Alles aus Starter",
-            "Ermässigte ärztliche Konsultationen",
-            "HR-Dashboard & Reporting",
-            "Jährlicher Wellness-Workshop",
-            "Dedizierte Account-Betreuung",
-          ],
-          recommended: true,
-        },
-        {
-          name: "Enterprise",
-          description: "Für Grossunternehmen",
-          minEmployees: "ab 200 Mitarbeiterinnen",
-          features: [
-            "Alles aus Business",
-            "Vollständig subventionierte Behandlung",
-            "Massgeschneiderte Integrationslösung",
-            "Monatliche Strategie-Meetings",
-            "Bevorzugter Support & SLA",
-            "Co-Branding möglich",
-          ],
-        },
-      ],
-      companiesTitle: "Vertraut von führenden Schweizer Unternehmen",
     },
 
     pricing: {
@@ -530,7 +458,6 @@ export const translations = {
       symptoms: "Symptômes",
       treatments: "Traitements",
       pricing: "Tarifs",
-      employers: "Employeurs",
       blog: "Conseils",
       startAssessment: "Commencer",
     },
@@ -744,77 +671,6 @@ export const translations = {
       description:
         "À partir de septembre 2025, Estradot – l'un des patchs œstrogéniques transdermiques les plus prescrits en Suisse – sera retiré de la liste des prestations obligatoires de l'assurance maladie (LAMal). Pour de nombreuses femmes, cela signifie une augmentation significative du coût de leur traitement hormonal habituel. Equivie vous aide à trouver la solution la plus adaptée et la plus avantageuse, grâce à un conseil médical personnalisé et une vue d'ensemble de toutes les alternatives disponibles.",
       ctaText: "Explorer les options de traitement",
-    },
-
-    employers: {
-      heroTitle: "Des collaboratrices épanouies. Une entreprise performante.",
-      heroSubtitle:
-        "Investissez dans le bien-être de vos collaboratrices en période de ménopause – et bénéficiez d'une productivité mesurable, de moins d'absences et d'une marque employeur renforcée.",
-      stats: [
-        {
-          value: "1 sur 4",
-          label: "Collaboratrices est en période de ménopause",
-          detail: "Dans les entreprises suisses typiques",
-        },
-        {
-          value: "14 jours",
-          label: "Perte de productivité moyenne par an",
-          detail: "Par collaboratrice concernée",
-        },
-        {
-          value: "3×",
-          label: "Risque de turnover plus élevé",
-          detail: "En cas de symptômes non traités",
-        },
-      ],
-      roiTitle: "Votre retour sur investissement",
-      roiDescription:
-        "Les études montrent que chaque franc investi dans la santé des collaboratrices en période de ménopause rapporte jusqu'à CHF 4 – grâce à la réduction des absences, à une plus grande productivité et à une baisse des coûts de recrutement.",
-      contactTitle: "Prendre rendez-vous",
-      contactSubtitle:
-        "Découvrons ensemble quel programme correspond à votre entreprise.",
-      contactSuccess:
-        "Merci pour votre demande. Nous vous contacterons dans les 24 heures.",
-      tiers: [
-        {
-          name: "Starter",
-          description: "Pour les petites entreprises",
-          minEmployees: "dès 10 collaboratrices",
-          features: [
-            "Accès numérique pour toutes les collaboratrices",
-            "Auto-évaluation en ligne",
-            "Contenus éducatifs & ressources",
-            "Rapports d'utilisation anonymisés",
-          ],
-        },
-        {
-          name: "Business",
-          description: "Pour les entreprises moyennes",
-          minEmployees: "dès 50 collaboratrices",
-          features: [
-            "Tout de Starter",
-            "Consultations médicales à tarif réduit",
-            "Tableau de bord RH & reporting",
-            "Atelier bien-être annuel",
-            "Gestionnaire de compte dédié",
-          ],
-          recommended: true,
-        },
-        {
-          name: "Enterprise",
-          description: "Pour les grandes entreprises",
-          minEmployees: "dès 200 collaboratrices",
-          features: [
-            "Tout de Business",
-            "Traitement entièrement subventionné",
-            "Solution d'intégration sur mesure",
-            "Réunions stratégiques mensuelles",
-            "Support prioritaire & SLA",
-            "Co-branding possible",
-          ],
-        },
-      ],
-      companiesTitle: "La confiance des entreprises suisses de premier plan",
     },
 
     pricing: {
@@ -1062,7 +918,6 @@ export const translations = {
       symptoms: "Symptoms",
       treatments: "Treatments",
       pricing: "Pricing",
-      employers: "Employers",
       blog: "Resources",
       startAssessment: "Get Started",
     },
@@ -1276,77 +1131,6 @@ export const translations = {
       description:
         "From September 2025, Estradot – one of the most widely prescribed transdermal oestrogen patches in Switzerland – will be removed from the compulsory benefits list of Swiss health insurers (KVG). For many women this means significantly higher out-of-pocket costs for their established hormone therapy. Equivie helps you find the best and most cost-effective solution for your situation, with personalised medical advice and a full overview of all available alternatives.",
       ctaText: "Review treatment options now",
-    },
-
-    employers: {
-      heroTitle: "Healthy employees. A stronger organisation.",
-      heroSubtitle:
-        "Invest in the wellbeing of your employees going through menopause – and benefit from measurable productivity gains, reduced absenteeism, and a stronger employer brand.",
-      stats: [
-        {
-          value: "1 in 4",
-          label: "Employees is going through menopause",
-          detail: "In typical Swiss organisations",
-        },
-        {
-          value: "14 days",
-          label: "Average productivity loss per year",
-          detail: "Per affected employee",
-        },
-        {
-          value: "3×",
-          label: "Higher turnover risk",
-          detail: "When symptoms go untreated",
-        },
-      ],
-      roiTitle: "Your return on investment",
-      roiDescription:
-        "Research shows that every franc invested in the health of employees going through menopause returns up to CHF 4 – through reduced absenteeism, higher productivity, and lower recruitment costs.",
-      contactTitle: "Arrange a conversation",
-      contactSubtitle:
-        "Let us work together to identify which programme is right for your organisation.",
-      contactSuccess:
-        "Thank you for your enquiry. We will be in touch within 24 hours.",
-      tiers: [
-        {
-          name: "Starter",
-          description: "For small organisations",
-          minEmployees: "from 10 employees",
-          features: [
-            "Digital access for all employees",
-            "Online self-assessment",
-            "Educational content & resources",
-            "Anonymised usage reports",
-          ],
-        },
-        {
-          name: "Business",
-          description: "For medium-sized organisations",
-          minEmployees: "from 50 employees",
-          features: [
-            "Everything in Starter",
-            "Discounted physician consultations",
-            "HR dashboard & reporting",
-            "Annual wellness workshop",
-            "Dedicated account management",
-          ],
-          recommended: true,
-        },
-        {
-          name: "Enterprise",
-          description: "For large organisations",
-          minEmployees: "from 200 employees",
-          features: [
-            "Everything in Business",
-            "Fully subsidised treatment",
-            "Bespoke integration solution",
-            "Monthly strategy meetings",
-            "Priority support & SLA",
-            "Co-branding available",
-          ],
-        },
-      ],
-      companiesTitle: "Trusted by leading Swiss organisations",
     },
 
     pricing: {

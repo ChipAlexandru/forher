@@ -34,38 +34,6 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de" />
   </url>
 
-  <!-- Employers -->
-  <url>
-    <loc>https://equiviemed.ch/de/employers</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/employers" />
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/employers" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/employers" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/employers" />
-  </url>
-  <url>
-    <loc>https://equiviemed.ch/fr/employers</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/employers" />
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/employers" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/employers" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/employers" />
-  </url>
-  <url>
-    <loc>https://equiviemed.ch/en/employers</loc>
-    <lastmod>2026-04-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/employers" />
-    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/employers" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/employers" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/employers" />
-  </url>
-
   <!-- Wissen Index -->
   <url>
     <loc>https://equiviemed.ch/de/wissen</loc>

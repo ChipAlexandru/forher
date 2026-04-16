@@ -27,7 +27,7 @@ const LANGS = ['de', 'fr', 'en'];
 
 async function getRoutes() {
   // Base paths (without language prefix)
-  const basePaths = ['/', '/employers', '/wissen'];
+  const basePaths = ['/', '/wissen'];
 
   // Dynamic wissen routes from wissen data.
   const wissenPath = join(__dirname, '..', 'src', 'data', 'wissen.js');

@@ -4,8 +4,6 @@
 
 ## Main
 - [Homepage](https://equiviemed.ch/en): Overview of services — video consultations with menopause specialists, how it works, pricing, and FAQ
-- [Employers](https://equiviemed.ch/en/employers): Workplace menopause support programme for Swiss companies
-
 ## Knowledge Hub (Wissen) — Pillar Articles
 - [Knowledge hub](https://equiviemed.ch/en/wissen): Index of all knowledge clusters and articles on menopause
 - [What Is Perimenopause?](https://equiviemed.ch/en/wissen/perimenopause/what-is-perimenopause): Symptoms, duration, and when to seek help — comprehensive perimenopause guide
