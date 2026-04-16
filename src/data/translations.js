@@ -450,6 +450,14 @@ export const translations = {
       freeConsultation: "Kostenlose Erstberatung",
       swissMade: "Swiss Made",
     },
+    nuggets: {
+      label: "Wissen",
+      items: [
+        { text: "Gehirnnebel in der Menopause ist reversibel", href: "/wissen/psychische-gesundheit/mental-health" },
+        { text: "HRT kann das Alzheimer-Risiko senken", href: "/wissen/hormontherapie/hormone-therapy" },
+        { text: "Schlafstörungen betreffen jede zweite Frau ab 45", href: "/wissen/symptome/symptoms-management" },
+      ],
+    },
   },
 
   fr: {
@@ -910,6 +918,14 @@ export const translations = {
       freeConsultation: "Consultation initiale gratuite",
       swissMade: "Swiss Made",
     },
+    nuggets: {
+      label: "Savoir",
+      items: [
+        { text: "Le brouillard mental de la ménopause est réversible", href: "/wissen/psychische-gesundheit/mental-health" },
+        { text: "Le THS peut réduire le risque d'Alzheimer", href: "/wissen/hormontherapie/hormone-therapy" },
+        { text: "Les troubles du sommeil touchent une femme sur deux dès 45 ans", href: "/wissen/symptome/symptoms-management" },
+      ],
+    },
   },
 
   en: {
@@ -1362,6 +1378,14 @@ export const translations = {
       perYear: "per year",
       freeConsultation: "Free initial consultation",
       swissMade: "Swiss Made",
+    },
+    nuggets: {
+      label: "Knowledge",
+      items: [
+        { text: "Brain fog during menopause is reversible", href: "/wissen/psychische-gesundheit/mental-health" },
+        { text: "HRT can reduce Alzheimer's risk", href: "/wissen/hormontherapie/hormone-therapy" },
+        { text: "Sleep disruption affects every second woman over 45", href: "/wissen/symptome/symptoms-management" },
+      ],
     },
   },
 };

@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useFadeIn } from '../hooks/useFadeIn';
 import { useLang } from '../context/LanguageContext';
 import { quizSteps, getProfile } from '../data/quizData';
@@ -307,9 +307,17 @@ const symptomIcons = {
 /* ──────────────────── COMPONENT ──────────────────── */
 export default function Landing() {
   const containerRef = useFadeIn();
-  const { lang } = useLang();
+  const { lang, langPath, t: i18n } = useLang();
   const [openFaq, setOpenFaq] = useState(null);
   const t = content[lang];
+
+  /* Nuggets bar — rotate on mobile */
+  const [activeNugget, setActiveNugget] = useState(0);
+  const nuggets = i18n.nuggets;
+  useEffect(() => {
+    const id = setInterval(() => setActiveNugget((i) => (i + 1) % 3), 5000);
+    return () => clearInterval(id);
+  }, []);
 
   const toggleFaq = (i) => setOpenFaq(openFaq === i ? null : i);
 
@@ -496,6 +504,81 @@ export default function Landing() {
           </div>
         )}
       </section>
+
+      {/* ════════════════════════════════════════════
+          CONTENT NUGGETS BAR
+          ════════════════════════════════════════════ */}
+      <div className="bg-cream-dark border-y border-sage/20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-3 flex items-center gap-6">
+          <span className="font-sans text-xs uppercase tracking-wider text-forest font-medium shrink-0 hidden md:block">
+            {nuggets.label}
+          </span>
+
+          {/* Desktop: show all 3 */}
+          <div className="hidden md:flex items-center gap-5 flex-1">
+            {nuggets.items.map((item, i) => (
+              <div key={i} className="contents">
+                {i > 0 && <span className="w-px h-4 bg-sage/30 shrink-0" />}
+                <a
+                  href={langPath(item.href)}
+                  className="flex items-center gap-2 no-underline group"
+                >
+                  <span className="w-[26px] h-[26px] shrink-0 rounded-full bg-forest flex items-center justify-center">
+                    {i === 0 && (
+                      <svg className="w-[13px] h-[13px] text-cream" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M9.5 2A5.5 5.5 0 0 0 5 9a5.5 5.5 0 0 0 4.5 5.4V22h5v-7.6A5.5 5.5 0 0 0 19 9a5.5 5.5 0 0 0-5.5-7H9.5z" />
+                      </svg>
+                    )}
+                    {i === 1 && (
+                      <svg className="w-[13px] h-[13px] text-cream" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                      </svg>
+                    )}
+                    {i === 2 && (
+                      <svg className="w-[13px] h-[13px] text-cream" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                      </svg>
+                    )}
+                  </span>
+                  <span className="font-sans text-sm text-stone group-hover:text-forest transition-colors">{item.text}</span>
+                  <span className="font-sans text-sm text-rose group-hover:ml-0.5 transition-all">&#8594;</span>
+                </a>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile: one nugget at a time, rotating */}
+          <div className="flex md:hidden items-center gap-2 flex-1 min-w-0">
+            <span className="font-sans text-xs uppercase tracking-wider text-forest font-medium shrink-0">
+              {nuggets.label}
+            </span>
+            <a
+              href={langPath(nuggets.items[activeNugget].href)}
+              className="flex items-center gap-2 no-underline min-w-0"
+            >
+              <span className="w-[24px] h-[24px] shrink-0 rounded-full bg-forest flex items-center justify-center">
+                {activeNugget === 0 && (
+                  <svg className="w-[12px] h-[12px] text-cream" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M9.5 2A5.5 5.5 0 0 0 5 9a5.5 5.5 0 0 0 4.5 5.4V22h5v-7.6A5.5 5.5 0 0 0 19 9a5.5 5.5 0 0 0-5.5-7H9.5z" />
+                  </svg>
+                )}
+                {activeNugget === 1 && (
+                  <svg className="w-[12px] h-[12px] text-cream" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                  </svg>
+                )}
+                {activeNugget === 2 && (
+                  <svg className="w-[12px] h-[12px] text-cream" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                  </svg>
+                )}
+              </span>
+              <span className="font-sans text-sm text-stone truncate">{nuggets.items[activeNugget].text}</span>
+              <span className="font-sans text-sm text-rose shrink-0">&#8594;</span>
+            </a>
+          </div>
+        </div>
+      </div>
 
       {/* ════════════════════════════════════════════
           1. HERO
