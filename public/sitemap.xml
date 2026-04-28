@@ -386,4 +386,36 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/schweiz/swiss-menopause-guide" />
   </url>
 
+  <!-- Wechseljahre Beratung Schweiz (sub-article) -->
+  <url>
+    <loc>https://equiviemed.ch/de/wissen/schweiz/wechseljahre-beratung-schweiz</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/schweiz/wechseljahre-beratung-schweiz" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/schweiz/wechseljahre-beratung-schweiz" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/schweiz/wechseljahre-beratung-schweiz" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/schweiz/wechseljahre-beratung-schweiz" />
+  </url>
+  <url>
+    <loc>https://equiviemed.ch/fr/wissen/schweiz/wechseljahre-beratung-schweiz</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/schweiz/wechseljahre-beratung-schweiz" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/schweiz/wechseljahre-beratung-schweiz" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/schweiz/wechseljahre-beratung-schweiz" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/schweiz/wechseljahre-beratung-schweiz" />
+  </url>
+  <url>
+    <loc>https://equiviemed.ch/en/wissen/schweiz/wechseljahre-beratung-schweiz</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de-CH" href="https://equiviemed.ch/de/wissen/schweiz/wechseljahre-beratung-schweiz" />
+    <xhtml:link rel="alternate" hreflang="fr-CH" href="https://equiviemed.ch/fr/wissen/schweiz/wechseljahre-beratung-schweiz" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://equiviemed.ch/en/wissen/schweiz/wechseljahre-beratung-schweiz" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://equiviemed.ch/de/wissen/schweiz/wechseljahre-beratung-schweiz" />
+  </url>
+
 </urlset>

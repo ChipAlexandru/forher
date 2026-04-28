@@ -8,6 +8,7 @@
  */
 
 import { BetaAnalyticsDataClient } from '@google-analytics/data';
+import { google } from 'googleapis';
 import { readFileSync, writeFileSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -17,13 +18,14 @@ const ROOT = resolve(__dirname, '..');
 
 // --- Config ---
 const PROPERTY_ID = '532551574';
+const SITE_URL = 'sc-domain:equiviemed.ch';
 const CREDENTIALS_PATH = resolve(ROOT, 'ga-credentials.json');
 const OUTPUT_PATH = resolve(ROOT, 'analytics-report.md');
 
 const daysArg = process.argv.find((a, i) => process.argv[i - 1] === '--days');
 const DAYS = parseInt(daysArg) || 30;
 
-// --- Init client ---
+// --- Init clients ---
 const credentials = JSON.parse(readFileSync(CREDENTIALS_PATH, 'utf-8'));
 const client = new BetaAnalyticsDataClient({
   credentials: {
@@ -32,7 +34,21 @@ const client = new BetaAnalyticsDataClient({
   },
 });
 
+const scAuth = new google.auth.JWT({
+  email: credentials.client_email,
+  key: credentials.private_key,
+  scopes: ['https://www.googleapis.com/auth/webmasters.readonly'],
+});
+const searchConsole = google.searchconsole({ version: 'v1', auth: scAuth });
+
 const property = `properties/${PROPERTY_ID}`;
+
+// --- Date helpers ---
+function daysAgoIso(d) {
+  const date = new Date();
+  date.setDate(date.getDate() - d);
+  return date.toISOString().slice(0, 10);
+}
 
 // --- Helpers ---
 function num(row, i = 0) {
@@ -205,11 +221,80 @@ async function getDailyTrend() {
   }));
 }
 
+// --- Search Console queries ---
+async function getSearchQueries() {
+  try {
+    const res = await searchConsole.searchanalytics.query({
+      siteUrl: SITE_URL,
+      requestBody: {
+        startDate: daysAgoIso(DAYS),
+        endDate: daysAgoIso(0),
+        dimensions: ['query'],
+        rowLimit: 25,
+      },
+    });
+    return (res.data.rows || []).map((r) => ({
+      query: r.keys[0],
+      clicks: r.clicks,
+      impressions: r.impressions,
+      ctr: (r.ctr * 100).toFixed(1),
+      position: r.position.toFixed(1),
+    }));
+  } catch (err) {
+    return { error: err.message };
+  }
+}
+
+async function getSearchPages() {
+  try {
+    const res = await searchConsole.searchanalytics.query({
+      siteUrl: SITE_URL,
+      requestBody: {
+        startDate: daysAgoIso(DAYS),
+        endDate: daysAgoIso(0),
+        dimensions: ['page'],
+        rowLimit: 15,
+      },
+    });
+    return (res.data.rows || []).map((r) => ({
+      page: r.keys[0].replace('https://equiviemed.ch', ''),
+      clicks: r.clicks,
+      impressions: r.impressions,
+      ctr: (r.ctr * 100).toFixed(1),
+      position: r.position.toFixed(1),
+    }));
+  } catch (err) {
+    return { error: err.message };
+  }
+}
+
+async function getSearchTotals() {
+  try {
+    const res = await searchConsole.searchanalytics.query({
+      siteUrl: SITE_URL,
+      requestBody: {
+        startDate: daysAgoIso(DAYS),
+        endDate: daysAgoIso(0),
+      },
+    });
+    const row = res.data.rows?.[0];
+    if (!row) return { clicks: 0, impressions: 0, ctr: 0, position: 0 };
+    return {
+      clicks: row.clicks,
+      impressions: row.impressions,
+      ctr: (row.ctr * 100).toFixed(1),
+      position: row.position.toFixed(1),
+    };
+  } catch (err) {
+    return { error: err.message };
+  }
+}
+
 // --- Generate report ---
 async function main() {
   console.log(`Pulling GA4 data for the last ${DAYS} days...\n`);
 
-  const [overview, pages, sources, langs, devices, countries, daily, waitlist] = await Promise.all([
+  const [overview, pages, sources, langs, devices, countries, daily, waitlist, scTotals, scQueries, scPages] = await Promise.all([
     getOverview(),
     getTopPages(),
     getTrafficSources(),
@@ -218,6 +303,9 @@ async function main() {
     getCountries(),
     getDailyTrend(),
     getWaitlistEvents(),
+    getSearchTotals(),
+    getSearchQueries(),
+    getSearchPages(),
   ]);
 
   if (!overview) {
@@ -279,6 +367,37 @@ async function main() {
   md += '\n';
 
   // Devices
+  // Search Console
+  if (!scTotals.error) {
+    md += `## Google Search Performance\n`;
+    md += `| Metric | Value |\n|--------|-------|\n`;
+    md += `| Total Clicks | ${fmt(scTotals.clicks || 0)} |\n`;
+    md += `| Total Impressions | ${fmt(scTotals.impressions || 0)} |\n`;
+    md += `| Average CTR | ${scTotals.ctr || 0}% |\n`;
+    md += `| Average Position | ${scTotals.position || 0} |\n\n`;
+
+    if (!scQueries.error && scQueries.length > 0) {
+      md += `### Top Search Queries\n`;
+      md += `| Query | Clicks | Impressions | CTR | Position |\n|-------|--------|-------------|-----|----------|\n`;
+      for (const q of scQueries.slice(0, 15)) {
+        md += `| ${q.query} | ${q.clicks} | ${q.impressions} | ${q.ctr}% | ${q.position} |\n`;
+      }
+      md += '\n';
+    }
+
+    if (!scPages.error && scPages.length > 0) {
+      md += `### Top Search Landing Pages\n`;
+      md += `| Page | Clicks | Impressions | CTR | Position |\n|------|--------|-------------|-----|----------|\n`;
+      for (const p of scPages.slice(0, 10)) {
+        md += `| ${p.page} | ${p.clicks} | ${p.impressions} | ${p.ctr}% | ${p.position} |\n`;
+      }
+      md += '\n';
+    }
+  } else {
+    md += `## Google Search Performance\n`;
+    md += `_No Search Console data yet. Data usually appears 2-3 days after the site is indexed._\n\n`;
+  }
+
   md += `## Devices\n`;
   md += `| Device | Sessions | Users |\n|--------|----------|-------|\n`;
   for (const d of devices) {
@@ -373,6 +492,30 @@ async function main() {
     else md += `Low CTA engagement — consider making the booking button more prominent, adding it mid-page, or testing different copy.\n\n`;
   } else {
     md += `**7. Waitlist funnel**: No waitlist events tracked yet. Events will appear after the next deployment with GA4 tracking enabled.\n\n`;
+  }
+
+  // Search Console insight
+  if (!scTotals.error && scTotals.impressions > 0) {
+    md += `**9. Google visibility**: ${fmt(scTotals.impressions)} impressions, ${fmt(scTotals.clicks)} clicks, ${scTotals.ctr}% CTR, avg. position ${scTotals.position}. `;
+    if (parseFloat(scTotals.position) < 10) md += `You're appearing on page 1 for some queries — great start. Focus on CTR optimisation (meta titles/descriptions).\n\n`;
+    else if (parseFloat(scTotals.position) < 30) md += `You're appearing on pages 2-3 — build content depth and internal links to push rankings up.\n\n`;
+    else md += `Low average position means Google is showing you for broad queries. Focus on long-tail Swiss menopause keywords where you can rank higher.\n\n`;
+
+    if (!scQueries.error && scQueries.length > 0) {
+      const topQuery = scQueries[0];
+      md += `**10. Top query**: "${topQuery.query}" drives ${topQuery.impressions} impressions at position ${topQuery.position}. `;
+      if (parseFloat(topQuery.position) < 10 && parseFloat(topQuery.ctr) < 3) {
+        md += `You rank well but CTR is low — rewrite the meta title/description for this query's page to improve click-through.\n\n`;
+      } else if (parseFloat(topQuery.position) > 20) {
+        md += `High impressions but weak ranking — a clear opportunity to create targeted content or optimise existing pages for this query.\n\n`;
+      } else {
+        md += `Healthy baseline — monitor whether clicks grow as position improves.\n\n`;
+      }
+    }
+  } else if (scTotals.error) {
+    md += `**9. Google visibility**: Search Console data unavailable (${scTotals.error}). Check API access.\n\n`;
+  } else {
+    md += `**9. Google visibility**: No Search Console data yet. Typically takes 2-3 days after indexing begins. Check back next week.\n\n`;
   }
 
   // Write report

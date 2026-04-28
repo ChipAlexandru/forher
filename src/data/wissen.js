@@ -2146,6 +2146,262 @@ Les employeurs progressistes peuvent adopter volontairement des aménagements, s
       ],
     },
   },
+
+  {
+    slug: 'wechseljahre-beratung-schweiz',
+    cluster: 'schweiz',
+    isPillar: false,
+    title: {
+      de: 'Wechseljahre-Beratung in der Schweiz: Wo finden Sie kompetente Hilfe?',
+      en: 'Menopause Consultation in Switzerland: Where to Find Expert Help',
+      fr: 'Consultation ménopause en Suisse : où trouver une aide compétente ?',
+    },
+    excerpt: {
+      de: 'Eine spezialisierte Wechseljahre-Beratung dauert typischerweise 45 bis 60 Minuten und kostet zwischen CHF 200 und CHF 400. Sie umfasst eine vollständige Symptom-Bewertung, individuelle Therapieempfehlungen (HRT, Phytotherapie, Lifestyle) und ein schriftliches Behandlungskonzept. Nur wenige Schweizer Gynäkologinnen verfügen über eine Zusatzausbildung in Menopausenmedizin — dieser Leitfaden zeigt, woran Sie eine qualifizierte Beratung erkennen.',
+      en: 'A specialised menopause consultation in Switzerland typically lasts 45 to 60 minutes and costs CHF 200 to CHF 400. It includes a full symptom assessment, individualised therapy recommendations (HRT, phytotherapy, lifestyle), and a written treatment plan. Few Swiss gynaecologists hold formal menopause certification — this guide shows what to look for in a qualified consultation.',
+      fr: 'Une consultation spécialisée en ménopause dure généralement 45 à 60 minutes et coûte entre CHF 200 et CHF 400. Elle comprend une évaluation complète des symptômes, des recommandations thérapeutiques individualisées (THS, phytothérapie, mode de vie) et un plan de traitement écrit. Peu de gynécologues suisses possèdent une certification spécifique en médecine de la ménopause — ce guide vous explique comment reconnaître une consultation qualifiée.',
+    },
+    readingTime: 7,
+    date: '2026-04-28',
+    dateModified: '2026-04-28',
+    author: 'Equivie MED Editorial Team',
+    category: 'swiss-healthcare',
+    content: {
+      de: `## Was unterscheidet eine Wechseljahre-Beratung von einer normalen Frauenarzt-Konsultation?
+
+Die meisten Frauen in der Schweiz erhalten ihre erste Information über die Wechseljahre bei einer regulären gynäkologischen Vorsorgeuntersuchung — typischerweise 15 bis 20 Minuten lang. Das reicht selten aus, um die Komplexität der Symptome (Schlaf, Stimmung, Hitzewallungen, Gelenke, Sexualität, Kognition) zu erfassen, individuelle Risiken zu bewerten und eine evidenzbasierte Therapieentscheidung zu treffen.
+
+Eine spezialisierte Wechseljahre-Beratung ist anders aufgebaut. Sie dauert 45 bis 60 Minuten, beginnt mit einem strukturierten Symptom-Fragebogen (validierte Skalen wie der MRS — Menopause Rating Scale), und schliesst mit einem schriftlichen Behandlungsplan ab, den Sie mit nach Hause nehmen.
+
+## Wer bietet in der Schweiz Wechseljahre-Beratung an?
+
+**Gynäkologinnen mit Menopause-Zusatzausbildung**: Die SGGG (Schweizerische Gesellschaft für Gynäkologie und Geburtshilfe) bietet eine Zertifizierung «Menopause-Spezialistin» an, die zusätzliches Training und Prüfungen erfordert. Stand 2026 gibt es schweizweit weniger als 100 zertifizierte Spezialistinnen — die meisten in Zürich, Genf, Bern, Basel und Lausanne. Eine Liste finden Sie auf der SGGG-Website.
+
+**Hausärzte mit Interesse an Frauengesundheit**: Einige Hausärztinnen haben sich auf hormonelle Gesundheit spezialisiert und bieten kompetente Erstberatungen an. Das ist besonders in ländlichen Regionen oft die schnellste Option.
+
+**Naturheilpraktikerinnen mit Phytotherapie-Schwerpunkt**: Eidgenössisch diplomierte Naturheilpraktikerinnen (NHP TEN/Phytotherapie) bieten ergänzende Beratung — primär zu pflanzlichen Therapien, Ernährung und Lebensstil. Sie ersetzen keine ärztliche Beratung, ergänzen diese aber sinnvoll.
+
+**Telemedizin-Spezialistinnen**: Online-Konsultationen mit Schweizer Frauenärztinnen, die sich auf Wechseljahre spezialisiert haben. Diese Modelle (wie Equivie MED) eignen sich besonders, wenn keine Spezialistin in Ihrer Region verfügbar ist oder Sie längere Wartezeiten vermeiden möchten.
+
+## Was passiert während einer guten Wechseljahre-Beratung?
+
+**Strukturierte Symptom-Erfassung**: Eine qualifizierte Beratung beginnt mit einem validierten Fragebogen (MRS, Greene Climacteric Scale oder Vergleichbares). Allgemeine Fragen wie «Wie geht es Ihnen?» reichen nicht — die Wechseljahre betreffen über 30 dokumentierte Symptome, viele davon werden ohne strukturierte Erfassung übersehen.
+
+**Persönliche Risikobewertung**: Die Therapieentscheidung — insbesondere bei Hormontherapie — hängt von Ihrem individuellen Risikoprofil ab: Familienanamnese (Brustkrebs, Thrombose, Herzinfarkt), Ihr eigener Gesundheitszustand (Blutdruck, BMI, Stoffwechsel), und Ihr Alter (Beginn von HRT innerhalb von 10 Jahren nach Menopause-Eintritt ist sicherer).
+
+**Differenzialdiagnose**: Nicht jedes «Wechseljahressymptom» kommt von den Wechseljahren. Schilddrüsenerkrankungen, Eisenmangel, Vitamin-D-Defizit, Diabetes und Depression können ähnliche Beschwerden verursachen. Eine sorgfältige Beratung schliesst diese Möglichkeiten aus — typischerweise mit gezielter Blutdiagnostik (TSH, Ferritin, Vitamin D, HbA1c, Lipidprofil).
+
+**Diskussion der Behandlungsoptionen**: Eine gute Beratung legt alle Optionen offen — nicht nur HRT, sondern auch Phytotherapie (Salbei, Traubensilberkerze), nicht-hormonelle Medikamente (SSRIs, Gabapentin), kognitive Verhaltenstherapie für Schlafprobleme (CBT-I) und Lebensstil-Massnahmen. Sie sollten die Vor- und Nachteile jeder Option verständlich erklärt bekommen.
+
+**Schriftlicher Behandlungsplan**: Sie verlassen die Konsultation mit einem klaren Plan — welche Massnahmen, welche Dosierung, welche Kontroll-Termine, welche Warnzeichen, bei denen Sie sich melden sollten.
+
+## Was kostet eine Wechseljahre-Beratung in der Schweiz?
+
+| Anbietertyp | Dauer | Typische Kosten | Krankenkasse |
+|---|---|---|---|
+| Hausärztin (Konsultation) | 15–30 Min. | CHF 80–150 | Grundversicherung |
+| Gynäkologin (Konsultation) | 20–30 Min. | CHF 150–250 | Grundversicherung |
+| Menopause-Spezialistin | 45–60 Min. | CHF 250–400 | Grundversicherung* |
+| Telemedizin-Konsultation | 45–60 Min. | CHF 250–350 | meist Selbstzahler |
+| Naturheilpraktikerin | 60–90 Min. | CHF 150–250 | Zusatzversicherung |
+
+*Bei medizinischer Indikation. Längere Konsultationen werden über die TARMED-Position «Komplexe Konsultation» abgerechnet — Ihr Selbstbehalt (Franchise + 10 % Selbstbeteiligung) gilt wie bei jeder anderen ärztlichen Leistung.
+
+## Worauf sollten Sie bei der Auswahl achten?
+
+**Spezialisierung sichtbar machen**: Fragen Sie konkret, ob die Ärztin eine Zusatzausbildung in Menopausenmedizin absolviert hat. Eine Mitgliedschaft in der DMG (Deutsche Menopause Gesellschaft), bei IMS (International Menopause Society) oder die SGGG-Zertifizierung sind Qualitätsmerkmale.
+
+**Genug Zeit eingeplant**: Eine seriöse Erstberatung dauert mindestens 45 Minuten. Wenn nur ein 15-Minuten-Slot angeboten wird, ist das für eine umfassende Wechseljahre-Bewertung zu kurz.
+
+**Evidenzbasierte Empfehlungen**: Die Beratung sollte sich auf aktuelle Leitlinien stützen (NAMS 2022, IMS 2024, SGGG-Expertenbrief Nr. 51). Vorsicht bei pauschaler Ablehnung von HRT («ist gefährlich») oder pauschaler Empfehlung («jede Frau braucht das») — beides ist medizinisch nicht haltbar.
+
+**Bereitschaft, Phytotherapie und Lifestyle einzubeziehen**: In der Schweiz gehört integrative Medizin zum Standard. Eine gute Beratung diskutiert Salbei, Traubensilberkerze, Ernährung und Bewegung gleichberechtigt mit Hormontherapie — angepasst an Ihre Symptomschwere und Präferenzen.
+
+## Wie schnell bekommen Sie einen Termin?
+
+In Zürich, Genf, Basel und Bern liegen die Wartezeiten bei spezialisierten Menopause-Sprechstunden derzeit bei 6 bis 14 Wochen. In ländlichen Regionen oder bei kleineren Praxen können die Wartezeiten kürzer sein — aber dort fehlt oft die Spezialisierung.
+
+Telemedizin-Angebote bieten typischerweise Termine innerhalb von 1 bis 2 Wochen. Das ist besonders relevant, wenn Symptome (Schlaflosigkeit, depressive Verstimmung, schwere Hitzewallungen) Ihren Alltag beeinträchtigen und Sie nicht monatelang warten möchten.
+
+## Wann sollten Sie eine Beratung suchen?
+
+- Ihre Symptome beeinträchtigen Schlaf, Arbeit oder Beziehungen
+- Sie haben Fragen zu HRT, sind aber unsicher wegen widersprüchlicher Informationen
+- Ihre bisherige Behandlung wirkt nicht ausreichend
+- Sie sind unter 45 und haben deutliche Wechseljahressymptome (möglicherweise vorzeitige Menopause)
+- Sie hatten bei der regulären gynäkologischen Vorsorge das Gefühl, nicht ausreichend Zeit oder Antworten bekommen zu haben
+- Sie möchten eine ganzheitliche Strategie, die HRT, Phytotherapie und Lebensstil integriert
+
+## Equivie MED: Spezialisierte Online-Wechseljahre-Beratung
+
+Equivie MED bietet 45- bis 60-minütige Video-Konsultationen mit FMH-zertifizierten Gynäkologinnen, die zusätzliche Menopause-Spezialisierung absolviert haben. Die Konsultation umfasst eine vollständige Symptom-Bewertung, individuelle Therapieempfehlungen, schriftlichen Behandlungsplan und — falls indiziert — digitales Rezept. Termine sind innerhalb von 1 bis 2 Wochen verfügbar, in Deutsch und Französisch.
+
+Buchen Sie über die Startseite oder kontaktieren Sie uns direkt für individuelle Fragen zu Ihrer Situation.`,
+      en: `## What Makes a Menopause Consultation Different from a Regular Gynaecology Visit?
+
+Most women in Switzerland first hear about menopause during a routine gynaecological check-up — typically 15 to 20 minutes long. That rarely allows enough time to assess the full range of symptoms (sleep, mood, hot flashes, joints, sexuality, cognition), evaluate individual risk factors, and arrive at an evidence-based treatment decision.
+
+A specialised menopause consultation is structured differently. It runs 45 to 60 minutes, starts with a structured symptom questionnaire (validated scales like the MRS — Menopause Rating Scale), and ends with a written treatment plan you take home.
+
+## Who Offers Menopause Consultations in Switzerland?
+
+**Gynaecologists with menopause certification**: The SGGG (Swiss Society of Gynaecology and Obstetrics) offers a "Menopause Specialist" certification requiring additional training and exams. As of 2026, fewer than 100 certified specialists practise across Switzerland — most in Zurich, Geneva, Bern, Basel, and Lausanne. A directory is available on the SGGG website.
+
+**General practitioners with women's health focus**: Some Swiss GPs specialise in hormonal health and offer competent first-line consultations. This is often the fastest route in rural areas.
+
+**Naturopaths with phytotherapy training**: Federally certified naturopaths (NHP TEN/Phytotherapy) provide complementary consultations — primarily on botanical therapies, nutrition, and lifestyle. They don't replace medical consultations but complement them well.
+
+**Telehealth specialists**: Online consultations with Swiss gynaecologists who have specialised in menopause. These models (such as Equivie MED) work particularly well when no specialist is available in your region or when you want to avoid long waits.
+
+## What Happens During a Quality Menopause Consultation?
+
+**Structured symptom assessment**: A qualified consultation begins with a validated questionnaire (MRS, Greene Climacteric Scale, or equivalent). Vague questions like "How are you feeling?" aren't enough — menopause involves over 30 documented symptoms, many of which are missed without structured assessment.
+
+**Personal risk evaluation**: Treatment decisions — especially around hormone therapy — depend on individual risk: family history (breast cancer, thrombosis, heart attack), your own health status (blood pressure, BMI, metabolism), and your age (starting HRT within 10 years of menopause onset is safer).
+
+**Differential diagnosis**: Not every "menopause symptom" is caused by menopause. Thyroid disease, iron deficiency, vitamin D deficiency, diabetes, and depression can produce similar complaints. A careful consultation rules these out — typically with targeted blood work (TSH, ferritin, vitamin D, HbA1c, lipid panel).
+
+**Discussion of treatment options**: A good consultation lays out all options — not just HRT, but also phytotherapy (sage, black cohosh), non-hormonal medications (SSRIs, gabapentin), cognitive behavioural therapy for sleep (CBT-I), and lifestyle measures. You should leave with a clear understanding of the pros and cons of each.
+
+**Written treatment plan**: You walk out with a clear plan — which interventions, which dosages, which follow-up appointments, and what warning signs should prompt you to call back.
+
+## What Does a Menopause Consultation Cost in Switzerland?
+
+| Provider type | Duration | Typical cost | Insurance |
+|---|---|---|---|
+| GP visit | 15–30 min | CHF 80–150 | Basic insurance |
+| Gynaecologist visit | 20–30 min | CHF 150–250 | Basic insurance |
+| Menopause specialist | 45–60 min | CHF 250–400 | Basic insurance* |
+| Telehealth consultation | 45–60 min | CHF 250–350 | Usually self-pay |
+| Naturopath | 60–90 min | CHF 150–250 | Supplementary |
+
+*With medical indication. Extended consultations are billed under the TARMED "complex consultation" position — your standard cost-sharing (deductible + 10% co-payment) applies as with any other medical service.
+
+## What to Look For When Choosing
+
+**Visible specialisation**: Ask directly whether the doctor has completed additional training in menopause medicine. Membership in the DMG (German Menopause Society), IMS (International Menopause Society), or SGGG certification are quality markers.
+
+**Adequate time allocated**: A serious initial consultation runs at least 45 minutes. A 15-minute slot is too short for a comprehensive menopause assessment.
+
+**Evidence-based recommendations**: Advice should rest on current guidelines (NAMS 2022, IMS 2024, SGGG Expert Letter No. 51). Be cautious of blanket rejection of HRT ("it's dangerous") or blanket endorsement ("every woman needs it") — neither is medically defensible.
+
+**Willingness to integrate phytotherapy and lifestyle**: In Switzerland, integrative medicine is standard. A good consultation discusses sage, black cohosh, nutrition, and exercise on equal footing with hormone therapy — adapted to your symptom severity and preferences.
+
+## How Quickly Can You Get an Appointment?
+
+In Zurich, Geneva, Basel, and Bern, waiting times for specialised menopause clinics currently run 6 to 14 weeks. Rural regions or smaller practices often have shorter waits — but tend to lack the specialisation.
+
+Telehealth services typically offer appointments within 1 to 2 weeks. This matters particularly when symptoms (insomnia, depressive mood, severe hot flashes) are affecting your daily life and you don't want to wait months.
+
+## When Should You Seek a Consultation?
+
+- Symptoms are affecting your sleep, work, or relationships
+- You have HRT questions but are unsure due to conflicting information
+- Your current treatment isn't working well enough
+- You're under 45 with clear menopause symptoms (possible early menopause)
+- You felt your routine gynaecology check-up didn't give you enough time or answers
+- You want a comprehensive strategy integrating HRT, phytotherapy, and lifestyle
+
+## Equivie MED: Specialised Online Menopause Consultations
+
+Equivie MED offers 45 to 60-minute video consultations with FMH-certified gynaecologists who hold additional menopause specialisation. Consultations include full symptom assessment, individualised therapy recommendations, written treatment plan, and — where indicated — digital prescription. Appointments are available within 1 to 2 weeks, in German and French.
+
+Book through the homepage or contact us directly with questions about your situation.`,
+      fr: `## En quoi une consultation ménopause se distingue-t-elle d'une visite gynécologique ordinaire ?
+
+La plupart des femmes en Suisse entendent parler pour la première fois de la ménopause lors d'un contrôle gynécologique de routine — généralement de 15 à 20 minutes. Cela suffit rarement pour évaluer la complexité des symptômes (sommeil, humeur, bouffées de chaleur, articulations, sexualité, cognition), apprécier les risques individuels et arriver à une décision thérapeutique fondée sur les preuves.
+
+Une consultation spécialisée en ménopause est structurée différemment. Elle dure 45 à 60 minutes, débute par un questionnaire structuré (échelles validées comme le MRS — Menopause Rating Scale), et se conclut par un plan de traitement écrit que vous emportez avec vous.
+
+## Qui propose des consultations ménopause en Suisse ?
+
+**Gynécologues avec certification ménopause** : La SSGO (Société Suisse de Gynécologie et d'Obstétrique) propose une certification « Spécialiste de la ménopause » qui requiert une formation et des examens supplémentaires. En 2026, moins de 100 spécialistes certifiées exercent en Suisse — principalement à Zurich, Genève, Berne, Bâle et Lausanne. Un annuaire est disponible sur le site de la SSGO.
+
+**Médecins généralistes orientés santé féminine** : Certains généralistes suisses se sont spécialisés en santé hormonale et offrent des premières consultations compétentes. C'est souvent l'option la plus rapide en région rurale.
+
+**Naturopathes avec formation en phytothérapie** : Les naturopathes diplômés fédéraux (NHP TEN/Phytothérapie) offrent des consultations complémentaires — principalement sur les thérapies végétales, la nutrition et le mode de vie. Ils ne remplacent pas une consultation médicale mais la complètent utilement.
+
+**Spécialistes en télémédecine** : Consultations en ligne avec des gynécologues suisses spécialisés en ménopause. Ces modèles (comme Equivie MED) sont particulièrement adaptés lorsqu'aucune spécialiste n'est disponible dans votre région ou que vous souhaitez éviter de longs délais.
+
+## Que se passe-t-il pendant une consultation de qualité ?
+
+**Évaluation structurée des symptômes** : Une consultation qualifiée commence par un questionnaire validé (MRS, Greene Climacteric Scale ou équivalent). Des questions vagues comme « Comment allez-vous ? » ne suffisent pas — la ménopause comporte plus de 30 symptômes documentés, dont beaucoup passent inaperçus sans évaluation structurée.
+
+**Évaluation personnelle du risque** : La décision thérapeutique — notamment concernant le THS — dépend du profil de risque individuel : antécédents familiaux (cancer du sein, thrombose, infarctus), votre propre état de santé (tension artérielle, IMC, métabolisme) et votre âge (commencer le THS dans les 10 ans suivant la ménopause est plus sûr).
+
+**Diagnostic différentiel** : Tout « symptôme de ménopause » n'est pas dû à la ménopause. Les troubles thyroïdiens, la carence en fer, le déficit en vitamine D, le diabète et la dépression peuvent provoquer des plaintes similaires. Une consultation soigneuse les exclut — généralement avec des analyses sanguines ciblées (TSH, ferritine, vitamine D, HbA1c, bilan lipidique).
+
+**Discussion des options thérapeutiques** : Une bonne consultation présente toutes les options — pas seulement le THS, mais aussi la phytothérapie (sauge, actée à grappes noires), les médicaments non hormonaux (ISRS, gabapentine), la thérapie cognitivo-comportementale pour les troubles du sommeil (CBT-I) et les mesures de mode de vie.
+
+**Plan de traitement écrit** : Vous repartez avec un plan clair — quelles interventions, quelles posologies, quels rendez-vous de suivi, quels signes d'alerte doivent vous faire reprendre contact.
+
+## Combien coûte une consultation ménopause en Suisse ?
+
+| Type de prestataire | Durée | Coût typique | Assurance |
+|---|---|---|---|
+| Médecin généraliste | 15–30 min | CHF 80–150 | Assurance de base |
+| Gynécologue | 20–30 min | CHF 150–250 | Assurance de base |
+| Spécialiste ménopause | 45–60 min | CHF 250–400 | Assurance de base* |
+| Consultation télémédecine | 45–60 min | CHF 250–350 | Souvent à charge |
+| Naturopathe | 60–90 min | CHF 150–250 | Complémentaire |
+
+*Sur indication médicale. Les consultations prolongées sont facturées sous la position TARMED « consultation complexe » — votre quote-part habituelle (franchise + 10 % de participation) s'applique comme pour toute autre prestation médicale.
+
+## Que vérifier lors du choix
+
+**Spécialisation visible** : Demandez directement si la médecin a suivi une formation complémentaire en médecine de la ménopause. L'adhésion à la DMG (Société allemande de la ménopause), à l'IMS (International Menopause Society) ou la certification SSGO sont des marqueurs de qualité.
+
+**Temps suffisant** : Une consultation initiale sérieuse dure au moins 45 minutes. Un créneau de 15 minutes est trop court pour une évaluation complète.
+
+**Recommandations fondées sur les preuves** : Les conseils doivent s'appuyer sur les directives actuelles (NAMS 2022, IMS 2024, Lettre d'experts SSGO n° 51). Méfiez-vous d'un rejet global du THS (« c'est dangereux ») ou d'une recommandation systématique (« toute femme en a besoin ») — aucun des deux n'est médicalement défendable.
+
+**Volonté d'intégrer phytothérapie et mode de vie** : En Suisse, la médecine intégrative est un standard. Une bonne consultation discute la sauge, l'actée à grappes noires, la nutrition et l'exercice sur un pied d'égalité avec l'hormonothérapie.
+
+## En combien de temps obtenir un rendez-vous ?
+
+À Zurich, Genève, Bâle et Berne, les délais d'attente pour les consultations spécialisées en ménopause s'élèvent actuellement à 6 à 14 semaines. Les régions rurales ou les plus petites pratiques ont souvent des délais plus courts — mais manquent souvent de spécialisation.
+
+Les services de télémédecine proposent généralement des rendez-vous sous 1 à 2 semaines. C'est particulièrement important lorsque les symptômes (insomnie, humeur dépressive, bouffées de chaleur sévères) affectent votre quotidien.
+
+## Quand consulter ?
+
+- Vos symptômes affectent votre sommeil, votre travail ou vos relations
+- Vous avez des questions sur le THS mais hésitez face à des informations contradictoires
+- Votre traitement actuel ne fonctionne pas suffisamment
+- Vous avez moins de 45 ans avec des symptômes nets de ménopause (ménopause précoce possible)
+- Vous avez eu le sentiment que votre contrôle gynécologique de routine ne vous donnait pas assez de temps ou de réponses
+- Vous souhaitez une stratégie globale intégrant THS, phytothérapie et mode de vie
+
+## Equivie MED : consultation ménopause en ligne spécialisée
+
+Equivie MED propose des consultations vidéo de 45 à 60 minutes avec des gynécologues certifiées FMH ayant suivi une spécialisation supplémentaire en ménopause. La consultation comprend une évaluation complète des symptômes, des recommandations thérapeutiques individualisées, un plan de traitement écrit et — si indiqué — une ordonnance numérique. Les rendez-vous sont disponibles sous 1 à 2 semaines, en allemand et en français.
+
+Réservez via la page d'accueil ou contactez-nous directement pour toute question sur votre situation.`,
+    },
+    faq: {
+      de: [
+        { q: 'Wie lange dauert eine spezialisierte Wechseljahre-Beratung?', a: 'Eine seriöse Erstberatung dauert 45 bis 60 Minuten. Folgekonsultationen sind typischerweise 20 bis 30 Minuten lang. Kürzere Slots reichen für eine umfassende Erstbewertung nicht aus.' },
+        { q: 'Übernimmt die Krankenkasse die Kosten?', a: 'Bei einer ärztlichen Konsultation in einer Schweizer Praxis ja — über die Grundversicherung, abzüglich Franchise und 10 % Selbstbeteiligung. Telemedizin-Angebote (insbesondere ohne ärztliche Überweisung) sind häufig Selbstzahlerleistungen, können aber durch Zusatzversicherungen mit Telemedizin-Modul gedeckt sein.' },
+        { q: 'Brauche ich eine Überweisung vom Hausarzt?', a: 'Nein. In der Schweiz können Sie Frauenärztinnen und Menopause-Spezialistinnen direkt aufsuchen. Eine Überweisung ist nicht erforderlich, ausser Sie haben ein Hausarztmodell mit Pflicht-Erstkonsultation.' },
+        { q: 'Wie finde ich eine zertifizierte Menopause-Spezialistin?', a: 'Die SGGG führt eine Liste zertifizierter Menopause-Spezialistinnen. Auch die DMG (Deutsche Menopause Gesellschaft) listet Mitglieder mit Schwerpunkt-Praxis. Alternativ können Sie Telemedizin-Angebote nutzen, die ausschliesslich mit spezialisierten Ärztinnen arbeiten.' },
+        { q: 'Ist eine Online-Beratung gleichwertig?', a: 'Für die meisten Wechseljahresbeschwerden ja. Anamnese, Symptom-Bewertung, Beratung und Verschreibung lassen sich vollständig per Video durchführen. Eine körperliche Untersuchung (gynäkologische Vorsorge, Mammographie) ergänzt das später bei Ihrer Frauenärztin vor Ort — beides funktioniert gut parallel.' },
+      ],
+      en: [
+        { q: 'How long does a specialised menopause consultation last?', a: 'A serious initial consultation lasts 45 to 60 minutes. Follow-up appointments typically run 20 to 30 minutes. Shorter slots aren\'t adequate for comprehensive initial assessment.' },
+        { q: 'Does insurance cover the cost?', a: 'For in-practice physician consultations in Switzerland, yes — under basic insurance, after deductible and 10% co-payment. Telehealth services (especially those without GP referral) are often self-pay but may be covered by supplementary insurance plans that include telehealth modules.' },
+        { q: 'Do I need a referral from my GP?', a: 'No. In Switzerland you can see gynaecologists and menopause specialists directly. Referrals aren\'t required unless you\'re on a GP-model insurance plan that mandates first consultation through your primary physician.' },
+        { q: 'How do I find a certified menopause specialist?', a: 'The SGGG maintains a directory of certified menopause specialists. The DMG (German Menopause Society) also lists members with menopause-focused practice. Alternatively, you can use telehealth services that work exclusively with specialised physicians.' },
+        { q: 'Is online consultation equivalent?', a: 'For most menopause concerns, yes. History-taking, symptom assessment, treatment counselling, and prescription can be done fully by video. Physical examinations (gynaecology screening, mammography) are added later at your local gynaecologist — both work well in parallel.' },
+      ],
+      fr: [
+        { q: 'Combien de temps dure une consultation spécialisée en ménopause ?', a: 'Une consultation initiale sérieuse dure 45 à 60 minutes. Les consultations de suivi durent généralement 20 à 30 minutes. Les créneaux plus courts ne suffisent pas pour une évaluation initiale complète.' },
+        { q: 'L\'assurance prend-elle en charge le coût ?', a: 'Pour les consultations médicales dans un cabinet suisse, oui — par l\'assurance de base, après franchise et participation de 10 %. Les services de télémédecine (notamment sans orientation par le médecin traitant) sont souvent à charge mais peuvent être couverts par les assurances complémentaires avec module télémédecine.' },
+        { q: 'Ai-je besoin d\'une orientation par mon médecin traitant ?', a: 'Non. En Suisse, vous pouvez consulter directement gynécologues et spécialistes en ménopause. L\'orientation n\'est pas requise, sauf si vous avez un modèle d\'assurance médecin de famille obligeant la première consultation chez le médecin traitant.' },
+        { q: 'Comment trouver une spécialiste certifiée en ménopause ?', a: 'La SSGO maintient un annuaire des spécialistes certifiées en ménopause. La DMG (Société allemande de la ménopause) répertorie également des membres avec pratique spécialisée. Vous pouvez aussi utiliser des services de télémédecine travaillant exclusivement avec des médecins spécialisées.' },
+        { q: 'La consultation en ligne est-elle équivalente ?', a: 'Pour la plupart des problèmes de ménopause, oui. Anamnèse, évaluation des symptômes, conseil thérapeutique et prescription peuvent se faire entièrement en vidéo. Les examens physiques (dépistage gynécologique, mammographie) sont ajoutés plus tard chez votre gynécologue local — les deux fonctionnent bien en parallèle.' },
+      ],
+    },
+  },
 ];
 
 /** Helper: get all articles for a given cluster slug */
