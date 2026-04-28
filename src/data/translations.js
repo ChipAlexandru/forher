@@ -9,6 +9,11 @@ export const translations = {
       startAssessment: "Jetzt starten",
     },
 
+    seo: {
+      homeTitle: "Wechseljahre-Beratung Schweiz | Equivie MED — Menopause-Spezialistinnen",
+      homeDescription: "Online-Beratung bei Wechseljahresbeschwerden mit FMH-Gynäkologinnen, spezialisiert auf Menopause. 45–60 Min. Diagnose, individuelle Therapie, digitales Rezept. Termine in 1–2 Wochen.",
+    },
+
     hero: {
       tag: "Die Realität in der Schweiz",
       headline: "Wechseljahre meistern – mit medizinischer Expertise auf Ihrer Seite",
@@ -468,6 +473,11 @@ export const translations = {
       pricing: "Tarifs",
       blog: "Conseils",
       startAssessment: "Commencer",
+    },
+
+    seo: {
+      homeTitle: "Consultation Ménopause Suisse | Equivie MED — Gynécologues Spécialisées",
+      homeDescription: "Consultation vidéo avec gynécologues FMH spécialisées en ménopause. 45–60 min. Diagnostic, traitement personnalisé, ordonnance numérique. Rendez-vous sous 1–2 semaines.",
     },
 
     hero: {
@@ -936,6 +946,11 @@ export const translations = {
       pricing: "Pricing",
       blog: "Resources",
       startAssessment: "Get Started",
+    },
+
+    seo: {
+      homeTitle: "Menopause Consultation Switzerland | Equivie MED — Specialist Gynaecologists",
+      homeDescription: "Video consultation with FMH-certified gynaecologists specialised in menopause. 45–60 min. Diagnosis, personalised treatment plan, digital prescription. Appointments within 1–2 weeks.",
     },
 
     hero: {

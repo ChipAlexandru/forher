@@ -268,8 +268,52 @@ export default function WissenArticle() {
                 </p>
               </div>
 
+              {/* End-of-article CTA — visible on all screen sizes */}
+              <div className="mt-12 p-7 md:p-9 bg-forest text-cream rounded-[2px]">
+                <p className="font-sans text-xs uppercase tracking-widest text-cream/70 mb-3">
+                  {lang === 'de' ? 'Equivie MED' : lang === 'fr' ? 'Equivie MED' : 'Equivie MED'}
+                </p>
+                <h3 className="font-serif font-bold text-cream text-2xl md:text-3xl leading-snug mb-4">
+                  {t.ctaTitle}
+                </h3>
+                <p className="font-sans text-cream/80 text-base leading-relaxed mb-6 max-w-xl">
+                  {t.ctaBody}
+                </p>
+                <Link
+                  to={langPath('/')}
+                  className="inline-block font-sans font-medium text-sm uppercase tracking-wider bg-cream text-forest px-7 py-3 rounded-[2px] hover:bg-cream/90 transition-colors no-underline"
+                >
+                  {t.ctaButton}
+                </Link>
+              </div>
+
+              {/* Related articles — mobile-visible, complements sidebar on desktop */}
+              {relatedArticles.length > 0 && (
+                <div className="mt-12 pt-10 border-t border-sage/20 lg:hidden">
+                  <p className="font-sans text-xs uppercase tracking-widest text-sage mb-5">
+                    {t.related}
+                  </p>
+                  <div className="flex flex-col gap-4">
+                    {relatedArticles.map((related) => (
+                      <Link
+                        key={related.slug}
+                        to={langPath(`/wissen/${related.cluster}/${related.slug}`)}
+                        className="group block bg-white border border-sage/20 rounded-[2px] p-5 hover:border-sage/50 hover:shadow-sm transition-all duration-200 no-underline"
+                      >
+                        <h3 className="font-serif font-semibold text-forest text-base leading-snug group-hover:text-sage transition-colors">
+                          {related.title[lang] || related.title.de}
+                        </h3>
+                        <p className="font-sans text-xs text-charcoal-light mt-2">
+                          {related.readingTime}&thinsp;{t.minuteRead}
+                        </p>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {/* Back link */}
-              <div className="mt-8">
+              <div className="mt-12">
                 <Link
                   to={langPath(`/wissen/${clusterSlug}`)}
                   className="font-sans font-medium text-base text-forest border-b border-forest pb-px hover:text-sage hover:border-sage transition-colors"

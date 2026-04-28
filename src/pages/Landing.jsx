@@ -367,8 +367,8 @@ export default function Landing() {
   return (
     <div ref={containerRef} className="min-h-screen flex flex-col">
       <SEO
-        title={t.hero.headline ? `Equivie MED — ${t.hero.headline.split('.')[0]}` : 'Equivie MED — Menopause specialists who listen | Switzerland'}
-        description={(t.hero.subhead || '').slice(0, 155)}
+        title={t.seo?.homeTitle || `Equivie MED — ${t.hero.headline.split('.')[0]}`}
+        description={t.seo?.homeDescription || (t.hero.subHeadline || '').slice(0, 155)}
         pagePath="/"
         ogImage="/og-image.png"
       />

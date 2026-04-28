@@ -2,12 +2,22 @@ import { Helmet } from 'react-helmet-async';
 import { useLang } from '../context/LanguageContext';
 
 const BASE_URL = 'https://equiviemed.ch';
-const DEFAULTS = {
-  title: 'Equivie MED — Menopause specialists who listen | Switzerland',
-  description: 'Video consultation with a gynaecologist specialised in menopause. Diagnosis, personalised treatment plan and prescription in one 45-60 minute session. FMH-certified, Swiss-regulated.',
-  ogImage: '/og-image.png',
-  type: 'website',
+const DEFAULTS_BY_LANG = {
+  de: {
+    title: 'Wechseljahre-Beratung Schweiz | Equivie MED — Menopause-Spezialistinnen',
+    description: 'Online-Beratung bei Wechseljahresbeschwerden mit FMH-Gynäkologinnen, spezialisiert auf Menopause. 45–60 Min. Diagnose, individuelle Therapie, digitales Rezept.',
+  },
+  fr: {
+    title: 'Consultation Ménopause Suisse | Equivie MED — Gynécologues Spécialisées',
+    description: 'Consultation vidéo avec gynécologues FMH spécialisées en ménopause. 45–60 min. Diagnostic, traitement personnalisé, ordonnance numérique.',
+  },
+  en: {
+    title: 'Menopause Consultation Switzerland | Equivie MED — Specialist Gynaecologists',
+    description: 'Video consultation with FMH-certified gynaecologists specialised in menopause. 45–60 min. Diagnosis, personalised treatment plan, digital prescription.',
+  },
 };
+const DEFAULT_OG_IMAGE = '/og-image.png';
+const DEFAULT_TYPE = 'website';
 
 /**
  * @param {string} pagePath — The path without language prefix, e.g. '/wissen' or '/wissen/perimenopause/what-is-perimenopause'.
@@ -23,13 +33,14 @@ export default function SEO({
   structuredData,
 }) {
   const { lang } = useLang();
+  const defaults = DEFAULTS_BY_LANG[lang] || DEFAULTS_BY_LANG.de;
 
-  const metaTitle = title || DEFAULTS.title;
-  const metaDescription = description || DEFAULTS.description;
-  const metaType = type || DEFAULTS.type;
+  const metaTitle = title || defaults.title;
+  const metaDescription = description || defaults.description;
+  const metaType = type || DEFAULT_TYPE;
   const metaImage = ogImage
     ? (ogImage.startsWith('http') ? ogImage : `${BASE_URL}${ogImage}`)
-    : `${BASE_URL}${DEFAULTS.ogImage}`;
+    : `${BASE_URL}${DEFAULT_OG_IMAGE}`;
 
   // Canonical: language-specific URL
   const canonical = `${BASE_URL}/${lang}${pagePath === '/' ? '' : pagePath}`;

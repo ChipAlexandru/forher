@@ -71,6 +71,13 @@ export default function WissenCluster() {
   const readMoreLabel = lang === 'fr' ? 'Lire' : lang === 'en' ? 'Read' : 'Lesen';
   const minuteRead = lang === 'fr' ? 'min de lecture' : lang === 'en' ? 'min read' : 'Min. Lesezeit';
   const moreArticlesLabel = lang === 'fr' ? 'Articles dans ce theme' : lang === 'en' ? 'Articles in this topic' : 'Weitere Artikel in diesem Thema';
+  const otherTopicsLabel = lang === 'fr' ? 'Autres thèmes dans notre hub de savoir' : lang === 'en' ? 'Other topics in our knowledge hub' : 'Weitere Themen in unserem Wissens-Hub';
+  const ctaTitle = lang === 'fr' ? 'Des questions sur votre situation ?' : lang === 'en' ? 'Questions about your situation?' : 'Haben Sie Fragen zu Ihrer Situation?';
+  const ctaBody = lang === 'fr' ? 'Nos médecins vous conseillent de manière discrète et individuelle.' : lang === 'en' ? 'Our doctors advise you discreetly and individually.' : 'Unsere Ärztinnen beraten Sie diskret und individuell.';
+  const ctaButton = lang === 'fr' ? "Commencer l'évaluation gratuite" : lang === 'en' ? 'Start free assessment' : 'Kostenlose Bewertung starten';
+
+  // Cross-cluster recommendations: pick 6 other clusters
+  const otherClusters = clusters.filter((c) => c.slug !== clusterSlug).slice(0, 6);
 
   return (
     <div ref={containerRef}>
@@ -207,6 +214,56 @@ export default function WissenCluster() {
           </div>
         </section>
       )}
+
+      {/* CROSS-CLUSTER DISCOVERY */}
+      {otherClusters.length > 0 && (
+        <section className="fade-in-section bg-cream border-t border-sage/20">
+          <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14 lg:py-20">
+            <h2 className="font-serif font-bold text-forest text-2xl md:text-3xl mb-8">
+              {otherTopicsLabel}
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {otherClusters.map((c) => (
+                <Link
+                  key={c.slug}
+                  to={langPath(`/wissen/${c.slug}`)}
+                  className="group block bg-white border border-sage/20 rounded-[2px] p-5 hover:border-sage/50 hover:shadow-sm transition-all duration-200 no-underline"
+                >
+                  <h3 className="font-serif font-semibold text-forest text-base leading-snug group-hover:text-sage transition-colors mb-2">
+                    {c.title[lang] || c.title.de}
+                  </h3>
+                  <p className="font-sans text-xs text-charcoal-light leading-relaxed">
+                    {c.description[lang] || c.description.de}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* END-OF-CLUSTER CTA */}
+      <section className="fade-in-section bg-cream border-t border-sage/20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14 lg:py-20">
+          <div className="bg-forest text-cream rounded-[2px] p-8 md:p-12 max-w-4xl">
+            <p className="font-sans text-xs uppercase tracking-widest text-cream/70 mb-3">
+              Equivie MED
+            </p>
+            <h2 className="font-serif font-bold text-cream text-2xl md:text-3xl leading-snug mb-4">
+              {ctaTitle}
+            </h2>
+            <p className="font-sans text-cream/80 text-base leading-relaxed mb-6 max-w-xl">
+              {ctaBody}
+            </p>
+            <Link
+              to={langPath('/')}
+              className="inline-block font-sans font-medium text-sm uppercase tracking-wider bg-cream text-forest px-7 py-3 rounded-[2px] hover:bg-cream/90 transition-colors no-underline"
+            >
+              {ctaButton}
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
