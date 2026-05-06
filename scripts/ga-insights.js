@@ -25,6 +25,23 @@ const OUTPUT_PATH = resolve(ROOT, 'analytics-report.md');
 const daysArg = process.argv.find((a, i) => process.argv[i - 1] === '--days');
 const DAYS = parseInt(daysArg) || 30;
 
+// --- Audience filtering ---
+// By default, filter to the Swiss Target Market (CH/DE/FR/AT/IT/LI) to exclude
+// the bot-heavy US/Russia/Asia traffic that dominates raw data. Pass --all to
+// see unfiltered numbers.
+const ALL_TRAFFIC = process.argv.includes('--all');
+const TARGET_COUNTRIES = ['Switzerland', 'Germany', 'France', 'Austria', 'Italy', 'Liechtenstein'];
+
+function buildCountryFilter() {
+  if (ALL_TRAFFIC) return undefined;
+  return {
+    filter: {
+      fieldName: 'country',
+      inListFilter: { values: TARGET_COUNTRIES },
+    },
+  };
+}
+
 // --- Init clients ---
 const credentials = JSON.parse(readFileSync(CREDENTIALS_PATH, 'utf-8'));
 const client = new BetaAnalyticsDataClient({
@@ -81,6 +98,7 @@ async function getOverview() {
       { name: 'bounceRate' },
       { name: 'newUsers' },
     ],
+    dimensionFilter: buildCountryFilter(),
   });
   const r = res.rows?.[0];
   if (!r) return null;
@@ -106,6 +124,7 @@ async function getTopPages() {
     ],
     orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }],
     limit: 20,
+    dimensionFilter: buildCountryFilter(),
   });
   return (res.rows || []).map((r) => ({
     path: dim(r),
@@ -123,6 +142,7 @@ async function getTrafficSources() {
     metrics: [{ name: 'sessions' }, { name: 'totalUsers' }],
     orderBys: [{ metric: { metricName: 'sessions' }, desc: true }],
     limit: 10,
+    dimensionFilter: buildCountryFilter(),
   });
   return (res.rows || []).map((r) => ({
     channel: dim(r),
@@ -137,6 +157,7 @@ async function getLanguageSplit() {
     dateRanges: [{ startDate: `${DAYS}daysAgo`, endDate: 'today' }],
     dimensions: [{ name: 'pagePath' }],
     metrics: [{ name: 'screenPageViews' }, { name: 'totalUsers' }],
+    dimensionFilter: buildCountryFilter(),
   });
   const langs = { de: { views: 0, users: 0 }, fr: { views: 0, users: 0 }, en: { views: 0, users: 0 }, other: { views: 0, users: 0 } };
   for (const r of res.rows || []) {
@@ -158,6 +179,7 @@ async function getDevices() {
     dimensions: [{ name: 'deviceCategory' }],
     metrics: [{ name: 'sessions' }, { name: 'totalUsers' }],
     orderBys: [{ metric: { metricName: 'sessions' }, desc: true }],
+    dimensionFilter: buildCountryFilter(),
   });
   return (res.rows || []).map((r) => ({
     device: dim(r),
@@ -209,6 +231,7 @@ async function getWaitlistEvents() {
 async function getDailyTrend() {
   const [res] = await client.runReport({
     property,
+    dimensionFilter: buildCountryFilter(),
     dateRanges: [{ startDate: `${DAYS}daysAgo`, endDate: 'today' }],
     dimensions: [{ name: 'date' }],
     metrics: [{ name: 'totalUsers' }, { name: 'sessions' }],
@@ -319,7 +342,12 @@ async function main() {
   // --- Build markdown report ---
   let md = '';
   md += `# Equivie MED Analytics Report\n`;
-  md += `**Period**: Last ${DAYS} days | **Generated**: ${new Date().toISOString().slice(0, 10)}\n\n`;
+  md += `**Period**: Last ${DAYS} days | **Generated**: ${new Date().toISOString().slice(0, 10)}\n`;
+  if (ALL_TRAFFIC) {
+    md += `**Filter**: ALL TRAFFIC (includes bots/non-target countries) — pass without --all to see filtered view\n\n`;
+  } else {
+    md += `**Filter**: Swiss Target Market only (CH, DE, FR, AT, IT, LI) — pass --all to see all traffic including bots\n\n`;
+  }
 
   // Overview
   md += `## Overview\n`;
