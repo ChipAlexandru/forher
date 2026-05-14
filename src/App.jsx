@@ -4,13 +4,16 @@ import { LanguageProvider } from './context/LanguageContext';
 import HeaderMain from './components/HeaderMain';
 import Footer from './components/Footer';
 import Landing from './pages/Landing';
-import { BlogIndexRedirect, BlogArticleRedirect } from './components/BlogRedirect';
 
-// Lazy-loaded pages
+// Lazy-loaded pages — keep main bundle small by deferring all non-landing routes
 const WissenIndex = lazy(() => import('./pages/WissenIndex'));
 const WissenCluster = lazy(() => import('./pages/WissenCluster'));
 const WissenArticle = lazy(() => import('./pages/WissenArticle'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+// Lazy-load BlogRedirect — it imports the 2,420-line wissen.js data that would
+// otherwise bloat every page's bundle. Only loaded on legacy /blog routes.
+const BlogIndexRedirect = lazy(() => import('./components/BlogRedirect').then((m) => ({ default: m.BlogIndexRedirect })));
+const BlogArticleRedirect = lazy(() => import('./components/BlogRedirect').then((m) => ({ default: m.BlogArticleRedirect })));
 
 const VALID_LANGS = ['de', 'fr', 'en'];
 const DEFAULT_LANG = 'de';
